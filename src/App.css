@@ -1,3 +1,47 @@
+/* début classes perso */
+:root {
+  --rougeSg: #e9041e;
+  --accomSg: #ddc6b6;
+}
+
+.app-header {
+  background-color: black;
+  font-size: 26px;
+  color: var(--rougeSg);          /* rouge SG*/
+  border-color: var(--rougeSg);   /* rouge SG*/
+  border-style: double;
+  border-width: thick;
+}
+
+.app-footer {
+  position: fixed;
+  display: -ms-flexbox;
+  display: flex;
+  bottom: 0px;
+  height: 30px;
+  width: 100%;
+  max-width: 1110px;
+  margin: 0;
+  padding: 0 20px;
+  background-color: black;
+  color: var(--accomSg);            /* couleur d'accompagnement SG */
+  text-align: right;
+  border-top-color:var(--rougeSg);  /* rouge SG */
+  border-top-style: solid;
+  border-top-width: thick;
+}
+
+.style-color-accomsg {
+  /* 3x la taille de la plus petite dimension de la fenêtre */
+  font-size: 3vmin;
+  color: var(--accomSg);
+}
+
+a:hover {
+  color: var(--rougeSg) !important;           /* rouge SG */
+}
+/* fin classes perso */
+
 .App {
   text-align: center;
 }
@@ -11,17 +55,6 @@
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
 .App-link {
