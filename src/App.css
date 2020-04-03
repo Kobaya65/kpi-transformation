@@ -1,4 +1,7 @@
-/* début classes perso */
+/*-----------------------*/
+/*  début classes perso  */
+/*-----------------------*/
+/* 2 variables globales pour les couleurs SG */
 :root {
   --rougeSg: #e9041e;
   --accomSg: #ddc6b6;
@@ -18,7 +21,7 @@
   display: -ms-flexbox;
   display: flex;
   bottom: 0px;
-  height: 30px;
+  height: 40px;
   width: 100%;
   max-width: 1110px;
   margin: 0;
@@ -26,9 +29,9 @@
   background-color: black;
   color: var(--accomSg);            /* couleur d'accompagnement SG */
   text-align: right;
-  border-top-color:var(--rougeSg);  /* rouge SG */
-  border-top-style: solid;
-  border-top-width: thick;
+  border-color:var(--rougeSg);  /* rouge SG */
+  border-style: double;
+  border-width: thick;
 }
 
 .style-color-accomsg {
@@ -40,7 +43,9 @@
 a:hover {
   color: var(--rougeSg) !important;           /* rouge SG */
 }
-/* fin classes perso */
+/*---------------------*/
+/*  fin classes perso  */
+/*---------------------*/
 
 .App {
   text-align: center;

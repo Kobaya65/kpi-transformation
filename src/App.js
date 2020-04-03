@@ -3,7 +3,10 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-// import ApplicationsList from "./components/applications-list";
+import Applications from "./components/applications";
+import Application from "./components/application";
+import ApplicationsResp from "./components/applicationsResp";
+import ApplicationResp from "./components/applicationResp";
 
 // import logo from "./logo.png";
 
@@ -14,7 +17,7 @@ class App extends Component {
       <div className="container">
         <nav className="navbar navbar-inverse sticky-top flex-md-nowrap app-header">
           <div className="col-md-2">
-            <a href="#">
+            <a href="/">
               <img src={`${ process.env.PUBLIC_URL }/images/societe-generale-logo-blanc.png`} height="30em" className="d-inline-block align-top" alt="logo Société Générale" />
             </a>
           </div>
@@ -25,10 +28,10 @@ class App extends Component {
           <div className="col-md-3">
             <ul className="nav navbar-nav">
               <li>
-                <Link to="/" className="style-color-accomsg">Applications List</Link>
+                <Link to="/applications" className="style-color-accomsg">Applications</Link>
               </li>
               <li>
-                <Link to="/" className="style-color-accomsg">Concepts List</Link>
+                <Link to="/application" className="style-color-accomsg">Application by Id</Link>
               </li>
             </ul>
           </div>
@@ -36,45 +39,38 @@ class App extends Component {
           <div className="col-md-3">
             <ul className="nav navbar-nav">
               <li>
-                <Link to="/" className="style-color-accomsg">Appli. Resp. List</Link>
+                <Link to="/applicationsResp" className="style-color-accomsg">Applications Resp.</Link>
               </li>
               <li>
-                <Link to="/" className="style-color-accomsg">...</Link>
+                <Link to="/applicationResp" className="style-color-accomsg">Appli. Resp. by Id</Link>
               </li>
             </ul>
           </div>
         </nav>
-        {/* <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <a class="navbar-brand" href="https://codingthesmartway.com" target="_blank">
-            <img src={logo} width="30" height="30" alt="CodingTheSmartWay.com" />
-          </a>
-          <Link to="/" className="navbar-brand">KPI Transformation</Link>
-        </nav> */}
-        <br />
-        <h1>Titre</h1>
-        <p>paragraphe</p>
-        <h1>Titre</h1>
-        <p>paragraphe</p>
-        <h1>Titre</h1>
-        <p>paragraphe</p>
-        <h1>Titre</h1>
-        <p>paragraphe</p>
-        <h1>Titre</h1>
-        <p>paragraphe</p>
-        <h1>Titre</h1>
-        <p>paragraphe</p>
-        <h1>Titre</h1>
-        <p>paragraphe</p>
-        <h1>Titre</h1>
-        <p>paragraphe</p>
-        <h1>Titre</h1>
-        <p>paragraphe</p>
-        <h1>Titre</h1>
-        <p>paragraphe</p>
-        <h1>Titre</h1>
-        <p>paragraphe</p>
-        {/* <Route path="/" exact component={ApplicationsList} /> */}
 
+        <Route path="/applications" component={Applications} />
+        <Route path="/application" component={Application} />
+        <Route path="/applicationsResp" component={ApplicationsResp} />
+        <Route path="/applicationResp" component={ApplicationResp} />
+        {/* <Route path="/applicationsResp" exact component={ApplicationsResp} />
+        <Route path="/applicationResp/:id" component={ApplicationResp} /> */}
+
+        <h1>Titre 1</h1>
+        <p>paragraphe 1</p>
+        <h1>Titre 2</h1>
+        <p>paragraphe 1</p>
+        <p>paragraphe 2</p>
+        <h1>Titre 3</h1>
+        <p>paragraphe 1</p>
+        <h1>Titre 4</h1>
+        <p>paragraphe 1</p>
+        <h1>Titre 5</h1>
+        <p>paragraphe 1</p>
+        <h1>Titre 6</h1>
+        <p>paragraphe 1</p>
+        <h1>Titre 7</h1>
+        <p>paragraphe 1</p>
+        
         <div className="row app-footer">
           <p>Pied de page</p>
         </div>

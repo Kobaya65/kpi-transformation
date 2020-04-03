@@ -19,7 +19,8 @@ connection.once('open', function() {
     console.log("MongoDB's 'kpi-transformation' database connection established successfully");
 })
 
-applicationRoutes.route('/').get(function(req, res) {
+/* collection applications */
+applicationRoutes.route('/applications').get(function(req, res) {
     Applications.find(function(err, applications) {
         if (err) {
             console.log(err);
@@ -29,6 +30,14 @@ applicationRoutes.route('/').get(function(req, res) {
     });
 });
 
+applicationRoutes.route('/application/:id').get(function(req, res) {
+    let id = req.params.id;
+    Applications.findById(id, function(err, applications) {
+        res.json(applications);
+    });
+});
+
+/* collection applicationsResp */
 applicationRoutes.route('/applicationsResp').get(function(req, res) {
   ApplicationsResp.find(function(err, applicationsResp) {
       if (err) {
@@ -37,33 +46,33 @@ applicationRoutes.route('/applicationsResp').get(function(req, res) {
           res.json(applicationsResp);
       }
   });
-});
+} );
 
-applicationRoutes.route('/:id').get(function(req, res) {
-    let id = req.params.id;
-    Applications.findById(id, function(err, todo) {
-        res.json(todo);
-    });
-});
+applicationRoutes.route('/applicationResp/:id').get(function(req, res) {
+  let id = req.params.id;
+  ApplicationsResp.findById(id, function(err, applicationsResp) {
+      res.json(applicationsResp);
+  });
+} );
 
-applicationRoutes.route('/update/:id').post(function(req, res) {
-    Applications.findById(req.params.id, function(err, todo) {
-        if (!todo)
-            res.status(404).send("data is not found");
-        else
-            todo.todo_description = req.body.todo_description;
-            todo.todo_responsible = req.body.todo_responsible;
-            todo.todo_priority = req.body.todo_priority;
-            todo.todo_completed = req.body.todo_completed;
+// applicationRoutes.route('/update/:id').post(function(req, res) {
+//     Applications.findById(req.params.id, function(err, todo) {
+//         if (!todo)
+//             res.status(404).send("data is not found");
+//         else
+//             todo.todo_description = req.body.todo_description;
+//             todo.todo_responsible = req.body.todo_responsible;
+//             todo.todo_priority = req.body.todo_priority;
+//             todo.todo_completed = req.body.todo_completed;
 
-            todo.save().then(todo => {
-                res.json('Application updated!');
-            })
-            .catch(err => {
-                res.status(400).send("Update not possible");
-            });
-    });
-});
+//             todo.save().then(todo => {
+//                 res.json('Application updated!');
+//             })
+//             .catch(err => {
+//                 res.status(400).send("Update not possible");
+//             });
+//     });
+// });
 
 // utilisation de deux collections de la base kpi-transformation
 app.use( '/applications', applicationRoutes );
