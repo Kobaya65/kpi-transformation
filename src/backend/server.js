@@ -7,7 +7,7 @@ const applicationRoutes = express.Router();
 const PORT = 4000;
 
 let Applications = require('./applications-schema');
-let ApplicationsResp = require( './applicationsResp-schema' );
+// let ApplicationsResp = require( './applicationsResp-schema' );
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -30,30 +30,30 @@ applicationRoutes.route('/applications').get(function(req, res) {
     });
 });
 
-applicationRoutes.route('/application/:id').get(function(req, res) {
-    let id = req.params.id;
-    Applications.findById(id, function(err, applications) {
-        res.json(applications);
-    });
-});
+// applicationRoutes.route('/application/:id').get(function(req, res) {
+//     let id = req.params.id;
+//     Applications.findById(id, function(err, application) {
+//         res.json(application);
+//     });
+// });
 
 /* collection applicationsResp */
-applicationRoutes.route('/applicationsResp').get(function(req, res) {
-  ApplicationsResp.find(function(err, applicationsResp) {
-      if (err) {
-          console.log(err);
-      } else {
-          res.json(applicationsResp);
-      }
-  });
-} );
+// applicationRoutes.route('/applicationsResp').get(function(req, res) {
+//   ApplicationsResp.find(function(err, applicationsResp) {
+//       if (err) {
+//           console.log(err);
+//       } else {
+//           res.json(applicationsResp);
+//       }
+//   });
+// } );
 
-applicationRoutes.route('/applicationResp/:id').get(function(req, res) {
-  let id = req.params.id;
-  ApplicationsResp.findById(id, function(err, applicationsResp) {
-      res.json(applicationsResp);
-  });
-} );
+// applicationRoutes.route('/applicationResp/:id').get(function(req, res) {
+//   let id = req.params.id;
+//   ApplicationsResp.findById(id, function(err, applicationResp) {
+//       res.json(applicationResp);
+//   });
+// } );
 
 // applicationRoutes.route('/update/:id').post(function(req, res) {
 //     Applications.findById(req.params.id, function(err, todo) {
@@ -76,7 +76,7 @@ applicationRoutes.route('/applicationResp/:id').get(function(req, res) {
 
 // utilisation de deux collections de la base kpi-transformation
 app.use( '/applications', applicationRoutes );
-app.use( '/applicationsResp', applicationRoutes );
+// app.use( '/applicationsResp', applicationRoutes );
 
 app.listen(PORT, function() {
     console.log("Backend server is running on Port: " + PORT);
