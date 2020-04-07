@@ -4,35 +4,40 @@
   --accomSg: #ddc6b6;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .app-header {
-  background-color: black;
   font-size: 26px;
+}
+
+footer.footer {
+  position: sticky;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 0 0.5rem;
+  font-size: 20px;
+  height: 40px;
+}
+
+footer p {
+  margin-bottom: 0 !important;
+}
+
+.menu-display {
+  background-color: black;
   color: var(--rougeSg);          /* rouge SG*/
   border-color: var(--rougeSg);   /* rouge SG*/
   border-style: double;
   border-width: thick;
 }
 
-.app-footer {
-  position: fixed;
-  display: -ms-flexbox;
-  display: flex;
-  bottom: 0px;
-  height: 40px;
-  width: 100%;
-  max-width: 1110px;
-  margin: 0;
-  padding: 0 20px;
-  background-color: black;
-  color: var(--accomSg);        /* couleur d'accompagnement SG */
-  text-align: right;
-  border-color:var(--rougeSg);  /* rouge SG */
-  border-style: double;
-  border-width: thick;
-}
-
 .style-color-accomsg {
-  font-size: 3vmin;       /* 3x la taille de la plus petite dimension de la fenêtre */
+  font-size: 0.75em;
   color: var(--accomSg);
 }
 

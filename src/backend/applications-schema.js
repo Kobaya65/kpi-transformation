@@ -10,7 +10,9 @@ let applicationsSchema = new Schema({
 	LibelleCourt: String,
 	NomCourt: String,
 	TypeAppli: String,
-	Concepts: [String],
+	Concepts: [
+		{ nom: String }
+	],
 	DateDebutProd: Date,
 	DateFinProd: Date,
 },
@@ -18,4 +20,21 @@ let applicationsSchema = new Schema({
   collection: 'applications'
 })
 
-module.exports = mongoose.model('Application', applicationsSchema)
+let applicationsRespSchema = new Schema( {
+	id: String,
+	global_id: String,
+	Assignationss: [
+		{ personne: String },
+		{ id_personne: String },
+		{ id_structure: String },
+		{ structure: String },
+		{ id_role: String },
+		{ role: String }
+	]
+},
+{
+  collection: 'applicationsResp'
+})
+
+module.exports = mongoose.model( 'applications', applicationsSchema );
+module.exports = mongoose.model( 'applicationsResp', applicationsRespSchema );

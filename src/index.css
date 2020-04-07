@@ -1,5 +1,4 @@
 body {
-  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -11,3 +10,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* écraser la classe container-fluid de bootstrap pour lui faire faire ce qui me convient */
+.container-fluid { 
+  margin: 0 0 40px 0 !important;
+}
+
+/* .col-md-2 {
+  position: relative;
+  width: 100%;
+} */

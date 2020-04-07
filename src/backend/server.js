@@ -20,7 +20,7 @@ connection.once('open', function() {
 })
 
 /* collection applications */
-applicationRoutes.route('/applications').get(function(req, res) {
+applicationRoutes.route('/').get(function(req, res) {
     Applications.find(function(err, applications) {
         if (err) {
             console.log(err);
@@ -30,14 +30,14 @@ applicationRoutes.route('/applications').get(function(req, res) {
     });
 });
 
-// applicationRoutes.route('/application/:id').get(function(req, res) {
-//     let id = req.params.id;
-//     Applications.findById(id, function(err, application) {
-//         res.json(application);
-//     });
-// });
+applicationRoutes.route('/:id').get(function(req, res) {
+    let id = req.params.id;
+    Applications.findById(id, function(err, application) {
+        res.json(application);
+    });
+});
 
-/* collection applicationsResp */
+// /* collection applicationsResp */
 // applicationRoutes.route('/applicationsResp').get(function(req, res) {
 //   ApplicationsResp.find(function(err, applicationsResp) {
 //       if (err) {
