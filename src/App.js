@@ -3,12 +3,10 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import Applications from "./components/applications";
+import ApplicationsList from "./components/applications";
 import Application from "./components/application";
 import ApplicationsResp from "./components/applicationsResp";
 import ApplicationResp from "./components/applicationResp";
-
-// import logo from "./logo.png";
 
 class App extends Component {
   render() {
@@ -49,10 +47,11 @@ class App extends Component {
         </nav>
 
         <div className="container-fluid">
-          <Route path="/applications" component={Applications} />
-          <Route path="/application" component={Application} />
-          <Route path="/applicationsResp" component={ApplicationsResp} />
-          <Route path="/applicationResp" component={ApplicationResp} />
+          <Route path="/" exact component={ApplicationsList} />
+          <Route path="/applications" exact  component={ApplicationsList} />
+          <Route path="/application" exact component={Application} />
+          <Route path="/applicationsResp" exact component={ApplicationsResp} />
+          <Route path="/applicationResp" exact component={ApplicationResp} />
           
           <h1> Titre 1</h1>
           <p>paragraphe 1</p>
