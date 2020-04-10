@@ -9,7 +9,9 @@ import ApplicationsResp from "./components/applicationsResp";
 import ApplicationResp from "./components/applicationResp";
 
 class App extends Component {
+    
   render() {
+    console.log( 'Front end started at ' + Date() );
   return (
     <Router>
       <div className="render">
@@ -53,7 +55,7 @@ class App extends Component {
           <Route path="/applicationsResp" exact component={ApplicationsResp} />
           <Route path="/applicationResp" exact component={ApplicationResp} />
           
-          <h1> Titre 1</h1>
+          {/* <h1> Titre 1</h1>
           <p>paragraphe 1</p>
           <h1>Titre 2</h1>
           <p>paragraphe 1</p>
@@ -67,7 +69,7 @@ class App extends Component {
           <h1>Titre 6</h1>
           <p>paragraphe 1</p>
           <h1>Titre 7</h1>
-          <p>paragraphe 1</p>
+          <p>paragraphe 1</p> */}
         </div>
 
         <footer className="footer menu-display">

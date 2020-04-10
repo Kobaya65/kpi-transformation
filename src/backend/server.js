@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const applicationsRoutes = express.Router();
-const applicationsRespRoutes = express.Router();
+// const applicationsRespRoutes = express.Router();
 const PORT = 4000;
 
 let ApplicationsSchema = require('./applications-schema');
@@ -83,5 +83,5 @@ app.use( '/applications', applicationsRoutes );
 // app.use( '/applicationsResp', applicationsRespRoutes );
 
 app.listen(PORT, function() {
-    console.log("Backend server is running on Port: " + PORT);
+    console.log("Backend server started on Port: " + PORT + " at " + Date());
 });

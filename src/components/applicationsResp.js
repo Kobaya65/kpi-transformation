@@ -2,16 +2,16 @@ import React, { Component } from 'react';
 
 export default class ApplicationsResp extends Component {
   
-  constructor(props) {
-    super(props);
+  // constructor(props) {
+  //   super(props);
     
-    // this.state = {
-    //   todo_description: '',
-    //   todo_responsible: '',
-    //   todo_priority: '',
-    //   todo_completed: false
-    // }
-  }
+  //   // this.state = {
+  //   //   todo_description: '',
+  //   //   todo_responsible: '',
+  //   //   todo_priority: '',
+  //   //   todo_completed: false
+  //   // }
+  // }
 
   render() {
     const sports = [
