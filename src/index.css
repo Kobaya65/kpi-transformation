@@ -13,7 +13,7 @@ code {
 
 /* écraser la classe container-fluid de bootstrap pour lui faire faire ce qui me convient */
 .container-fluid { 
-  margin: 0 0 40px 0 !important;
+  margin: 0 0 30px 0 !important;
 }
 
 /* .col-md-2 {
