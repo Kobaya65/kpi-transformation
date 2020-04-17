@@ -5,8 +5,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import Home from "./components/home";
 import ApplicationsList from "./components/applicationsList";
+import ApplicationById from "./components/applicationById";
 import ApplicationsResp from "./components/applicationsResp";
-import ApplicationResp from "./components/applicationResp";
+import ApplicationRespById from "./components/applicationRespById";
 
 class App extends Component {
   
@@ -31,7 +32,7 @@ class App extends Component {
                 <Link to="/applications" className="style-color-accomsg">Applications</Link>
               </li>
               <li>
-                <Link to="/applicationById/"  className="style-color-accomsg">Application by Id</Link>
+                <Link to="/applicationById"  className="style-color-accomsg">Application by Id</Link>
               </li>
             </ul>
           </div>
@@ -42,7 +43,7 @@ class App extends Component {
                 <Link to="/applicationsResp" className="style-color-accomsg">Applications Resp.</Link>
               </li>
               <li>
-                <Link to="/applicationResp" className="style-color-accomsg">Appli. Resp. by Id</Link>
+                <Link to="/applicationRespById" className="style-color-accomsg">Appli. Resp. by Id</Link>
               </li>
             </ul>
           </div>
@@ -50,14 +51,14 @@ class App extends Component {
 
         <div className="container-fluid">
           <Route exact path="/" component={Home} />
-          <Route rdexact path="/applications" component={ApplicationsList} />
-          {/* <Route exact path="/application/" component={applicationById} /> */}
+          <Route exact path="/applications" component={ApplicationsList} />
+          <Route path="/applicationById" component={ApplicationById} />
           <Route exact path="/applicationsResp" component={ApplicationsResp} />
-          <Route exact path="/applicationResp" component={ApplicationResp} />
+          <Route exact path="/applicationRespById" component={ApplicationRespById} />
         </div>
 
         <footer className="footer header-display simple-border">
-          <p>Pied de page</p>
+          <p className="center-v">Pied de page</p>
         </footer>
       </div>
     </Router>

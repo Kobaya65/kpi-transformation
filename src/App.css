@@ -31,18 +31,27 @@
   border-width: thin;
 }
 
-footer.footer {
-  position: sticky;
+/* pied de page fixe en bas de l'écran */
+.footer {
+  position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
-  padding: 0 0.5rem;
-  font-size: 12px;
-  height: 30px;
+  font-size: 16px;
+  justify-content: center;
+  align-items: center;
+  /* background-color: red;
+  color: white;
+  text-align: center; */
 }
 
-footer p {
-  margin-bottom: 0 !important;
+/* centrage vertical */
+.center-v {
+  margin: 0;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  height: 2rem;
 }
 
 .style-color-accomsg {
