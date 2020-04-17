@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class ApplicationResp extends Component {
+export default class ApplicationRespById extends Component {
   
   // constructor(props) {
   //   super(props);
