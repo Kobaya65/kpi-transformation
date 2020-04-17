@@ -13,12 +13,20 @@ export default class ApplicationsList extends Component {
       }
   }
 
-  componentDidMount() {
+  componentWillMount() {
     axios.get( 'http://localhost:4000/applications' )
       .then( response => {
-        console.log( 'componentdidMount setState' );
         this.setState( { applis: response.data } );
         
+        this.state.applis.map( function ( currentApp, i ) {
+          return (
+          console.log( currentApp.LibelleCourt + i + "," +
+            currentApp.NomCourt + i + "," +
+            currentApp.GlobalID + i + "," +
+            currentApp.Commentaire + i + "," +
+            currentApp.CurrentState + i )
+          )
+        })
         // for ( const key in this.state.applis ) {
         //   const element = this.state.applis[key];
         //   console.log( "key=" + key + ", _id=" + element._id + ", " + element.LibelleCourt );
@@ -34,14 +42,14 @@ export default class ApplicationsList extends Component {
     return this.state.applis.map( function ( currentApp, i ) {
       return (
         <tr>
-          <td key={( i + 1 ) * 6}>{currentApp.LibelleCourt}</td>
-          <td key={( i + 1 ) * 7}>{currentApp.NomCourt}</td>
+          <td key={( currentApp.GlobalID + (i+1) *1 ) }>{currentApp.LibelleCourt}</td>
+          <td key={( currentApp.GlobalID + (i+1) *2 ) }>{currentApp.NomCourt}</td>
           <td key={currentApp.GlobalID}>
-            <Link to={"/applicationById" + currentApp.GlobalID}>{currentApp.GlobalID}</Link>
+            <Link to={"/applications/" + currentApp.GlobalID}>{currentApp.GlobalID}</Link>
           </td>
-          <td key={( i + 1 ) * 5}>{currentApp.Commentaire}</td>
-          <td key={( i + 1 ) * 3}>{currentApp.CurrentState}</td>
-          {/* <td key={( i + 1 ) * 1}>{currentApp.TechnicalIdHexa}</td>
+          <td key={( currentApp.GlobalID + (i+1) *3 ) }>{currentApp.Commentaire}</td>
+          <td key={( currentApp.GlobalID + (i+1) *4 ) }>{currentApp.CurrentState}</td>
+          {/* <td key={( GlobalID ) * 1}>{currentApp.TechnicalIdHexa}</td>
               <td key={( i + 1 ) * 2}>{currentApp.Authentification}</td>
               <td key={( i + 1 ) * 8}>{currentApp.TypeAppli}</td>
               <td key={( i + 1 ) * 9}>Concepts</td>
@@ -54,6 +62,7 @@ export default class ApplicationsList extends Component {
   }
 
   render() {
+    console.log( 'ApplicationList render' );
     return (
       <Router>
         <h3>Applications List</h3>
@@ -79,7 +88,7 @@ export default class ApplicationsList extends Component {
         </table>
 
         <div className="container-fluid">
-          <Route path="/applicationById" component={ApplicationById} />
+          <Route path="/applications" component={ApplicationById} />
         </div>
       </Router>
     )
