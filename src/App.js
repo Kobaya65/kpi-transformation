@@ -32,7 +32,7 @@ class App extends Component {
                 <Link to="/applications" className="style-color-accomsg">Applications</Link>
               </li>
               <li>
-                <Link to="/applicationById"  className="style-color-accomsg">Application by Id</Link>
+                <Link to="/applications"  className="style-color-accomsg">Application by Id</Link>
               </li>
             </ul>
           </div>
@@ -52,9 +52,9 @@ class App extends Component {
         <div className="container-fluid">
           <Route exact path="/" component={Home} />
           <Route exact path="/applications" component={ApplicationsList} />
-          <Route path="/applicationsById" component={ApplicationById} />
+          <Route path="/applications" component={ApplicationById} />
           <Route exact path="/applicationsResp" component={ApplicationsResp} />
-          <Route path="/applicationRespById" component={ApplicationRespById} />
+          <Route path="/applicationsResp" component={ApplicationRespById} />
         </div>
 
         <footer className="footer header-display simple-border">
