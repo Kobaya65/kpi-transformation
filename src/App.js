@@ -54,7 +54,7 @@ class App extends Component {
           <Route exact path="/applications" component={ApplicationsList} />
           <Route path="/applicationById" component={ApplicationById} />
           <Route exact path="/applicationsResp" component={ApplicationsResp} />
-          <Route exact path="/applicationRespById" component={ApplicationRespById} />
+          <Route path="/applicationRespById" component={ApplicationRespById} />
         </div>
 
         <footer className="footer header-display simple-border">
