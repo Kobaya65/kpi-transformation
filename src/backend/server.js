@@ -58,25 +58,6 @@ applicationsRespRoutes.route('applications/:id').get(function(req, res) {
   });
 } );
 
-// applicationRoutes.route('/update/:id').post(function(req, res) {
-//     Applications.findById(req.params.id, function(err, todo) {
-//         if (!todo)
-//             res.status(404).send("data is not found");
-//         else
-//             todo.todo_description = req.body.todo_description;
-//             todo.todo_responsible = req.body.todo_responsible;
-//             todo.todo_priority = req.body.todo_priority;
-//             todo.todo_completed = req.body.todo_completed;
-
-//             todo.save().then(todo => {
-//                 res.json('Application updated!');
-//             })
-//             .catch(err => {
-//                 res.status(400).send("Update not possible");
-//             });
-//     });
-// });
-
 // utilisation de deux collections de la base kpi-transformation
 app.use( '/applications', applicationsRoutes );
 app.use( '/applicationsResp', applicationsRespRoutes );
