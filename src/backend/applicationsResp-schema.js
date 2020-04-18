@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let applicationsRespSchema = new Schema( {
-	id: String,
+	_id: String,
 	global_id: String,
 	assignations: [
 		{

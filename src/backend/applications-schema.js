@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let applicationsSchema = new Schema( {
-	_id: String,
 	TechnicalIdHexa: String,
 	Authentification: String,
 	CurrentState: String,
