@@ -7,62 +7,55 @@ import ApplicationById from "./applicationById";
 export default class ApplicationsList extends Component {
   
   constructor( props ) {
+    console.log('constructor ApplicationsList')
     super( props );
     this.state = {
-        applis: []
-      }
+      chemin: props.match.path,
+      applis: []
+    }
   }
 
-  componentWillMount() {
-    axios.get( 'http://localhost:4000/applications' )
+  componentDidMount() {
+    console.log('componentDidMount ApplicationsList')
+    axios.get( 'http://localhost:4000' + this.state.chemin )
       .then( response => {
         this.setState( { applis: response.data } );
         
-        this.state.applis.map( function ( currentApp, i ) {
-          return (
-          console.log( currentApp.LibelleCourt + i + "," +
-            currentApp.NomCourt + i + "," +
-            currentApp.GlobalID + i + "," +
-            currentApp.Commentaire + i + "," +
-            currentApp.CurrentState + i )
-          )
-        })
-        // for ( const key in this.state.applis ) {
-        //   const element = this.state.applis[key];
-        //   console.log( "key=" + key + ", _id=" + element._id + ", " + element.LibelleCourt );
-        // }
-      } )
+        // this.state.applis.map( function ( currentApp, i ) {
+        //   return (
+        //   console.log( ( i + 1 ) + " " + currentApp._id + " " + currentApp.LibelleCourt + " " + currentApp.GlobalID )
+        //   )
+        // })
+      })
       .catch( function ( error ) {
           console.log( error );
         }
-      )
+      ) 
+  }
+
+  componentWillUnmount() {
+    console.log('componentWillUnmount ApplicationsList')
   }
 
   appliList() {
+    console.log('appliList ApplicationsList')
     return this.state.applis.map( function ( currentApp, i ) {
       return (
-        <tr>
-          <td key={( currentApp.GlobalID + (i+1) *1 ) }>{currentApp.LibelleCourt}</td>
-          <td key={( currentApp.GlobalID + (i+1) *2 ) }>{currentApp.NomCourt}</td>
-          <td key={currentApp.GlobalID}>
-            <Link to={"/applications/" + currentApp.GlobalID}>{currentApp.GlobalID}</Link>
+        <tr key={ currentApp._id + ( i * 1 ) }>
+          <td>{currentApp.LibelleCourt}</td>
+          <td>{currentApp.NomCourt}</td>
+          <td>
+            <Link to={`/applications/${currentApp._id}`}>{currentApp.GlobalID}</Link>
           </td>
-          <td key={( currentApp.GlobalID + (i+1) *3 ) }>{currentApp.Commentaire}</td>
-          <td key={( currentApp.GlobalID + (i+1) *4 ) }>{currentApp.CurrentState}</td>
-          {/* <td key={( GlobalID ) * 1}>{currentApp.TechnicalIdHexa}</td>
-              <td key={( i + 1 ) * 2}>{currentApp.Authentification}</td>
-              <td key={( i + 1 ) * 8}>{currentApp.TypeAppli}</td>
-              <td key={( i + 1 ) * 9}>Concepts</td>
-              <td key={( i + 1 ) * 10}>{currentApp.DateDebutProd}</td>
-              <td key={( i + 1 ) * 11}>{currentApp.DateFinProd}</td> 
-          */}
+          <td>{currentApp.Commentaire}</td>
+          <td>{currentApp.CurrentState}</td>
         </tr>
       )
     })
   }
 
   render() {
-    console.log( 'ApplicationList render' );
+    console.log('render ApplicationsList')
     return (
       <Router>
         <h3>Applications List</h3>
@@ -74,22 +67,15 @@ export default class ApplicationsList extends Component {
               <th>GlobalID</th>
               <th>Commentaire</th>
               <th>CurrentState</th>
-              {/* <th>TechnicalIdHexa</th>
-              <th>Authentification</th>
-              <th>TypeAppli</th>
-              <th>Concepts</th>
-              <th>DateDebutProd</th>
-              <th>DateFinProd</th> */}
             </tr>
           </thead>
           <tbody>
             {this.appliList()}
           </tbody>
+          <>
+            <Route path="/applications/:currentAppId" component={ApplicationById} />
+          </>
         </table>
-
-        <div className="container-fluid">
-          <Route path="/applications" component={ApplicationById} />
-        </div>
       </Router>
     )
   }
