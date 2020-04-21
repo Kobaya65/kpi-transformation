@@ -4,22 +4,24 @@ import axios from 'axios';
 export default class ApplicationById extends Component {
   
   constructor( props ) {
-    console.log( 'ApplicationById constructor' );
+    console.log('constructor ApplicationById')
     super( props );
     this.state = {
+      chemin: '/applications/5e8bb15d89413125ac32f223',      //props.match.url,
       appli: {}
     }
   }
 
-  componentWillMount() {
-    console.log( 'ApplicationById componentWillMount' );
-    axios.get( 'http://localhost:4000/applications/5e8bb15d89413125ac32f223' )
+  componentDidMount() {
+    console.log( 'componentDidMount ApplicationById' )
+    console.log( 'this.state.chemin = ' + this.state.chemin )
+    axios.get( 'http://localhost:4000' + this.state.chemin )
       .then( response => {
         this.setState( { appli: response.data } );
         
-        for ( const key in this.state.appli ) {
-          console.log( "state " + key + " = " + this.state.appli[key] );
-        }
+        // for ( const key in this.state.appli ) {
+        //   console.log( "state " + key + " = " + this.state.appli[key] );
+        // }
       } )
       .catch( function ( error ) {
           console.log( error );
@@ -28,9 +30,9 @@ export default class ApplicationById extends Component {
   }
 
   render() {
-    console.log( 'ApplicationById render' );
+
     return (
-      <>
+      <div className="container">
         <h3>Application by ID</h3>
         <div className="row">
            <div className="col">
@@ -82,7 +84,7 @@ export default class ApplicationById extends Component {
              <textarea className="form-control" id="dateFin" rows="1" name="Date fin Prod">{this.state.appli.DateFinProd}</textarea>
            </div>
          </div>
-      </>
+      </div>
     )
   }
 }
