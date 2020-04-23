@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from 'axios';
 
-import ApplicationById from "./applicationById";
-
-export default class ApplicationsList extends Component {
+export default class ApplicationsResp extends Component {
   
   constructor( props ) {
-    console.log('constructor ApplicationsList')
+    console.log('constructor ApplicationsResp')
     super( props );
     this.state = {
       chemin: props.match.path,
@@ -16,16 +14,10 @@ export default class ApplicationsList extends Component {
   }
 
   componentDidMount() {
-    console.log('componentDidMount ApplicationsList')
+    console.log('componentDidMount ApplicationsResp')
     axios.get( 'http://localhost:4000' + this.state.chemin )
       .then( response => {
         this.setState( { applis: response.data } );
-        
-        // this.state.applis.map( function ( currentApp, i ) {
-        //   return (
-        //   console.log( ( i + 1 ) + " " + currentApp._id + " " + currentApp.LibelleCourt + " " + currentApp.GlobalID )
-        //   )
-        // })
       })
       .catch( function ( error ) {
           console.log( error );
@@ -33,15 +25,11 @@ export default class ApplicationsList extends Component {
       ) 
   }
 
-  componentWillUnmount() {
-    console.log('componentWillUnmount ApplicationsList')
-  }
-
-  appliList() {
-    console.log('appliList ApplicationsList')
-    return this.state.applis.map( function ( currentApp, i ) {
+  appliRespList() {
+    console.log('appliList ApplicationsResp')
+    return this.state.applis.map( function ( currentApp ) {
       return (
-        <tr key={ currentApp._id + ( i * 1 ) }>
+        <tr key={ currentApp._id }>
           <td>{currentApp.LibelleCourt}</td>
           <td>{currentApp.NomCourt}</td>
           <td>
@@ -55,10 +43,9 @@ export default class ApplicationsList extends Component {
   }
 
   render() {
-    console.log('render ApplicationsList')
+    console.log('render ApplicationsResp')
     return (
-      <Router>
-        <h3>Applications List</h3>
+      <>
         <table className="table table-striped" style={{ marginTop: 10 }} >
           <thead>
             <tr>
@@ -70,13 +57,10 @@ export default class ApplicationsList extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.appliList()}
+            {this.appliRespList()}
           </tbody>
-          <>
-            <Route path="/applications/:currentAppId" component={ApplicationById} />
-          </>
         </table>
-      </Router>
+      </>
     )
   }
 }

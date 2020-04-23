@@ -3,11 +3,11 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import Home from "./components/home";
-import ApplicationsList from "./components/applicationsList";
-import ApplicationById from "./components/applicationById";
-import ApplicationsResp from "./components/applicationsResp";
-import ApplicationRespById from "./components/applicationRespById";
+import Home from "./containers/home";
+import ApplicationsList from "./containers/applicationsList";
+import ApplicationById from "./containers/applicationById";
+import ApplicationsResp from "./containers/applicationsResp";
+import ApplicationRespById from "./containers/applicationRespById";
 
 class App extends Component {
   
@@ -54,7 +54,7 @@ class App extends Component {
             <Route exact path="/applications" component={ApplicationsList} />
             <Route path="/applications/:_id" component={ApplicationById} />
             <Route exact path="/applicationsResp" component={ApplicationsResp} />
-            <Route path="/applicationsResp" component={ApplicationRespById} />
+            <Route path="/applicationsResp/:_id" component={ApplicationRespById} />
           </div>
 
           <footer className="footer header-display simple-border">
