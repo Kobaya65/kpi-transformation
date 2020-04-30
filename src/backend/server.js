@@ -1,28 +1,31 @@
-const express = require('express');
+const express = require( 'express' );
 const app = express();
 const bodyParser = require('body-parser');
-const cors = require('cors');
+const cors = require( 'cors' );
 const mongoose = require( 'mongoose' );
-const applicationsRoutes = express.Router();
-const applicationsRespRoutes = express.Router();
+const router = express.Router();
 const PORT = 4000;
 
-let ApplicationsSchema = require('./applications-schema');
-let ApplicationsRespSchema = require( './applicationsResp-schema' );
+let ApplicationsModel = require( './applications-schema' );
+let ApplicationsRespModel = require( './applicationsResp-schema' );
 
 app.use(cors());
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://127.0.0.1:27017/kpi-transformation', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect( 'mongodb://127.0.0.1:27017/kpi-transformation', { useNewUrlParser: true, useUnifiedTopology: true } );
 const connection = mongoose.connection;
 
-connection.once('open', function() {
+connection.once( 'open', function () {
   console.log("MongoDB's 'kpi-transformation' database connection established successfully");
 })
 
 /* collection applications */
-applicationsRoutes.route('/').get(function(req, res) {
-  ApplicationsSchema.find(function(err, applications) {
+// validé
+router.route( '/applications' ).get( function ( req, res ) {
+  console.log( "route 1 applications" );
+  console.log( "req.url = " + req.url );
+
+  ApplicationsModel.find( function ( err, applications ) {
     if (err) {
       console.log(err);
     } else {
@@ -31,37 +34,43 @@ applicationsRoutes.route('/').get(function(req, res) {
   });
 });
 
-applicationsRoutes.route('/:id').get(function(req, res) {
+// validé
+router.route( '/application/:id' ).get( function ( req, res ) {
+  console.log( "route 2 application/id" );
+  console.log( 'req.url = ' + req.url );
+  
   let id = req.params.id;
-  ApplicationsSchema.findById(id, function(err, application) {
+  console.log( 'id = ' + id );
+  ApplicationsModel.findById( id, function ( err, application ) {
     res.json(application);
-  });
-});
+  } );
+} );
 
 /* collection applicationsResp */
-applicationsRespRoutes.route('/applicationsResp/:id').get(function(req, res) {
-  ApplicationsRespSchema.find(function(err, applicationsResp) {
+router.route( '/applicationsResp' ).get( function ( req, res ) {
+  console.log( "route 3 applicationsResp" );
+  console.log( 'req.url = ' + req.url );
+  console.log( 'req.params.id = ' + req.params.id );
+  console.log( 'req.params.global_id = ' + req.params.global_id );
+
+
+  ApplicationsRespModel.find( function ( err, applicationsResp ) {
     if (err) {
       console.log(err);
     } else {
-      console.log( "applicationsResp appelé" );
       res.json(applicationsResp);
     }
-  });
+  } );
 } );
 
-applicationsRespRoutes.route('applications/:id').get(function(req, res) {
+router.route( '/applicationsResp/:id' ).get( function ( req, res ) {
+  console.log( "route 4 applicationsResp/id" );
   let id = req.params.id;
-  ApplicationsRespSchema.findById( id, function ( err, applicationResp ) {
-  console.log("applicationsResp by id appelé")
-    res.json(applicationResp);
-  });
+  ApplicationsRespModel.findById( id, function ( err, applicationResp ) {
+        res.json( applicationResp );
+  } );
 } );
 
-// utilisation de deux collections de la base kpi-transformation
-app.use( '/applications', applicationsRoutes );
-app.use( '/applicationsResp', applicationsRespRoutes );
+app.use( '/', router );
 
-app.listen(PORT, function() {
-  console.log("Backend server started on Port: " + PORT + " at " + Date());
-});
+app.listen( PORT );
