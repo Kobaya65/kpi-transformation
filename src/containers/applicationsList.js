@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import axios from 'axios';
+
+import ApplicationById from "./applicationById";
 
 export default class ApplicationsList extends Component {
   
@@ -13,6 +15,7 @@ export default class ApplicationsList extends Component {
   }
 
   componentDidMount() {
+    console.log( 'http://localhost:4000' + this.state.chemin )
     axios.get( 'http://localhost:4000' + this.state.chemin )
       .then( response => {
         this.setState( { applis: response.data } );
@@ -41,7 +44,7 @@ export default class ApplicationsList extends Component {
 
   render() {
     return (
-      <>
+      <Router>
         <table className="table table-striped" style={{ marginTop: 10 }} >
           <thead>
             <tr>
@@ -56,7 +59,9 @@ export default class ApplicationsList extends Component {
             {this.appliList()}
           </tbody>
         </table>
-      </>
+
+        <Route path="/applications/:id" component={ApplicationById} />
+      </Router>
     )
   }
 }

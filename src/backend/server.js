@@ -16,7 +16,7 @@ mongoose.connect( 'mongodb://127.0.0.1:27017/kpi-transformation', { useNewUrlPar
 const connection = mongoose.connection;
 
 connection.once( 'open', function () {
-  console.log("MongoDB's 'kpi-transformation' database connection established successfully");
+  console.log( "MongoDB's 'kpi-transformation' database connection established successfully" );
 })
 
 /* collection applications */
@@ -27,22 +27,22 @@ router.route( '/applications' ).get( function ( req, res ) {
 
   ApplicationsModel.find( function ( err, applications ) {
     if (err) {
-      console.log(err);
+      console.log( err );
     } else {
-      res.json(applications);
+      res.json( applications );
     }
   });
 });
 
-// validé
-router.route( '/application/:id' ).get( function ( req, res ) {
-  console.log( "route 2 application/id" );
+// non validé
+router.route( '/applications/:_id' ).get( function ( req, res ) {
+  console.log( "route 2 applications/_id" );
   console.log( 'req.url = ' + req.url );
   
-  let id = req.params.id;
-  console.log( 'id = ' + id );
-  ApplicationsModel.findById( id, function ( err, application ) {
-    res.json(application);
+  let _id = req.params.id;
+  console.log( 'id = ' + _id );
+  ApplicationsModel.findById( _id, function ( err, application ) {
+    res.json( application );
   } );
 } );
 
@@ -50,20 +50,17 @@ router.route( '/application/:id' ).get( function ( req, res ) {
 router.route( '/applicationsResp' ).get( function ( req, res ) {
   console.log( "route 3 applicationsResp" );
   console.log( 'req.url = ' + req.url );
-  console.log( 'req.params.id = ' + req.params.id );
-  console.log( 'req.params.global_id = ' + req.params.global_id );
-
 
   ApplicationsRespModel.find( function ( err, applicationsResp ) {
-    if (err) {
-      console.log(err);
+    if ( err ) {
+      console.log( err );
     } else {
-      res.json(applicationsResp);
+      res.json( applicationsResp );
     }
   } );
 } );
 
-router.route( '/applicationsResp/:id' ).get( function ( req, res ) {
+router.route( '/applicationsResp/:_id' ).get( function ( req, res ) {
   console.log( "route 4 applicationsResp/id" );
   let id = req.params.id;
   ApplicationsRespModel.findById( id, function ( err, applicationResp ) {

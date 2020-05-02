@@ -18,9 +18,6 @@ let applicationsSchema = new Schema(
 		],
 		DateDebutProd: Date,
 		DateFinProd: Date
-	},
-	{
-		collection: 'applications'
 	}
 );
 

@@ -1,13 +1,11 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import Home from "./containers/home";
 import ApplicationsList from "./containers/applicationsList";
-import ApplicationById from "./containers/applicationById";
 import ApplicationsResp from "./containers/applicationsResp";
-import ApplicationRespById from "./containers/applicationRespById";
 
 class App extends Component {
   
@@ -29,37 +27,37 @@ class App extends Component {
             <div className="col-md-3">
               <ul className="nav navbar-nav">
                 <li>
-                  <Link to="/applications" className="style-color-accomsg">Applications</Link>
+                  <Link to="applications" className="style-color-accomsg">Applications</Link>
                 </li>
                 <li>
-                  <Link to="/applications/:_id"  className="style-color-accomsg">Application by Id</Link>
+                  <Link to="applicationsResp" className="style-color-accomsg">Applications Resp.</Link>
                 </li>
               </ul>
             </div>
 
-            <div className="col-md-3">
+            {/* <div className="col-md-3">
               <ul className="nav navbar-nav">
                 <li>
-                  <Link to="/applicationsResp" className="style-color-accomsg">Applications Resp.</Link>
+                <Link to="applications/:_id"  className="style-color-accomsg">Application by Id</Link>                  
                 </li>
                 <li>
-                  <Link to="/applicationRespById" className="style-color-accomsg">Appli. Resp. by Id</Link>
+                  <Link to="applicationRespById" className="style-color-accomsg">Appli. Resp. by Id</Link>
                 </li>
               </ul>
-            </div>
+            </div> */}
           </nav>
-
-          <div className="container-fluid">
-            <Route exact path="/" component={Home} />
-            <Route exact path="/applications" component={ApplicationsList} />
-            <Route path="/applications/:_id" component={ApplicationById} />
-            <Route exact path="/applicationsResp" component={ApplicationsResp} />
-            <Route path="/applicationsResp/:_id" component={ApplicationRespById} />
-          </div>
 
           <footer className="footer header-display simple-border">
             <p className="center-v">Pied de page</p>
           </footer>
+        
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/applications" component={ApplicationsList} />
+            {/* <Route path="/applications/:_id" component={ApplicationById} /> */}
+            <Route exact path="/applicationsResp" component={ApplicationsResp} />
+            {/* <Route path="/applicationsResp/:_id" component={ApplicationRespById} /> */}
+          </Switch>      
         </div>
       </Router>
     );

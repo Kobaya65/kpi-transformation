@@ -1,23 +1,26 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 export default class ApplicationsResp extends Component {
-  
+
   constructor( props ) {
     console.log('constructor ApplicationsResp')
     super( props );
     this.state = {
       chemin: props.match.path,
-      applis: []
+      appli: []
     }
   }
 
   componentDidMount() {
-    console.log('componentDidMount ApplicationsResp')
+    console.log( 'componentDidMount ApplicationsResp' )
+    console.log( 'Appel de la base avec http://localhost:4000' + this.state.chemin );
+   
     axios.get( 'http://localhost:4000' + this.state.chemin )
       .then( response => {
-        this.setState( { applis: response.data } );
+        console.log( '.then' );
+        this.setState( { appli: response.data } );
       })
       .catch( function ( error ) {
           console.log( error );
@@ -25,18 +28,14 @@ export default class ApplicationsResp extends Component {
       ) 
   }
 
-  appliRespList() {
-    console.log('appliList ApplicationsResp')
-    return this.state.applis.map( function ( currentApp ) {
+  appliList() {
+    return this.state.appli.map( function ( currentApp ) {
       return (
         <tr key={ currentApp._id }>
-          <td>{currentApp.LibelleCourt}</td>
-          <td>{currentApp.NomCourt}</td>
+          <td>{currentApp.id}</td>
           <td>
-            <Link to={`/applications/${currentApp._id}`}>{currentApp.GlobalID}</Link>
+            <Link to={`/applicationsResp/${ currentApp._id }`}>{currentApp.global_id}</Link>
           </td>
-          <td>{currentApp.Commentaire}</td>
-          <td>{currentApp.CurrentState}</td>
         </tr>
       )
     })
@@ -49,15 +48,12 @@ export default class ApplicationsResp extends Component {
         <table className="table table-striped" style={{ marginTop: 10 }} >
           <thead>
             <tr>
-              <th>LibelleCourt</th>
-              <th>NomCourt</th>
-              <th>GlobalID</th>
-              <th>Commentaire</th>
-              <th>CurrentState</th>
+              <th>id</th>
+              <th>global_id</th>
             </tr>
           </thead>
           <tbody>
-            {this.appliRespList()}
+            {this.appliList()}
           </tbody>
         </table>
       </>

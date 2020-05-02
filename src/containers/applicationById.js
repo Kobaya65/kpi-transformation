@@ -7,16 +7,19 @@ export default class ApplicationById extends Component {
     super( props );
     this.state = {
       chemin: this.props.match.url,
+      url: this.props.match.url,
+      id: this.props.match.params.id,
       appli: {}
     }
   }
 
   componentDidMount() {
-    console.log( 'this.state.chemin = ' + this.state.chemin )
+    console.log( 'cDM ApplicationById ==> http://localhost:4000' + this.state.chemin )
     axios.get( 'http://localhost:4000' + this.state.chemin )
       .then( response => {
-        this.setState( { appli: response.data } );
+        console.log(response.status);
         
+        this.setState( { appli: response.data } );
       } )
       .catch( function ( error ) {
           console.log( error );
@@ -25,7 +28,6 @@ export default class ApplicationById extends Component {
   }
 
   render() {
-
     return (
       <div className="container">
         <div className="row">
