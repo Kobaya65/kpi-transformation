@@ -39,8 +39,8 @@ router.route( '/applications/:_id' ).get( function ( req, res ) {
   console.log( "route 2 applications/_id" );
   console.log( 'req.url = ' + req.url );
   
-  let _id = req.params.id;
-  console.log( 'id = ' + _id );
+  let _id = req.params._id;
+  console.log( '_id = ' + _id );
   ApplicationsModel.findById( _id, function ( err, application ) {
     res.json( application );
   } );

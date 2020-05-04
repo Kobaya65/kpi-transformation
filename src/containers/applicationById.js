@@ -17,7 +17,7 @@ export default class ApplicationById extends Component {
     console.log( 'cDM ApplicationById ==> http://localhost:4000' + this.state.chemin )
     axios.get( 'http://localhost:4000' + this.state.chemin )
       .then( response => {
-        console.log(response.status);
+        console.log("response.status=" + response.status);
         
         this.setState( { appli: response.data } );
       } )

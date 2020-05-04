@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import axios from 'axios';
 
-import ApplicationById from "./applicationById";
+import applicationById from "./applicationById";
 
 export default class ApplicationsList extends Component {
   
@@ -60,7 +60,7 @@ export default class ApplicationsList extends Component {
           </tbody>
         </table>
 
-        <Route path="/applications/:id" component={ApplicationById} />
+        <Route path="/applications/:_id" component={applicationById} />
       </Router>
     )
   }
