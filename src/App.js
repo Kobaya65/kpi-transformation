@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import Home from "./containers/home";
+import Home from "./components/home";
 import ApplicationsList from "./containers/applicationsList";
 import ApplicationById from "./containers/applicationById";
 import ApplicationsResp from './containers/applicationsResp';
