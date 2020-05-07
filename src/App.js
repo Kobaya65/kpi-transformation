@@ -16,7 +16,7 @@ class App extends Component {
     return (
       <Router>
         <div className="render">
-          <nav className="navbar sticky-top flex-md-nowrap app-header header-display double-border">
+          <nav className="navbar sticky-top flex-md-nowrap app-header charte-graphique-sg double-border">
             <div className="col-md-2">
               <a href="/">
                 <img src={`${ process.env.PUBLIC_URL }/images/soc102c.png`} height="30em" className="d-inline-block align-top" alt="logo Société Générale" />
@@ -48,7 +48,7 @@ class App extends Component {
             </Switch>
           </div>
 
-          <footer className="footer header-display">
+          <footer className="footer charte-graphique-sg">
             <p className="center-v">Pied de page</p>
           </footer>
         </div>

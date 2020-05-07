@@ -18,7 +18,7 @@ div.container {
   margin-bottom: 50px;
 }
 
-.header-display {
+.charte-graphique-sg {
   background-color: black;
   color: var(--rougeSg);          /* rouge SG*/
   border-color: var(--rougeSg);   /* rouge SG*/
@@ -39,7 +39,7 @@ div.container {
   font-size: 16px;
   justify-content: center;
   align-items: center;
-  border: 3px solid var(--rougeSg);
+  border: 2px solid var(--rougeSg);
   /* background-color: red;
   color: white;
   text-align: center; */
