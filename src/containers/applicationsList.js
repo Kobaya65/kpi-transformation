@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 import axios from 'axios';
 
 import applicationById from "./applicationById";
@@ -22,8 +22,7 @@ export default class ApplicationsList extends Component {
       })
       .catch( function ( error ) {
           console.log( error );
-        }
-      ) 
+      }) 
   }
 
   appliList() {
@@ -44,7 +43,7 @@ export default class ApplicationsList extends Component {
 
   render() {
     return (
-      <Router>
+      <div>
         <table className="table table-striped" style={{ marginTop: 10 }} >
           <thead>
             <tr>
@@ -61,7 +60,7 @@ export default class ApplicationsList extends Component {
         </table>
 
         <Route path="/applications/:_id" component={applicationById} />
-      </Router>
+      </div>
     )
   }
 }

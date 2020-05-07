@@ -5,7 +5,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import Home from "./containers/home";
 import ApplicationsList from "./containers/applicationsList";
-import ApplicationsResp from "./containers/applicationsResp";
+import ApplicationById from "./containers/applicationById";
+import ApplicationsResp from './containers/applicationsResp';
+import ApplicationRespById from './containers/applicationRespById';
 
 class App extends Component {
   
@@ -34,30 +36,21 @@ class App extends Component {
                 </li>
               </ul>
             </div>
-
-            {/* <div className="col-md-3">
-              <ul className="nav navbar-nav">
-                <li>
-                <Link to="applications/:_id"  className="style-color-accomsg">Application by Id</Link>                  
-                </li>
-                <li>
-                  <Link to="applicationRespById" className="style-color-accomsg">Appli. Resp. by Id</Link>
-                </li>
-              </ul>
-            </div> */}
           </nav>
 
-          <footer className="footer header-display simple-border">
+          <div className="container-fluid">
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/applications" component={ApplicationsList} />
+              <Route path="/applications/:_id" component={ApplicationById} />
+              <Route exact path="/applicationsResp" component={ApplicationsResp} />
+              <Route path="/applicationsResp/:_id" component={ApplicationRespById} />
+            </Switch>
+          </div>
+
+          <footer className="footer header-display">
             <p className="center-v">Pied de page</p>
           </footer>
-        
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/applications" component={ApplicationsList} />
-            {/* <Route path="/applications/:_id" component={ApplicationById} /> */}
-            <Route exact path="/applicationsResp" component={ApplicationsResp} />
-            {/* <Route path="/applicationsResp/:_id" component={ApplicationRespById} /> */}
-          </Switch>      
         </div>
       </Router>
     );
