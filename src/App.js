@@ -3,11 +3,7 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import Home from "./components/home";
-import ApplicationsList from "./containers/applicationsList";
-import ApplicationById from "./containers/applicationById";
-import ApplicationsResp from './containers/applicationsResp';
-import ApplicationRespById from './containers/applicationRespById';
+import MyRoutes from './components/routes';
 
 class App extends Component {
   
@@ -38,16 +34,8 @@ class App extends Component {
             </div>
           </nav>
 
-          <div className="container-fluid">
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/applications" component={ApplicationsList} />
-              <Route path="/applications/:_id" component={ApplicationById} />
-              <Route exact path="/applicationsResp" component={ApplicationsResp} />
-              <Route path="/applicationsResp/:_id" component={ApplicationRespById} />
-            </Switch>
-          </div>
-
+          <MyRoutes />
+          
           <footer className="footer charte-graphique-sg">
             <p className="center-v">Pied de page</p>
           </footer>
