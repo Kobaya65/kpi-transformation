@@ -62,7 +62,7 @@ router.route( '/applicationsResp' ).get( function ( req, res ) {
 
 router.route( '/applicationsResp/:_id' ).get( function ( req, res ) {
   console.log( "route 4 applicationsResp/id" );
-  let id = req.params.id;
+  let id = req.params._id;
   ApplicationsRespModel.findById( id, function ( err, applicationResp ) {
     res.json( applicationResp );
   } );
