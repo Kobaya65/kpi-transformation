@@ -14,10 +14,6 @@
   font-size: 26px;
 }
 
-div.container {
-  margin-bottom: 50px;
-}
-
 .charte-graphique-sg {
   background-color: black;
   color: var(--rougeSg);          /* rouge SG*/
@@ -68,5 +64,5 @@ div.container {
 }
 
 a:hover {
-  color: var(--rougeSg) !important; /* rouge SG */
+  color: var(--accomSg) !important; /* couleur d'accompgnement SG pour les liens survolés */
 }
