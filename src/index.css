@@ -13,6 +13,7 @@ code {
 
 .label-gras {
   font-weight: bold;
+  margin-left: 12px;
 }
 
 /* redéfinir en partie la classe container-fluid de bootstrap pour lui faire faire ce qui me convient */
