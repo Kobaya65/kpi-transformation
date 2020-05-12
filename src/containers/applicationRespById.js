@@ -47,12 +47,12 @@ export default class ApplicationRespById extends Component {
       <div className="container">
         <div className="row">
           <div className="col">
-            <label htmlFor="libCourt" className="label-gras">ID</label>
-            <textarea className="form-control" id="libCourt" rows="1" name="Libellé court" value={this.state.appli.id}></textarea>
+            <label htmlFor="id" className="label-gras">ID</label>
+            <textarea className="form-control" id="id" rows="1" name="id" value={this.state.appli.id}></textarea>
           </div>
           <div className="col">
-            <label htmlFor="nomCourt" className="label-gras">Global_id</label>
-            <textarea className="form-control" id="nomCourt" rows="1" name="Nom court" value={this.state.appli.global_id}></textarea>
+            <label htmlFor="global_id" className="label-gras">Global_id</label>
+            <textarea className="form-control" id="global_id" rows="1" name="global_id" value={this.state.appli.global_id}></textarea>
           </div>
         </div>
 

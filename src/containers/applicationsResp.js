@@ -30,26 +30,30 @@ export default class ApplicationsResp extends Component {
 
   appliList() {
     return this.state.appli.map( function ( currentApp ) {
+
       return (
         <tr key={ currentApp._id }>
           <td>{currentApp.id}</td>
           <td>
             <Link to={`/applicationsResp/${ currentApp._id }`}>{currentApp.global_id}</Link>
           </td>
+          <td>Toto</td>
         </tr>
       )
     })
   }
 
   render() {
-    console.log('render ApplicationsResp')
+    console.log( 'render ApplicationsResp' )
+    
     return (
       <>
         <table className="table table-striped" style={{ marginTop: 10 }} >
           <thead>
             <tr>
-              <th>id</th>
-              <th>global_id</th>
+              <th>Id</th>
+              <th>Global_id</th>
+              <th>Nom</th>
             </tr>
           </thead>
           <tbody>
