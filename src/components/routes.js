@@ -9,7 +9,7 @@ import ApplicationRespById from '../containers/applicationRespById';
 
 const MyRoutes = () => {
  return (
-  <div className="container-fluid">
+  <div>
     <Switch>
       <Route exact path="/" component={Home} />
       <Route exact path="/applications" component={ApplicationsList} />
