@@ -29,11 +29,10 @@ export default class ApplicationsList extends Component {
     return this.state.applis.map( function ( currentApp ) {
       return (
         <tr key={ currentApp._id }>
-          <td>{currentApp.LibelleCourt}</td>
-          <td>{currentApp.NomCourt}</td>
           <td>
-            <Link to={`/applications/${currentApp._id}`}>{currentApp.GlobalID}</Link>
+            <Link to={`/applications/${currentApp._id}`}>{currentApp.LibelleCourt}</Link>
           </td>
+          <td>{currentApp.NomCourt}</td>
           <td>{currentApp.Commentaire}</td>
           <td>{currentApp.CurrentState}</td>
         </tr>
@@ -47,11 +46,10 @@ export default class ApplicationsList extends Component {
         <table className="table table-striped" style={{ marginTop: 10 }} >
           <thead>
             <tr>
-              <th>LibelleCourt</th>
-              <th>NomCourt</th>
-              <th>GlobalID</th>
+              <th>Libellé court</th>
+              <th>Nom court</th>
               <th>Commentaire</th>
-              <th>CurrentState</th>
+              <th>État actuel</th>
             </tr>
           </thead>
           <tbody>
