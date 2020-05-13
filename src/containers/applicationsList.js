@@ -3,6 +3,7 @@ import { Route, Link } from "react-router-dom";
 import axios from 'axios';
 
 import applicationById from "./applicationById";
+import BandeauTitre from '../components/bandeau-titre';
 
 export default class ApplicationsList extends Component {
   
@@ -42,8 +43,9 @@ export default class ApplicationsList extends Component {
 
   render() {
     return (
-      <div>
-        <table className="table table-striped" style={{ marginTop: 10 }} >
+      <div className="container-fluid">
+        <BandeauTitre composant="Applications"/>
+        <table className="table table-striped">
           <thead>
             <tr>
               <th>Libellé court</th>

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
+import BandeauTitre from '../components/bandeau-titre'
+
 export default class ApplicationsResp extends Component {
 
   constructor( props ) {
@@ -37,30 +39,27 @@ export default class ApplicationsResp extends Component {
           <td>
             <Link to={`/applicationsResp/${ currentApp._id }`}>{currentApp.global_id}</Link>
           </td>
-          <td>Toto</td>
         </tr>
       )
     })
   }
 
   render() {
-    console.log( 'render ApplicationsResp' )
-    
     return (
-      <>
-        <table className="table table-striped" style={{ marginTop: 10 }} >
+      <div className="container-fluid">
+        <BandeauTitre composant="Applications et leurs responsabilités"/>
+        <table className="table table-striped">
           <thead>
             <tr>
               <th>Id</th>
               <th>Global_id</th>
-              <th>Nom</th>
             </tr>
           </thead>
           <tbody>
             {this.appliList()}
           </tbody>
         </table>
-      </>
+      </div>
     )
   }
 }

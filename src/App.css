@@ -50,6 +50,14 @@
   height: 2rem;
 }
 
+.bandeau-titre {
+  text-align: center;
+  background-color: #888;
+  color: #FFF;
+  margin-bottom: 0;
+  padding-bottom: 8px;
+}
+
 .center-all {
   display: flex;
   justify-content: center;
