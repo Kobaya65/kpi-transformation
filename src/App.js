@@ -4,14 +4,15 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import MyRoutes from "./components/routes";
+import MyLink from "./components/link";
 
 class App extends Component {
   render() {
     console.log("App started at " + Date());
     return (
       <Router>
-        <div className="navbar navbar-expand-sm sticky-top flex-md-nowrap app-header charte-graphique-sg double-border">
-          <a href="/">
+        <div className="navbar navbar-expand-sm sticky-top app-header charte-graphique-sg double-border">
+          <a class="navbar-brand" href="/">
             <img
               src={`${process.env.PUBLIC_URL}/images/soc102c.png`}
               height="30em"
@@ -19,102 +20,81 @@ class App extends Component {
               alt="logo Société Générale"
             />
           </a>
-          <div className="col-md-2 p-3">KPI Transformation</div>
-          <ul className="nav nav-pills">
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="#1"
-                id="navbardrop"
-                data-toggle="dropdown"
-              >
-                Consultation
-              </a>
-              <div className="dropdown-menu">
-                <Link
-                  className="style-color-accomsg dropdown-item"
-                  to="/applications"
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarToggler"
+            aria-controls="navbarToggler"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <div class="navbar-toggler-icon">___</div>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarToggler">
+            <div>KPI Transformation</div>
+            <ul className="navbar-nav nav-pills">
+              {/* href="#1" nom="Consultation" */}
+              <li className="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#1"
+                  data-toggle="dropdown"
                 >
-                  Applications
-                </Link>
-                <Link
-                  className="style-color-accomsg dropdown-item"
-                  to="/applicationsResp"
-                >
-                  Applications Resp.
-                </Link>
-                <a className="dropdown-item" href="#2">
-                  Applications bis
+                  Consultation
                 </a>
-              </div>
-            </li>
-          </ul>
-          <ul className="nav nav-pills">
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="#3"
-                id="navbardrop"
-                data-toggle="dropdown"
-              >
-                Anomalies
-              </a>
-              <div className="dropdown-menu">
-                <Link
-                  className="style-color-accomsg dropdown-item"
-                  to="respManquantes"
+                <div className="dropdown-menu">
+                  <MyLink nom="Applications" vers="/applications" />
+                  <MyLink nom="Applications Resp." vers="/applicationsResp" />
+                  <MyLink nom="Applications bis" vers="/applicationsBis" />
+                </div>
+              </li>
+
+              <li className="nav-item dropdown">
+                <a
+                  className="nav-link dropdown-toggle"
+                  href="#2"
+                  data-toggle="dropdown"
                 >
-                  Application avec responsabilité manquante
-                </Link>
-              </div>
-            </li>
-          </ul>
-          <ul className="nav nav-pills">
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="#4"
-                id="navbardrop"
-                data-toggle="dropdown"
-              >
-                Statistiques
-              </a>
-              <div className="dropdown-menu">
-                <Link
-                  className="style-color-accomsg dropdown-item"
-                  to="statistiques"
+                  Anomalies
+                </a>
+                <div className="dropdown-menu">
+                  <MyLink
+                    nom="Application avec responsabilité manquante"
+                    vers="respManquantes"
+                  />
+                </div>
+              </li>
+              <li className="nav-item dropdown">
+                <a
+                  className="nav-link dropdown-toggle"
+                  href="#3"
+                  data-toggle="dropdown"
                 >
-                  Applications dans le cloud
-                </Link>
-              </div>
-            </li>
-          </ul>
-          <ul className="nav nav-pills">
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="#5"
-                id="navbardrop"
-                data-toggle="dropdown"
-              >
-                Administration
-              </a>
-              <div className="dropdown-menu">
-                <Link
-                  className="style-color-accomsg dropdown-item"
-                  to="/createUser"
+                  Statistiques
+                </a>
+                <div className="dropdown-menu">
+                  <MyLink
+                    nom="Applications dans le cloud"
+                    vers="statistiques"
+                  />
+                </div>
+              </li>
+              <li className="nav-item dropdown">
+                <a
+                  className="nav-link dropdown-toggle"
+                  href="#4"
+                  data-toggle="dropdown"
                 >
-                  Création d'un utilisateur
-                </Link>
-                <Link
-                  className="style-color-accomsg dropdown-item"
-                  to="/changePwd"
-                >
-                  Modification du mot de passe
-                </Link>
-              </div>
-            </li>
-          </ul>
+                  Administration
+                </a>
+                <div className="dropdown-menu">
+                  <MyLink nom="Création d'un utilisateur" vers="/createUser" />
+                  <MyLink nom="Modification du mot de passe" to="/changePwd" />
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
 
         <MyRoutes />
