@@ -23,6 +23,14 @@ input {
   padding: 5px;
 }
 
+a {
+  font-size: 14px;
+}
+
+.navbar-toggler-icon {
+  background-color: white !important;
+}
+
 /* redéfinir en partie la classe container-fluid de bootstrap pour lui faire faire ce qui me convient */
 /* redéfinir le margin bottom pour que le dernier élément d'une liste ne soit pas recouvert par le pied de page */
 .container-fluid {
