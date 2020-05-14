@@ -1,36 +1,34 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React, { Component } from "react";
+import axios from "axios";
+
+import BandeauTitre from "../components/bandeau-titre";
 
 export default class ApplicationRespById extends Component {
-  
-  constructor( props ) {
-    super( props );
+  constructor(props) {
+    super(props);
     this.state = {
       chemin: this.props.match.url,
       appli: {},
-      assignations: []
-    }
+      assignations: [],
+    };
   }
 
   componentDidMount() {
-    console.log( 'cDM ApplicationById ==> http://localhost:4000' + this.state.chemin )
-    axios.get( 'http://localhost:4000' + this.state.chemin )
-      .then( response => {
-        console.log("response.status=" + response.status);
-        
-        this.setState( { appli: response.data } );
-        this.setState( { assignations: response.data.assignations } );
-      } )
-      .catch( function ( error ) {
-          console.log( error );
-        }
-      )
+    axios
+      .get("http://localhost:4000" + this.state.chemin)
+      .then((response) => {
+        this.setState({ appli: response.data });
+        this.setState({ assignations: response.data.assignations });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   assignationsList() {
-    return this.state.assignations.map( function ( assignation, key ) {
+    return this.state.assignations.map(function (assignation, key) {
       return (
-        <tr key={ key }>
+        <tr key={key}>
           <td>{assignation.personne}</td>
           <td>{assignation.id_personne}</td>
           <td>{assignation.structure}</td>
@@ -38,25 +36,32 @@ export default class ApplicationRespById extends Component {
           <td>{assignation.role}</td>
           <td>{assignation.id_role}</td>
         </tr>
-      )
-    })
+      );
+    });
   }
 
   render() {
     return (
       <div className="container">
+        <BandeauTitre composant={"Application et ses responsabilités"} />
         <div className="row">
           <div className="col">
-            <label htmlFor="id" className="label-gras">ID</label>
-            <textarea className="form-control" id="id" rows="1" name="id" value={this.state.appli.id}></textarea>
+            <p className="label-gras">ID</p>
+            {/* <textarea className="form-control" id="id" rows="1" name="id" value={this.state.appli.id}></textarea> */}
+            <input type="text" readonly size="12" value={this.state.appli.id} />
           </div>
           <div className="col">
-            <label htmlFor="global_id" className="label-gras">Global_id</label>
-            <textarea className="form-control" id="global_id" rows="1" name="global_id" value={this.state.appli.global_id}></textarea>
+            <p className="label-gras">Global_id</p>
+            <input
+              type="text"
+              readonly
+              size="33"
+              value={this.state.appli.global_id}
+            />
           </div>
         </div>
 
-        <table className="table table-striped" style={{ marginTop: 10 }} >
+        <table className="table table-striped" style={{ marginTop: 10 }}>
           <thead>
             <tr>
               <th>Personne</th>
@@ -67,11 +72,9 @@ export default class ApplicationRespById extends Component {
               <th>ID Role</th>
             </tr>
           </thead>
-          <tbody>
-            {this.assignationsList()}
-          </tbody>
+          <tbody>{this.assignationsList()}</tbody>
         </table>
       </div>
-    )
+    );
   }
 }
