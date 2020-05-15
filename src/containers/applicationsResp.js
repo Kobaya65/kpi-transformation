@@ -10,6 +10,8 @@ export default class ApplicationsResp extends Component {
     this.state = {
       chemin: props.match.path,
       appli: [],
+      nbItems: 0,
+      titreBandeau: "",
     };
   }
 
@@ -18,6 +20,10 @@ export default class ApplicationsResp extends Component {
       .get("http://localhost:4000" + this.state.chemin)
       .then((response) => {
         this.setState({ appli: response.data });
+        this.setState({ nbItems: response.data.length });
+        this.setState({
+          titreBandeau: `Applications et leurs responsabilités (${this.state.nbItems})`,
+        });
       })
       .catch(function (error) {
         console.log(error);
@@ -42,7 +48,7 @@ export default class ApplicationsResp extends Component {
   render() {
     return (
       <div className="container-fluid">
-        <BandeauTitre composant="Applications et leurs responsabilités" />
+        <BandeauTitre titre={this.state.titreBandeau} />
         <table className="table table-striped">
           <thead>
             <tr>
