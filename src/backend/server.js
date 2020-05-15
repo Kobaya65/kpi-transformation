@@ -63,6 +63,23 @@ router.route("/applicationsResp/:_id").get(function (req, res) {
   });
 });
 
+router.route("/applicationsBis").get(function (req, res) {
+  // const filtre = {
+  //   Authentification: "Par RTFE",
+  // };
+  // const filtre = {
+  //   Concepts: {!null},
+  // };
+  const filtre = {
+    // CurrentState: /^(en prod)/i
+    CurrentState: /en prod/i,
+  };
+
+  ApplicationsModel.find(filtre, function (err, applications) {
+    res.json(applications);
+  });
+});
+
 app.use("/", router);
 
 app.listen(PORT);
