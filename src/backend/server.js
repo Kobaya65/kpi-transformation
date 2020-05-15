@@ -64,15 +64,10 @@ router.route("/applicationsResp/:_id").get(function (req, res) {
 });
 
 router.route("/applicationsBis").get(function (req, res) {
-  // const filtre = {
-  //   Authentification: "Par RTFE",
-  // };
-  // const filtre = {
-  //   Concepts: {!null},
-  // };
   const filtre = {
-    // CurrentState: /^(en prod)/i
-    CurrentState: /en prod/i,
+    CurrentState: /^((?!(En prod)).)*$/, // ne contient pas En prod
+    // CurrentState: /en prod/i,             // contient 'en prod', insensible à la casse
+    // Authentification: "Par RTFE",         // Authentification = "Par RTFE"
   };
 
   ApplicationsModel.find(filtre, function (err, applications) {
