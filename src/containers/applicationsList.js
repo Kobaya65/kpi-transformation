@@ -11,6 +11,8 @@ export default class ApplicationsList extends Component {
     this.state = {
       chemin: props.match.path,
       applis: [],
+      nbItems: 0,
+      titreBandeau: "",
     };
   }
 
@@ -19,6 +21,8 @@ export default class ApplicationsList extends Component {
       .get("http://localhost:4000" + this.state.chemin)
       .then((response) => {
         this.setState({ applis: response.data });
+        this.setState({ nbItems: response.data.length });
+        this.setState({ titreBandeau: `Applications (${this.state.nbItems})` });
       })
       .catch(function (error) {
         console.log(error);
@@ -45,7 +49,7 @@ export default class ApplicationsList extends Component {
   render() {
     return (
       <div className="container-fluid">
-        <BandeauTitre composant="Applications" />
+        <BandeauTitre titre={this.state.titreBandeau} />
         <table className="table table-striped">
           <thead>
             <tr>
