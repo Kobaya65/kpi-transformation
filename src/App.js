@@ -12,7 +12,7 @@ class App extends Component {
     return (
       <Router>
         <div className="navbar navbar-expand-sm sticky-top app-header charte-graphique-sg double-border">
-          <a class="navbar-brand" href="/">
+          <a className="navbar-brand" href="/">
             <img
               src={`${process.env.PUBLIC_URL}/images/soc102c.png`}
               height="30em"
@@ -21,7 +21,7 @@ class App extends Component {
             />
           </a>
           <button
-            class="navbar-toggler"
+            className="navbar-toggler"
             type="button"
             data-toggle="collapse"
             data-target="#navbarToggler"
@@ -29,15 +29,15 @@ class App extends Component {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <div class="navbar-toggler-icon">___</div>
+            <div className="navbar-toggler-icon">___</div>
           </button>
-          <div class="collapse navbar-collapse" id="navbarToggler">
+          <div className="collapse navbar-collapse" id="navbarToggler">
             <div>KPI Transformation</div>
             <ul className="navbar-nav nav-pills">
               {/* href="#1" nom="Consultation" */}
               <li className="nav-item dropdown">
                 <a
-                  class="nav-link dropdown-toggle"
+                  className="nav-link dropdown-toggle"
                   href="#1"
                   data-toggle="dropdown"
                 >
@@ -90,7 +90,10 @@ class App extends Component {
                 </a>
                 <div className="dropdown-menu">
                   <MyLink nom="Création d'un utilisateur" vers="/createUser" />
-                  <MyLink nom="Modification du mot de passe" to="/changePwd" />
+                  <MyLink
+                    nom="Modification du mot de passe"
+                    vers="/changePwd"
+                  />
                 </div>
               </li>
             </ul>
