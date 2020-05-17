@@ -4,6 +4,7 @@ import axios from "axios";
 
 import applicationById from "./applicationById";
 import BandeauTitre from "../components/bandeau-titre";
+import EtatAppli from "../components/etatAppli";
 
 export default class ApplicationsList extends Component {
   constructor(props) {
@@ -40,7 +41,9 @@ export default class ApplicationsList extends Component {
           </td>
           <td>{currentApp.NomCourt}</td>
           <td>{currentApp.Commentaire}</td>
-          <td>{currentApp.CurrentState}</td>
+          <td>
+            <EtatAppli etat={currentApp.CurrentState} />
+          </td>
         </tr>
       );
     });
