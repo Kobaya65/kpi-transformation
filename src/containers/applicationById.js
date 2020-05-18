@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 
 import BandeauTitre from "../components/bandeau-titre";
+import EtatAppli from "../components/etatAppli";
 
 export default class ApplicationById extends Component {
   constructor(props) {
@@ -25,113 +26,129 @@ export default class ApplicationById extends Component {
       });
   }
 
+  conceptsList() {
+    return this.state.appli.Concepts.map(function (concept, key) {
+      return (
+        <tr key={key}>
+          <td>{concept.Nom}</td>
+        </tr>
+      );
+    });
+  }
+
   render() {
     return (
       <div className="container">
         <BandeauTitre composant="Application" />
         <div className="row">
           <div className="col">
-            <label htmlFor="libCourt">Libellé Court :</label>
-            <textarea
-              className="form-control"
-              id="libCourt"
-              rows="1"
-              name="Libellé court"
-              value={this.state.appli.LibelleCourt}
-            ></textarea>
+            <p className="label-gras">Libellé Court</p>
+            <input
+              type="text"
+              readonly
+              size="20"
+              value={this.state.appli.libelleCourt}
+            />
           </div>
           <div className="col">
-            <label htmlFor="nomCourt">Nom Court :</label>
-            <textarea
-              className="form-control"
-              id="nomCourt"
-              rows="1"
-              name="Nom court"
+            <p className="label-gras">Nom Court</p>
+            <input
+              type="text"
+              readonly
+              size="30"
               value={this.state.appli.NomCourt}
-            ></textarea>
+            />
           </div>
         </div>
-
         <div className="row">
           <div className="col">
-            <label htmlFor="globalId">GlobalID :</label>
-            <textarea
-              className="form-control"
-              id="globalId"
-              rows="1"
-              name="Global ID"
+            <p className="label-gras">GlobalID></p>
+            <input
+              type="text"
+              readonly
+              size="32"
               value={this.state.appli.GlobalID}
-            ></textarea>
+            />
           </div>
           <div className="col">
-            <label htmlFor="techIdHexa">TechnicalIdHexa :</label>
-            <textarea
-              className="form-control"
-              id="techIdHexa"
-              rows="1"
-              name="Technical ID Hexa"
+            <p className="label-gras">TechnicalIdHexa</p>
+            <input
+              type="text"
+              readonly
+              size="16"
               value={this.state.appli.TechnicalIdHexa}
-            ></textarea>
+            />
+          </div>
+          <div className="col">
+            <p className="label-gras">État actuel</p>
+            <EtatAppli
+              // style={{ justifyConten: "center" }}
+              etat={this.state.appli.CurrentState}
+            />
           </div>
         </div>
-
         <div className="row">
-          <div className="col">
-            <label htmlFor="comment">Commentaire :</label>
+          <div></div>
+          <div className="col column-1-3">
+            <p className="label-gras">Commentaire</p>
             <textarea
-              className="form-control"
-              id="comment"
-              rows="5"
-              name="Commentaire"
+              type="text"
+              // rows={this.state.appli.Commentaire.size}
+              readonly
+              style={{ width: "100%" }}
               value={this.state.appli.Commentaire}
             ></textarea>
           </div>
         </div>
-
         <div className="row">
           <div className="col">
-            <label htmlFor="authent">Authentification :</label>
-            <textarea
-              className="form-control"
-              id="authent"
-              rows="1"
-              name="Authentification"
+            <p className="label-gras">Authentification</p>
+            <input
+              type="text"
+              readonly
+              size="25"
               value={this.state.appli.Authentification}
-            ></textarea>
+            />
           </div>
           <div className="col">
-            <label htmlFor="typeAppli">Type appli :</label>
-            <textarea
-              className="form-control"
-              id="typeAppli"
-              rows="1"
-              name="Type Appli"
+            <p className="label-gras">Type appli</p>
+            <input
+              type="test"
+              readonly
+              size="30"
               value={this.state.appli.TypeAppli}
-            ></textarea>
+            />
           </div>
         </div>
-
         <div className="row">
           <div className="col">
-            <label htmlFor="dateDebut">Date Début Prod :</label>
-            <textarea
-              className="form-control"
-              id="dateDebut"
-              rows="1"
-              name="Date debut Prod"
+            <p className="label-gras">Date Début Prod</p>
+            <input
+              type="text"
+              readonly
+              size="20"
               value={this.state.appli.DateDebutProd}
-            ></textarea>
+            />
           </div>
           <div className="col">
-            <label htmlFor="dateFin">Date Fin Prod :</label>
-            <textarea
-              className="form-control"
-              id="dateFin"
-              rows="1"
-              name="Date fin Prod"
+            <p className="label-gras">Date Fin Prod</p>
+            <input
+              type="text"
+              readonly
+              size="20"
               value={this.state.appli.DateFinProd}
-            ></textarea>
+            />
           </div>
+        </div>
+        <div>
+          <table className="table table-striped">
+            <thead>
+              <tr>
+                <th>Concept</th>
+              </tr>
+            </thead>
+            {/* <tbody>{this.conceptsList()}</tbody> */}
+          </table>
         </div>
       </div>
     );
