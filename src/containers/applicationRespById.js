@@ -43,7 +43,7 @@ export default class ApplicationRespById extends Component {
   render() {
     return (
       <div className="container">
-        <BandeauTitre composant={"Application et ses responsabilités"} />
+        <BandeauTitre titre={"Application et ses responsabilités"} />
         <div className="row">
           <div className="col">
             <p className="label-gras">ID</p>
