@@ -27,19 +27,24 @@ export default class ApplicationById extends Component {
   }
 
   conceptsList() {
-    return this.state.appli.Concepts.map(function (concept, key) {
-      return (
-        <tr key={key}>
-          <td>{concept.Nom}</td>
-        </tr>
-      );
-    });
+    // tester la présence de concept
+    if (this.state.appli.Concepts) {
+      return this.state.appli.Concepts.map(function (concept, key) {
+        return (
+          <tr key={key}>
+            <td>{concept.Nom}</td>
+          </tr>
+        );
+      });
+    }
   }
 
   render() {
     return (
       <div className="container">
-        <BandeauTitre composant="Application" />
+        <BandeauTitre
+          titre={`Application [${this.state.appli.LibelleCourt}]`}
+        />
         <div className="row">
           <div className="col">
             <p className="label-gras">Libellé Court</p>
@@ -47,7 +52,7 @@ export default class ApplicationById extends Component {
               type="text"
               readonly
               size="20"
-              value={this.state.appli.libelleCourt}
+              value={this.state.appli.LibelleCourt}
             />
           </div>
           <div className="col">
@@ -147,7 +152,7 @@ export default class ApplicationById extends Component {
                 <th>Concept</th>
               </tr>
             </thead>
-            {/* <tbody>{this.conceptsList()}</tbody> */}
+            <tbody>{this.conceptsList()}</tbody>
           </table>
         </div>
       </div>
