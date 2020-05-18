@@ -43,11 +43,10 @@ export default class ApplicationRespById extends Component {
   render() {
     return (
       <div className="container">
-        <BandeauTitre composant={"Application et ses responsabilités"} />
+        <BandeauTitre titre={"Application et ses responsabilités"} />
         <div className="row">
           <div className="col">
             <p className="label-gras">ID</p>
-            {/* <textarea className="form-control" id="id" rows="1" name="id" value={this.state.appli.id}></textarea> */}
             <input type="text" readonly size="12" value={this.state.appli.id} />
           </div>
           <div className="col">
