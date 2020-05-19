@@ -41,7 +41,7 @@ export default class ApplicationsList extends Component {
           </td>
           <td>{currentApp.NomCourt}</td>
           <td>{currentApp.Commentaire}</td>
-          <td>
+          <td className="centrage-table">
             <EtatAppli etat={currentApp.CurrentState} />
           </td>
         </tr>
