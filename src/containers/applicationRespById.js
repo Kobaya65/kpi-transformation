@@ -42,7 +42,7 @@ export default class ApplicationRespById extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container-fluid">
         <BandeauTitre titre={"Application et ses responsabilités"} />
         <div className="row">
           <div className="col">
