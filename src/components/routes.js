@@ -11,22 +11,12 @@ const MyRoutes = () => {
   return (
     <div>
       <Switch>
-        {/* logo */}
         <Route exact path="/" component={Home} />
-
-        {/* menu Consultation */}
         <Route exact path="/applications" component={ApplicationsList} />
         <Route path="/applications/:_id" component={ApplicationById} />
-        <Route exact path="/ApplicationsBis" component={ApplicationsList} />
         <Route exact path="/applicationsResp" component={ApplicationsResp} />
         <Route path="/applicationsResp/:_id" component={ApplicationRespById} />
-
-        {/* menu Anomalies */}
-        <Route exact path="/respManquantes" component={ApplicationsResp} />
-
-        {/* menu Statistiques */}
-
-        {/* menu Administration */}
+        <Route exact path="/ApplicationsBis" component={ApplicationsList} />
       </Switch>
     </div>
   );
