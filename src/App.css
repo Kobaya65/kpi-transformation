@@ -80,3 +80,16 @@
 a:hover {
   color: var(--accomSg) !important;
 }
+
+td {
+  vertical-align: middle !important;
+}
+
+th {
+  vertical-align: middle !important;
+  text-align: center !important;
+}
+
+.centrage-table {
+  text-align: center;
+}
