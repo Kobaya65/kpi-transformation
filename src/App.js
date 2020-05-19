@@ -47,7 +47,10 @@ class App extends Component {
                 <div className="dropdown-menu">
                   <MyLink nom="Applications" vers="/applications" />
                   <MyLink nom="Applications Resp." vers="/applicationsResp" />
-                  <MyLink nom="Applications bis" vers="/applicationsBis" />
+                  <MyLink
+                    nom="Applications filtrées"
+                    vers="/applicationsParFiltre"
+                  />
                 </div>
               </li>
 
