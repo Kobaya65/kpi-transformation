@@ -77,15 +77,11 @@ router.route("/applicationsBis").get(function (req, res) {
 
 router.route("/respManquantes").get(function (req, res) {
   const filtre = {
-    $or: [
-      { "assignations.personne": "" },
-      { "assignations.id_personne": "" },
-      { "assignations.structure": "" },
-      { "assignations.id_structure": "" },
-      { "assignations.role": "" },
-      { "assignations.id_role": "" },
-    ],
+    // CurrentState: /^((?!(En prod)).)*$/, // ne contient pas En prod
+    // CurrentState: /en prod/i,             // contient 'en prod', insensible à la casse
+    Authentification: "Par RTFE", // Authentification = "Par RTFE"
   };
+
   ApplicationsRespModel.find(filtre, function (err, applicationsResp) {
     res.json(applicationsResp);
   });

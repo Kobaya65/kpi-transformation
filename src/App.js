@@ -30,6 +30,7 @@ class App extends Component {
             aria-label="Toggle navigation"
           >
             <div className="navbar-toggler-icon">___</div>
+            {/* essayer avec menu.svg dans une balise img */}
           </button>
           <div className="collapse navbar-collapse" id="navbarToggler">
             <div>KPI Transformation</div>
