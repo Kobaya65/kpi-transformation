@@ -41,7 +41,7 @@ export default class ApplicationById extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container-fluid">
         <BandeauTitre
           titre={`Application [${this.state.appli.LibelleCourt}]`}
         />
@@ -97,6 +97,7 @@ export default class ApplicationById extends Component {
             <p className="label-gras">Commentaire</p>
             <textarea
               type="text"
+              // tentative d'ajustage de la hauteur en fonction du contenu
               // rows={this.state.appli.Commentaire.size}
               readonly
               style={{ width: "100%" }}
