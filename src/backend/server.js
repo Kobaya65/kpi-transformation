@@ -25,7 +25,6 @@ connection.once("open", function () {
 });
 
 /* collection applications */
-// validé
 router.route("/applications").get(function (req, res) {
   ApplicationsModel.find(function (err, applications) {
     if (err) {
@@ -36,10 +35,25 @@ router.route("/applications").get(function (req, res) {
   });
 });
 
-// non validé
 router.route("/applications/:_id").get(function (req, res) {
   ApplicationsModel.findById(req.params._id, function (err, application) {
     res.json(application);
+  });
+});
+
+router.route("/applicationsParFiltre").get(function (req, res) {
+  const filtre = {
+    // CurrentState: /^((?!(En prod)).)*$/, // ne contient pas En prod
+    // CurrentState: /en prod/i, // contient 'en prod', insensible à la casse
+    // Authentification: "Par RTFE", // Authentification = "Par RTFE"
+    // TypeAppli: "Progiciel",
+    Concepts: {
+      $elemMatch: { Nom: "forex" },
+    },
+  };
+
+  ApplicationsModel.find(filtre, function (err, applications) {
+    res.json(applications);
   });
 });
 
@@ -63,23 +77,16 @@ router.route("/applicationsResp/:_id").get(function (req, res) {
   });
 });
 
-router.route("/applicationsBis").get(function (req, res) {
-  const filtre = {
-    // CurrentState: /^((?!(En prod)).)*$/, // ne contient pas En prod
-    // CurrentState: /en prod/i, // contient 'en prod', insensible à la casse
-    Authentification: "Par RTFE", // Authentification = "Par RTFE"
-  };
-
-  ApplicationsModel.find(filtre, function (err, applications) {
-    res.json(applications);
-  });
-});
-
 router.route("/respManquantes").get(function (req, res) {
   const filtre = {
-    // CurrentState: /^((?!(En prod)).)*$/, // ne contient pas En prod
-    // CurrentState: /en prod/i,             // contient 'en prod', insensible à la casse
-    Authentification: "Par RTFE", // Authentification = "Par RTFE"
+    $or: [
+      { "assignations.id_personne": "" },
+      { "assignations.personne": "" },
+      { "assignations.id_structure": "" },
+      { "assignations.structure": "" },
+      { "assignations.id_role": "" },
+      { "assignations.role": "" },
+    ],
   };
 
   ApplicationsRespModel.find(filtre, function (err, applicationsResp) {
