@@ -65,7 +65,7 @@ class App extends Component {
                 <div className="dropdown-menu">
                   <MyLink
                     nom="Application avec responsabilité manquante"
-                    vers="respManquantes"
+                    vers="/respManquantes"
                   />
                 </div>
               </li>
@@ -80,7 +80,7 @@ class App extends Component {
                 <div className="dropdown-menu">
                   <MyLink
                     nom="Applications dans le cloud"
-                    vers="statistiques"
+                    vers="/statistiques"
                   />
                 </div>
               </li>

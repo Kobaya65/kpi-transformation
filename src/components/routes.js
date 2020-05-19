@@ -6,6 +6,7 @@ import ApplicationsList from "../containers/applicationsList";
 import ApplicationById from "../containers/applicationById";
 import ApplicationsResp from "../containers/applicationsResp";
 import ApplicationRespById from "../containers/applicationRespById";
+import Statistiques from "../components/statistiques";
 
 const MyRoutes = () => {
   return (
@@ -27,6 +28,7 @@ const MyRoutes = () => {
         {/* menu Anomalies */}
         <Route exact path="/respManquantes" component={ApplicationsResp} />
         {/* menu Statistiques */}
+        <Route exact path="/statistiques" component={Statistiques} />
         {/* menu Administration */}
       </Switch>
     </div>
