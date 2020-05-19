@@ -149,7 +149,7 @@ export default class ApplicationById extends Component {
           <table className="table table-striped">
             <thead>
               <tr>
-                <th>Concept</th>
+                <th>Concepts</th>
               </tr>
             </thead>
             <tbody>{this.conceptsList()}</tbody>
