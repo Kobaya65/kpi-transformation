@@ -85,11 +85,10 @@ export default class ApplicationById extends Component {
             />
           </div>
           <div className="col">
-            <p className="label-gras">État actuel</p>
-            <EtatAppli
-              // style={{ justifyConten: "center" }}
-              etat={this.state.appli.CurrentState}
-            />
+            <p className="label-gras centrer-image">État actuel</p>
+            <div className="centrer-image">
+              <EtatAppli etat={this.state.appli.CurrentState} />
+            </div>
           </div>
         </div>
         <div className="row">
