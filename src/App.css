@@ -86,9 +86,9 @@ a:hover {
   color: var(--accomSg) !important;
 }
 
-a:visited {
+/* a:visited {
   color: purple;
-}
+} */
 
 td {
   vertical-align: middle !important;
