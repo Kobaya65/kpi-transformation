@@ -46,6 +46,11 @@ export default class ApplicationRespById extends Component {
         <BandeauTitre titre={"Application et ses responsabilités"} />
         <div className="row">
           <div className="col">
+            <p className="label-gras">Nom</p>
+            <input type="text" readOnly size="12" value={"toto"} />
+            {/* currentApp.total[0].LibelleCourt */}
+          </div>
+          <div className="col">
             <p className="label-gras">ID</p>
             <input type="text" readOnly size="12" value={this.state.appli.id} />
           </div>
