@@ -93,10 +93,13 @@ class App extends Component {
                   Administration
                 </a>
                 <div className="dropdown-menu">
-                  <MyLink nom="Création d'un utilisateur" vers="/createUser" />
+                  <MyLink
+                    nom="Création d'un utilisateur"
+                    vers="/creationUtilisateur"
+                  />
                   <MyLink
                     nom="Modification du mot de passe"
-                    vers="/changePwd"
+                    vers="/modifMotDePasse"
                   />
                 </div>
               </li>
