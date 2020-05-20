@@ -30,6 +30,8 @@ const MyRoutes = () => {
         {/* menu Statistiques */}
         <Route exact path="/statistiques" component={Statistiques} />
         {/* menu Administration */}
+        <Route exact path="/creationUtilisateur" component={Statistiques} />
+        <Route exact path="/modifMotDePasse" component={Statistiques} />
       </Switch>
     </div>
   );
