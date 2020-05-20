@@ -48,6 +48,8 @@ router.route("/applicationsParFiltre").get(function (req, res) {
     // Authentification: "Par RTFE", // Authentification = "Par RTFE"
     // TypeAppli: "Progiciel",
     Concepts: {
+      // renvoie tous les documents dont un des concepts est 'forex'
+      //  (peu importe sa place dans le tableau)
       $elemMatch: { Nom: "forex" },
     },
   };
@@ -59,13 +61,19 @@ router.route("/applicationsParFiltre").get(function (req, res) {
 
 /* collection applicationsResp */
 router.route("/applicationsResp").get(function (req, res) {
-  ApplicationsRespModel.find(function (err, applicationsResp) {
-    if (err) {
-      console.log(err);
-    } else {
-      res.json(applicationsResp);
-    }
-  });
+  console.log("coucouroucou");
+  ApplicationsRespModel.aggregate()
+    .lookup({
+      from: "applications",
+      localField: "global_id",
+      foreignField: "GlobalID",
+      as: "total",
+    })
+    .exec(function (err, result) {
+      if (err) return handleError(err);
+      console.log(result.json);
+      res.json(result);
+    });
 });
 
 router.route("/applicationsResp/:_id").get(function (req, res) {
