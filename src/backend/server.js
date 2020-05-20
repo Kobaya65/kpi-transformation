@@ -61,7 +61,6 @@ router.route("/applicationsParFiltre").get(function (req, res) {
 
 /* collection applicationsResp */
 router.route("/applicationsResp").get(function (req, res) {
-  console.log("coucouroucou");
   ApplicationsRespModel.aggregate()
     .lookup({
       from: "applications",
@@ -71,7 +70,6 @@ router.route("/applicationsResp").get(function (req, res) {
     })
     .exec(function (err, result) {
       if (err) return handleError(err);
-      console.log(result.json);
       res.json(result);
     });
 });
