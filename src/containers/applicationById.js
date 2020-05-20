@@ -50,8 +50,8 @@ export default class ApplicationById extends Component {
             <p className="label-gras">Libellé Court</p>
             <input
               type="text"
-              readonly
-              size="20"
+              readOnly
+              size="40"
               value={this.state.appli.LibelleCourt}
             />
           </div>
@@ -59,8 +59,8 @@ export default class ApplicationById extends Component {
             <p className="label-gras">Nom Court</p>
             <input
               type="text"
-              readonly
-              size="30"
+              readOnly
+              size="40"
               value={this.state.appli.NomCourt}
             />
           </div>
@@ -70,8 +70,8 @@ export default class ApplicationById extends Component {
             <p className="label-gras">GlobalID></p>
             <input
               type="text"
-              readonly
-              size="32"
+              readOnly
+              size="38"
               value={this.state.appli.GlobalID}
             />
           </div>
@@ -79,8 +79,8 @@ export default class ApplicationById extends Component {
             <p className="label-gras">TechnicalIdHexa</p>
             <input
               type="text"
-              readonly
-              size="16"
+              readOnly
+              size="18"
               value={this.state.appli.TechnicalIdHexa}
             />
           </div>
@@ -99,7 +99,7 @@ export default class ApplicationById extends Component {
               type="text"
               // tentative d'ajustage de la hauteur en fonction du contenu
               // rows={this.state.appli.Commentaire.size}
-              readonly
+              readOnly
               style={{ width: "100%" }}
               value={this.state.appli.Commentaire}
             ></textarea>
@@ -110,8 +110,8 @@ export default class ApplicationById extends Component {
             <p className="label-gras">Authentification</p>
             <input
               type="text"
-              readonly
-              size="25"
+              readOnly
+              size="40"
               value={this.state.appli.Authentification}
             />
           </div>
@@ -119,8 +119,8 @@ export default class ApplicationById extends Component {
             <p className="label-gras">Type appli</p>
             <input
               type="test"
-              readonly
-              size="30"
+              readOnly
+              size="40"
               value={this.state.appli.TypeAppli}
             />
           </div>
@@ -130,8 +130,8 @@ export default class ApplicationById extends Component {
             <p className="label-gras">Date Début Prod</p>
             <input
               type="text"
-              readonly
-              size="20"
+              readOnly
+              size="22"
               value={this.state.appli.DateDebutProd}
             />
           </div>
@@ -139,8 +139,8 @@ export default class ApplicationById extends Component {
             <p className="label-gras">Date Fin Prod</p>
             <input
               type="text"
-              readonly
-              size="20"
+              readOnly
+              size="22"
               value={this.state.appli.DateFinProd}
             />
           </div>
