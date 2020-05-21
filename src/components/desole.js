@@ -1,6 +1,6 @@
 import React from "react";
 
-const Statistiques = () => {
+const Desole = () => {
   return (
     <div>
       <br />
@@ -16,4 +16,4 @@ const Statistiques = () => {
   );
 };
 
-export default Statistiques;
+export default Desole;
