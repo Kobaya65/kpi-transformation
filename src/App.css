@@ -104,7 +104,7 @@ th {
 }
 
 .bord-rouge {
-  border-color: red;
-  border-style: dashed;
-  border-width: 2px;
+  border-color: var(--rougeSg) !important;
+  border-style: dashed !important;
+  border-width: 2px !important;
 }
