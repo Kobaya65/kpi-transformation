@@ -78,9 +78,11 @@ class App extends Component {
                   Statistiques
                 </a>
                 <div className="dropdown-menu">
+                  <MyLink nom="Répartition par statut" vers="/statParStatut" />
+                  <MyLink nom="Répartition par type" vers="/statParType" />
                   <MyLink
-                    nom="Applications dans le cloud"
-                    vers="/statistiques"
+                    nom="Évolution du nombre d'applications validées"
+                    vers="/statEvolutionAppliValide"
                   />
                 </div>
               </li>
