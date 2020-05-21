@@ -10,6 +10,7 @@ export default class ApplicationRespById extends Component {
       chemin: this.props.match.url,
       appli: {},
       assignations: [],
+      libelleCourt: "",
     };
   }
 
@@ -17,8 +18,9 @@ export default class ApplicationRespById extends Component {
     axios
       .get("http://localhost:4000" + this.state.chemin)
       .then((response) => {
-        this.setState({ appli: response.data });
-        this.setState({ assignations: response.data.assignations });
+        this.setState({ appli: response.data[0] });
+        this.setState({ assignations: response.data[0].assignations });
+        this.setState({ libelleCourt: response.data[0].total[0].LibelleCourt });
       })
       .catch(function (error) {
         console.log(error);
@@ -47,8 +49,12 @@ export default class ApplicationRespById extends Component {
         <div className="row">
           <div className="col">
             <p className="label-gras">Nom</p>
-            <input type="text" readOnly size="12" value={"toto"} />
-            {/* currentApp.total[0].LibelleCourt */}
+            <input
+              type="text"
+              readOnly
+              size="12"
+              value={this.state.libelleCourt}
+            />
           </div>
           <div className="col">
             <p className="label-gras">ID</p>
