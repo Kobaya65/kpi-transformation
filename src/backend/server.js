@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const ObjectId = mongoose.Types.ObjectId;
 const router = express.Router();
 const PORT = 4000;
 
@@ -75,12 +76,20 @@ router.route("/applicationsResp").get(function (req, res) {
 });
 
 router.route("/applicationsResp/:_id").get(function (req, res) {
-  ApplicationsRespModel.findById(req.params._id, function (
-    err,
-    applicationResp
-  ) {
-    res.json(applicationResp);
-  });
+  ApplicationsRespModel.aggregate()
+    .match({ _id: ObjectId(req.params._id) })
+    .lookup({
+      from: "applications",
+      localField: "global_id",
+      foreignField: "GlobalID",
+      as: "total",
+    })
+    .exec(function (err, result) {
+      if (err) {
+        return err;
+      }
+      res.json(result);
+    });
 });
 
 router.route("/respManquantes").get(function (req, res) {
