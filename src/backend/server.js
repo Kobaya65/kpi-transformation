@@ -104,9 +104,18 @@ router.route("/respManquantes").get(function (req, res) {
     ],
   };
 
-  ApplicationsRespModel.find(filtre, function (err, applicationsResp) {
-    res.json(applicationsResp);
-  });
+  ApplicationsRespModel.aggregate()
+    .match(filtre)
+    .lookup({
+      from: "applications",
+      localField: "global_id",
+      foreignField: "GlobalID",
+      as: "total",
+    })
+    .exec(function (err, result) {
+      if (err) return handleError(err);
+      res.json(result);
+    });
 });
 
 app.use("/", router);
