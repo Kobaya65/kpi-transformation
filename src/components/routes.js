@@ -6,7 +6,10 @@ import ApplicationsList from "../containers/applicationsList";
 import ApplicationById from "../containers/applicationById";
 import ApplicationsResp from "../containers/applicationsResp";
 import ApplicationRespById from "../containers/applicationRespById";
-import Statistiques from "../components/statistiques";
+import StatParStatut from "../containers/statParStatut";
+import StatParType from "../containers/statParType";
+import StatEvolutionAppliValide from "../containers/statEvolutionAppliValide";
+import Desole from "./desole";
 
 const MyRoutes = () => {
   return (
@@ -28,10 +31,17 @@ const MyRoutes = () => {
         {/* menu Anomalies */}
         <Route exact path="/respManquantes" component={ApplicationsResp} />
         {/* menu Statistiques */}
-        <Route exact path="/statistiques" component={Statistiques} />
+        <Route exact path="/statParStatut" component={StatParStatut} />
+        <Route exact path="/statParType" component={StatParType} />
+        <Route
+          exact
+          path="/statEvolutionAppliValide"
+          component={StatEvolutionAppliValide}
+        />
+
         {/* menu Administration */}
-        <Route exact path="/creationUtilisateur" component={Statistiques} />
-        <Route exact path="/modifMotDePasse" component={Statistiques} />
+        <Route exact path="/creationUtilisateur" component={Desole} />
+        <Route exact path="/modifMotDePasse" component={Desole} />
       </Switch>
     </div>
   );
