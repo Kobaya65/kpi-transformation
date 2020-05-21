@@ -76,7 +76,6 @@ router.route("/applicationsResp").get(function (req, res) {
 });
 
 router.route("/applicationsResp/:_id").get(function (req, res) {
-  console.log("req.params._id = " + req.params._id);
   ApplicationsRespModel.aggregate()
     .match({ _id: ObjectId(req.params._id) })
     .lookup({
@@ -87,19 +86,10 @@ router.route("/applicationsResp/:_id").get(function (req, res) {
     })
     .exec(function (err, result) {
       if (err) {
-        console.log("Erreur result");
         return err;
       }
-      console.log("result OK !");
       res.json(result);
     });
-
-  // ApplicationsRespModel.findById(req.params._id, function (
-  //   err,
-  //   applicationResp
-  // ) {
-  //   res.json(applicationResp);
-  // });
 });
 
 router.route("/respManquantes").get(function (req, res) {
