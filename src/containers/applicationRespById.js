@@ -31,12 +31,24 @@ export default class ApplicationRespById extends Component {
     return this.state.assignations.map(function (assignation, key) {
       return (
         <tr key={key}>
-          <td>{assignation.personne}</td>
-          <td>{assignation.id_personne}</td>
-          <td>{assignation.structure}</td>
-          <td>{assignation.id_structure}</td>
-          <td>{assignation.role}</td>
-          <td>{assignation.id_role}</td>
+          <td className={assignation.personne == "" ? "bord-rouge" : ""}>
+            {assignation.personne}
+          </td>
+          <td className={assignation.id_personne == "" ? "bord-rouge" : ""}>
+            {assignation.id_personne}
+          </td>
+          <td className={assignation.structure == "" ? "bord-rouge" : ""}>
+            {assignation.structure}
+          </td>
+          <td className={assignation.id_structure == "" ? "bord-rouge" : ""}>
+            {assignation.id_structure}
+          </td>
+          <td className={assignation.role == "" ? "bord-rouge" : ""}>
+            {assignation.role}
+          </td>
+          <td className={assignation.id_role == "" ? "bord-rouge" : ""}>
+            {assignation.id_role}
+          </td>
         </tr>
       );
     });
