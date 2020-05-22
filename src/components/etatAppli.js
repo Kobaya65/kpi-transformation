@@ -7,6 +7,7 @@ import closed from "../images/x-octagon.svg";
 import develop from "../images/tool.svg";
 import study from "../images/search.svg";
 import install from "../images/grid.svg";
+import alert from "../images/alert-triangle.svg";
 
 const EtatAppli = (props) => {
   let imageLogo;
@@ -29,6 +30,9 @@ const EtatAppli = (props) => {
       break;
     case "Fermé":
       imageLogo = closed;
+      break;
+    default:
+      imageLogo = alert;
   }
 
   return <img src={imageLogo} alt={props.etat} height={"20px"} />;
