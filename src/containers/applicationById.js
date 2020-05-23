@@ -100,7 +100,7 @@ export default class ApplicationById extends Component {
               // tentative d'ajustage de la hauteur en fonction du contenu
               // rows={this.state.appli.Commentaire.size}
               readOnly
-              style={{ width: "100%" }}
+              style={{ width: "100%", padding: "5px" }}
               value={this.state.appli.Commentaire}
             ></textarea>
           </div>
