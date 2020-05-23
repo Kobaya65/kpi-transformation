@@ -68,7 +68,7 @@ router.route("/applicationsResp").get(function (req, res) {
       from: "applications",
       localField: "global_id",
       foreignField: "GlobalID",
-      as: "total",
+      as: "applis",
     })
     .exec(function (err, result) {
       if (err) return handleError(err);
@@ -111,7 +111,7 @@ router.route("/respManquantes").get(function (req, res) {
       from: "applications",
       localField: "global_id",
       foreignField: "GlobalID",
-      as: "total",
+      as: "applis",
     })
     .exec(function (err, result) {
       if (err) return handleError(err);
