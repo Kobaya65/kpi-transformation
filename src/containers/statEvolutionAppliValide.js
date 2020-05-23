@@ -13,7 +13,7 @@ export default class StatEvolutionAppliValide extends Component {
       libelleCourt: "",
     };
   }
-  // commentaire
+
   render() {
     return (
       <div className="container-fluid">
