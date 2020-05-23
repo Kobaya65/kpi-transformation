@@ -7,8 +7,9 @@ const ObjectId = mongoose.Types.ObjectId;
 const router = express.Router();
 const PORT = 4000;
 
-let ApplicationsModel = require("./applications-schema");
-let ApplicationsRespModel = require("./applicationsResp-schema");
+const ApplicationsModel = require("./applications-schema");
+const ApplicationsRespModel = require("./applicationsResp-schema");
+const StatistiquesModel = require("./statistiques-schema");
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -67,7 +68,7 @@ router.route("/applicationsResp").get(function (req, res) {
       from: "applications",
       localField: "global_id",
       foreignField: "GlobalID",
-      as: "total",
+      as: "applis",
     })
     .exec(function (err, result) {
       if (err) return handleError(err);
@@ -110,8 +111,19 @@ router.route("/respManquantes").get(function (req, res) {
       from: "applications",
       localField: "global_id",
       foreignField: "GlobalID",
-      as: "total",
+      as: "applis",
     })
+    .exec(function (err, result) {
+      if (err) return handleError(err);
+      res.json(result);
+    });
+});
+
+/* collection statistiques */
+router.route("/statEvolutionAppliValide").get(function (req, res) {
+  StatistiquesModel.aggregate()
+    .match({ NomMesure: "ApplicationsValidées" })
+    .sort("Périmètre DateMesure")
     .exec(function (err, result) {
       if (err) return handleError(err);
       res.json(result);

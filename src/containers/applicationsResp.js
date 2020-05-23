@@ -40,7 +40,7 @@ export default class ApplicationsResp extends Component {
               {currentApp.global_id}
             </Link>
           </td>
-          <td>{currentApp.total[0].LibelleCourt}</td>
+          <td>{currentApp.applis[0].LibelleCourt}</td>
         </tr>
       );
     });
