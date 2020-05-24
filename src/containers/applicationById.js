@@ -97,8 +97,7 @@ export default class ApplicationById extends Component {
             <p className="label-gras">Commentaire</p>
             <textarea
               type="text"
-              // tentative d'ajustage de la hauteur en fonction du contenu
-              // rows={this.state.appli.Commentaire.size}
+              rows="4"
               readOnly
               style={{ width: "100%", padding: "5px" }}
               value={this.state.appli.Commentaire}
