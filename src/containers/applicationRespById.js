@@ -20,7 +20,7 @@ export default class ApplicationRespById extends Component {
       .then((response) => {
         this.setState({ appli: response.data[0] });
         this.setState({ assignations: response.data[0].assignations });
-        this.setState({ libelleCourt: response.data[0].total[0].LibelleCourt });
+        this.setState({ libelleCourt: response.data[0].app[0].LibelleCourt });
       })
       .catch(function (error) {
         console.log(error);
