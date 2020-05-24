@@ -22,22 +22,17 @@ export default class ApplicationsResp extends Component {
       .then((response) => {
         this.setState({ appli: response.data });
         this.setState({ nbItems: response.data.length });
-        // appel fx pour compter le nombre d'infos manquantes
+        // appel fx pour compter le nombre de "cellules" vides
         const vides = this.compteCellulesVides();
         this.setState({ nbCellulesVides: vides });
-        let applications = `${this.state.nbItems} application${
-          this.state.nbItems > 1 ? "s" : ""
-        }`;
-
-        let infos = `, ${this.state.nbCellulesVides} info${
-          this.state.nbCellulesVides > 1 ? "s" : ""
-        }`;
-
-        // afficher infos seulement si appel depuis le menu Anomalies/Application avec responsablité manquante
         this.setState({
-          titreBandeau: `Applications et leurs responsabilités ( ${applications}${
-            this.state.chemin === "/respManquantes" ? infos : ""
-          } )`,
+          titreBandeau: `Applications et leurs responsabilités 
+        ( ${this.state.nbItems}${" application"}${
+            this.state.nbItems > 1 ? "s" : ""
+          },
+         ${this.state.nbCellulesVides} info${
+            this.state.nbCellulesVides > 1 ? "s" : ""
+          } absente${this.state.nbCellulesVides > 1 ? "s" : ""} )`,
         });
       })
       .catch(function (error) {
