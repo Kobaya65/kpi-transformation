@@ -14,13 +14,25 @@ code {
 /* label des colonnes de données */
 .label-gras {
   font-weight: bold;
-  margin-left: 5px;
   margin-bottom: 2px !important;
+  margin-left: 5px;
 }
 
 input {
   border-radius: 5px;
+  border-width: 2px;
   padding: 5px;
+}
+
+textarea {
+  /* border-color: rgb(118, 118, 118), rgb(195, 195, 195) !important; */
+  border-top-color: rgb(118, 118, 118);
+  border-left-color: rgb(118, 118, 118);
+  border-right-color: rgb(195, 195, 195);
+  border-bottom-color: rgb(195, 195, 195);
+  border-radius: 5px;
+  border-width: 2px;
+  resize: none !important;
 }
 
 a {
