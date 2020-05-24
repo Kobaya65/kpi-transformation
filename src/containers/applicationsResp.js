@@ -12,6 +12,7 @@ export default class ApplicationsResp extends Component {
       appli: [],
       nbItems: 0,
       titreBandeau: "",
+      nbCellulesVides: 0,
     };
   }
 
@@ -21,8 +22,17 @@ export default class ApplicationsResp extends Component {
       .then((response) => {
         this.setState({ appli: response.data });
         this.setState({ nbItems: response.data.length });
+        // appel fx pour compter le nombre de "cellules" vides
+        const vides = this.compteCellulesVides();
+        this.setState({ nbCellulesVides: vides });
         this.setState({
-          titreBandeau: `Applications et leurs responsabilités (${this.state.nbItems})`,
+          titreBandeau: `Applications et leurs responsabilités 
+        ( ${this.state.nbItems}${" application"}${
+            this.state.nbItems > 1 ? "s" : ""
+          },
+         ${this.state.nbCellulesVides} info${
+            this.state.nbCellulesVides > 1 ? "s" : ""
+          } absente${this.state.nbCellulesVides > 1 ? "s" : ""} )`,
         });
       })
       .catch(function (error) {
@@ -30,8 +40,24 @@ export default class ApplicationsResp extends Component {
       });
   }
 
+  compteCellulesVides() {
+    let nbCells = 0;
+
+    this.state.appli.forEach((element) => {
+      for (let assign = 0; assign < element.assignations.length; assign++) {
+        if (element.assignations[assign].personne === "") nbCells++;
+        if (element.assignations[assign].id_personne === "") nbCells++;
+        if (element.assignations[assign].structure === "") nbCells++;
+        if (element.assignations[assign].id_structure === "") nbCells++;
+        if (element.assignations[assign].role === "") nbCells++;
+        if (element.assignations[assign].id_role === "") nbCells++;
+      }
+    });
+    return nbCells;
+  }
+
   appliList() {
-    return this.state.appli.map(function (currentApp) {
+    let liste = this.state.appli.map(function (currentApp) {
       return (
         <tr key={currentApp._id}>
           <td>{currentApp.id}</td>
@@ -40,10 +66,11 @@ export default class ApplicationsResp extends Component {
               {currentApp.global_id}
             </Link>
           </td>
-          <td>{currentApp.applis[0].LibelleCourt}</td>
+          <td>{currentApp.app[0].LibelleCourt}</td>
         </tr>
       );
     });
+    return liste;
   }
 
   render() {
