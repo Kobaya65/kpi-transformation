@@ -25,14 +25,13 @@ export default class ApplicationsResp extends Component {
         // appel fx pour compter le nombre d'infos manquantes
         const vides = this.compteCellulesVides();
         this.setState({ nbCellulesVides: vides });
+
         let applications = `${this.state.nbItems} application${
           this.state.nbItems > 1 ? "s" : ""
         }`;
-
         let infos = `, ${this.state.nbCellulesVides} info${
           this.state.nbCellulesVides > 1 ? "s" : ""
-        }`;
-
+        } manquante${this.state.nbCellulesVides > 1 ? "s" : ""}`;
         // afficher infos seulement si appel depuis le menu Anomalies/Application avec responsablité manquante
         this.setState({
           titreBandeau: `Applications et leurs responsabilités ( ${applications}${
