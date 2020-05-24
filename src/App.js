@@ -34,7 +34,6 @@ class App extends Component {
           <div className="collapse navbar-collapse" id="navbarToggler">
             <div>KPI Transformation</div>
             <ul className="navbar-nav nav-pills">
-              {/* href="#1" nom="Consultation" */}
               <li className="nav-item dropdown">
                 <a
                   className="nav-link dropdown-toggle"
