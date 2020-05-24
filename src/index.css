@@ -25,7 +25,6 @@ input {
 }
 
 textarea {
-  /* border-color: rgb(118, 118, 118), rgb(195, 195, 195) !important; */
   border-top-color: rgb(118, 118, 118);
   border-left-color: rgb(118, 118, 118);
   border-right-color: rgb(195, 195, 195);
