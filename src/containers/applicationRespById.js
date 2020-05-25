@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 
 import BandeauTitre from "../components/bandeau-titre";
+import ElementTd from "../components/elementTableau";
 
 export default class ApplicationRespById extends Component {
   constructor(props) {
@@ -32,24 +33,12 @@ export default class ApplicationRespById extends Component {
       if (this.decompteInfosManquantes(assignation)) {
         return (
           <tr key={key}>
-            <td className={assignation.personne === "" ? "bord-rouge" : ""}>
-              {assignation.personne}
-            </td>
-            <td className={assignation.id_personne === "" ? "bord-rouge" : ""}>
-              {assignation.id_personne}
-            </td>
-            <td className={assignation.structure === "" ? "bord-rouge" : ""}>
-              {assignation.structure}
-            </td>
-            <td className={assignation.id_structure === "" ? "bord-rouge" : ""}>
-              {assignation.id_structure}
-            </td>
-            <td className={assignation.role === "" ? "bord-rouge" : ""}>
-              {assignation.role}
-            </td>
-            <td className={assignation.id_role === "" ? "bord-rouge" : ""}>
-              {assignation.id_role}
-            </td>
+            <ElementTd elem={assignation.personne} />
+            <ElementTd elem={assignation.id_personne} />
+            <ElementTd elem={assignation.structure} />
+            <ElementTd elem={assignation.id_structure} />
+            <ElementTd elem={assignation.role} />
+            <ElementTd elem={assignation.id_role} />
           </tr>
         );
       } else {
