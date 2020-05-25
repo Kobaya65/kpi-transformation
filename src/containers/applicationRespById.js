@@ -28,30 +28,47 @@ export default class ApplicationRespById extends Component {
   }
 
   assignationsList() {
-    return this.state.assignations.map(function (assignation, key) {
-      return (
-        <tr key={key}>
-          <td className={assignation.personne === "" ? "bord-rouge" : ""}>
-            {assignation.personne}
-          </td>
-          <td className={assignation.id_personne === "" ? "bord-rouge" : ""}>
-            {assignation.id_personne}
-          </td>
-          <td className={assignation.structure === "" ? "bord-rouge" : ""}>
-            {assignation.structure}
-          </td>
-          <td className={assignation.id_structure === "" ? "bord-rouge" : ""}>
-            {assignation.id_structure}
-          </td>
-          <td className={assignation.role === "" ? "bord-rouge" : ""}>
-            {assignation.role}
-          </td>
-          <td className={assignation.id_role === "" ? "bord-rouge" : ""}>
-            {assignation.id_role}
-          </td>
-        </tr>
-      );
+    return this.state.assignations.map((assignation, key) => {
+      if (this.decompteInfosManquantes(assignation)) {
+        return (
+          <tr key={key}>
+            <td className={assignation.personne === "" ? "bord-rouge" : ""}>
+              {assignation.personne}
+            </td>
+            <td className={assignation.id_personne === "" ? "bord-rouge" : ""}>
+              {assignation.id_personne}
+            </td>
+            <td className={assignation.structure === "" ? "bord-rouge" : ""}>
+              {assignation.structure}
+            </td>
+            <td className={assignation.id_structure === "" ? "bord-rouge" : ""}>
+              {assignation.id_structure}
+            </td>
+            <td className={assignation.role === "" ? "bord-rouge" : ""}>
+              {assignation.role}
+            </td>
+            <td className={assignation.id_role === "" ? "bord-rouge" : ""}>
+              {assignation.id_role}
+            </td>
+          </tr>
+        );
+      } else {
+        return <tr></tr>;
+      }
     });
+  }
+
+  decompteInfosManquantes(assign) {
+    let nbMissing = 0;
+
+    nbMissing += assign.personne === "" ? 1 : 0;
+    nbMissing += assign.id_personne === "" ? 1 : 0;
+    nbMissing += assign.structure === "" ? 1 : 0;
+    nbMissing += assign.id_structure === "" ? 1 : 0;
+    nbMissing += assign.role === "" ? 1 : 0;
+    nbMissing += assign.id_role === "" ? 1 : 0;
+
+    return nbMissing;
   }
 
   render() {
