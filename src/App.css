@@ -109,6 +109,10 @@ th {
   border-width: 2px !important;
 }
 
+.table thead th {
+  border-bottom: none !important;
+}
+
 .logo-menu {
   text-decoration: underline overline;
 }
