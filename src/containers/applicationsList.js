@@ -31,7 +31,7 @@ export default class ApplicationsList extends Component {
   }
 
   appliList() {
-    return this.state.applis.map(function (currentApp) {
+    return this.state.applis.map((currentApp) => {
       return (
         <tr key={currentApp._id}>
           <td>

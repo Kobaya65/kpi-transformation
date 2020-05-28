@@ -6,15 +6,16 @@ const mongoose = require("mongoose");
 const ObjectId = mongoose.Types.ObjectId;
 const router = express.Router();
 const PORT = 4000;
+const PORT_MONGODB = 27017;
 
-const ApplicationsModel = require("./applications-schema");
-const ApplicationsRespModel = require("./applicationsResp-schema");
-const StatistiquesModel = require("./statistiques-schema");
+const ApplicationsModel = require("./schemas/schema-applications");
+const ApplicationsRespModel = require("./schemas/schema-applicationsResp");
+const StatistiquesModel = require("./schemas/schema-statistiques");
 
 app.use(cors());
 app.use(bodyParser.json());
 
-mongoose.connect("mongodb://127.0.0.1:27017/kpi-transformation", {
+mongoose.connect(`mongodb://127.0.0.1:${PORT_MONGODB}/kpi-transformation`, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -22,7 +23,7 @@ const connection = mongoose.connection;
 
 connection.once("open", function () {
   console.log(
-    "'kpi-transformation' database connection established successfully"
+    `'kpi-transformation' database connection established successfully on port ${PORT_MONGODB}`
   );
 });
 
