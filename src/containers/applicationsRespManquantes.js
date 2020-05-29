@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import BandeauTitre from "../components/bandeau-titre";
 
-export default class ApplicationsResp extends Component {
+export default class ApplicationsRespManquantes extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,6 +12,7 @@ export default class ApplicationsResp extends Component {
       applis: [],
       nbItems: 0,
       titreBandeau: "",
+      nbCellulesVides: 0,
     };
   }
 
@@ -21,17 +22,43 @@ export default class ApplicationsResp extends Component {
       .then((response) => {
         this.setState({ applis: response.data });
         this.setState({ nbItems: response.data.length });
+        // appel fx pour compter le nombre d'infos manquantes
+        const vides = this.compteCellulesVides();
+        this.setState({ nbCellulesVides: vides });
 
         let applications = `${this.state.nbItems} application${
           this.state.nbItems > 1 ? "s" : ""
         }`;
+        let infos = `, ${this.state.nbCellulesVides} 
+          info${this.state.nbCellulesVides > 1 ? "s" : ""}
+          manquante${this.state.nbCellulesVides > 1 ? "s" : ""}`;
         this.setState({
-          titreBandeau: `Applications et leurs responsabilités ( ${applications} )`,
+          titreBandeau: `Applications avec responsabilités manquantes ( ${applications} ${infos} )`,
         });
       })
       .catch(function (error) {
         console.log(error);
       });
+  }
+
+  /**
+   * travaille sur le state applis
+   * @return  nombre d'infos manquantes pour l'appli
+   */
+  compteCellulesVides() {
+    let nbCells = 0;
+
+    this.state.applis.forEach((appli) => {
+      for (let assign = 0; assign < appli.assignations.length; assign++) {
+        if (appli.assignations[assign].personne === "") nbCells++;
+        if (appli.assignations[assign].id_personne === "") nbCells++;
+        if (appli.assignations[assign].structure === "") nbCells++;
+        if (appli.assignations[assign].id_structure === "") nbCells++;
+        if (appli.assignations[assign].role === "") nbCells++;
+        if (appli.assignations[assign].id_role === "") nbCells++;
+      }
+    });
+    return nbCells;
   }
 
   appliList() {
@@ -57,7 +84,7 @@ export default class ApplicationsResp extends Component {
   render() {
     return (
       <div className="container-fluid">
-        <BandeauTitre titre={this.state.titreBandeau} />
+        <BandeauTitre titre={this.state.titreBandeau} bouton={true} />
         <table className="table table-striped">
           <thead>
             <tr>
