@@ -35,9 +35,10 @@ export default class ApplicationsResp extends Component {
   }
 
   appliList() {
-    let liste = this.state.applis.map(function (currentApp) {
+    let liste = this.state.applis.map(function (currentApp, keyMap) {
       return (
         <tr key={currentApp._id}>
+          <td className="centrage-table">{keyMap + 1}</td>
           <td className="centrage-table">
             <Link to={`/applicationsResp/${currentApp._id}`}>
               {currentApp.app[0].LibelleCourt}
@@ -57,10 +58,14 @@ export default class ApplicationsResp extends Component {
   render() {
     return (
       <div className="container-fluid">
-        <BandeauTitre titre={this.state.titreBandeau} />
+        <BandeauTitre
+          titre={this.state.titreBandeau}
+          appelant={this.state.chemin}
+        />
         <table className="table table-striped">
           <thead>
             <tr>
+              <th>#</th>
               <th>Nom</th>
               <th>Global_id</th>
             </tr>

@@ -1,18 +1,20 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 
 import BandeauTitre from "../components/bandeau-titre";
+import assignationsList from "../components/fonctions";
 
 export default class ApplicationsRespManquantes extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       chemin: props.match.path,
       applis: [],
       nbItems: 0,
       titreBandeau: "",
       nbCellulesVides: 0,
+      bouton: "toutes",
     };
   }
 
@@ -29,11 +31,11 @@ export default class ApplicationsRespManquantes extends Component {
         let applications = `${this.state.nbItems} application${
           this.state.nbItems > 1 ? "s" : ""
         }`;
-        let infos = `, ${this.state.nbCellulesVides} 
-          info${this.state.nbCellulesVides > 1 ? "s" : ""}
-          manquante${this.state.nbCellulesVides > 1 ? "s" : ""}`;
+        let infos = `, ${this.state.nbCellulesVides} info${
+          this.state.nbCellulesVides > 1 ? "s" : ""
+        } manquante${this.state.nbCellulesVides > 1 ? "s" : ""}`;
         this.setState({
-          titreBandeau: `Applications avec responsabilités manquantes ( ${applications} ${infos} )`,
+          titreBandeau: `Applications avec responsabilités manquantes ( ${applications}${infos} )`,
         });
       })
       .catch(function (error) {
@@ -42,8 +44,8 @@ export default class ApplicationsRespManquantes extends Component {
   }
 
   /**
-   * travaille sur le state applis
-   * @return  nombre d'infos manquantes pour l'appli
+   * travaille sur le tableau state.applis
+   * @return  nombre d'infos manquantes pour toutes les applis
    */
   compteCellulesVides() {
     let nbCells = 0;
@@ -61,38 +63,52 @@ export default class ApplicationsRespManquantes extends Component {
     return nbCells;
   }
 
-  appliList() {
-    let liste = this.state.applis.map(function (currentApp) {
+  applisList(monBouton) {
+    let liste = this.state.applis.map(function (currentApp, keyMap) {
       return (
-        <tr key={currentApp._id}>
-          <td className="centrage-table">
-            <Link to={`/applicationsResp/${currentApp._id}`}>
+        <table className="table table-striped" style={{ marginTop: 10 }}>
+          <thead>
+            <tr>
+              <th>Personne</th>
+              <th>ID Personne</th>
+              <th>Structure</th>
+              <th>ID Structure</th>
+              <th>Role</th>
+              <th>ID Role</th>
+            </tr>
+          </thead>
+          <tr key={currentApp.id}>
+            <td className="label-gras" colSpan="2">
+              #{keyMap + 1}&nbsp;
               {currentApp.app[0].LibelleCourt}
-            </Link>
-          </td>
-          <td className="centrage-table">
-            <Link to={`/applicationsResp/${currentApp._id}`}>
+            </td>
+            <td className="centrage-table label-gras">
+              id=
+              {currentApp.id}
+            </td>
+            <td className="centrage-table label-gras" colSpan="3">
+              Global_id=
               {currentApp.global_id}
-            </Link>
-          </td>
-        </tr>
+            </td>
+          </tr>
+          {assignationsList(currentApp.assignations, monBouton)}
+        </table>
       );
     });
+
     return liste;
   }
 
   render() {
     return (
       <div className="container-fluid">
-        <BandeauTitre titre={this.state.titreBandeau} bouton={true} />
+        <BandeauTitre
+          titre={this.state.titreBandeau}
+          appelant={this.state.chemin}
+          bouton={this.state.bouton}
+        />
         <table className="table table-striped">
-          <thead>
-            <tr>
-              <th>Nom</th>
-              <th>Global_id</th>
-            </tr>
-          </thead>
-          <tbody>{this.appliList()}</tbody>
+          <tbody>{this.applisList(this.state.bouton)}</tbody>
         </table>
       </div>
     );

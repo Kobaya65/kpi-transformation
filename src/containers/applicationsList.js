@@ -31,9 +31,10 @@ export default class ApplicationsList extends Component {
   }
 
   appliList() {
-    return this.state.applis.map(function (currentApp) {
+    return this.state.applis.map(function (currentApp, keyMap) {
       return (
         <tr key={currentApp._id}>
+          <td className="centrage-table">{keyMap + 1}</td>
           <td>
             <Link to={`/applications/${currentApp._id}`}>
               {currentApp.LibelleCourt}
@@ -56,6 +57,7 @@ export default class ApplicationsList extends Component {
         <table className="table table-striped">
           <thead>
             <tr>
+              <th>#</th>
               <th>Libellé court</th>
               <th>Nom court</th>
               <th>Commentaire</th>
