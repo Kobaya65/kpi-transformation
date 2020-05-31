@@ -23,7 +23,7 @@ const connection = mongoose.connection;
 
 connection.once("open", function () {
   console.log(
-    `'kpi-transformation' database connection established successfully on port ${PORT_MONGODB}`
+    `Connection to 'kpi-transformation' database established successfully on port ${PORT_MONGODB}`
   );
 });
 
