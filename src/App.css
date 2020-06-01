@@ -36,9 +36,6 @@
   justify-content: center;
   align-items: center;
   border: 2px solid var(--rougeSg);
-  /* background-color: red;
-  color: white;
-  text-align: center; */
 }
 
 /* centrage vertical */
@@ -111,4 +108,27 @@ th {
 
 .logo-menu {
   text-decoration: underline overline;
+}
+
+/* label des colonnes de données */
+.label-gras {
+  font-weight: bold;
+  margin-bottom: 2px !important;
+  margin-left: 5px;
+}
+
+.cadre {
+  padding: 2px 5px;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 2px;
+  border-top-color: darkgrey;
+  border-left-color: darkgrey;
+  border-right-color: lightgray;
+  border-bottom-color: lightgray;
+}
+
+.valeur-manquante {
+  background-color: var(--rougeSg);
+  color: var(--accomSg);
 }

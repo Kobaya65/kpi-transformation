@@ -3,6 +3,8 @@ import axios from "axios";
 
 import BandeauTitre from "../components/bandeau-titre";
 import EtatAppli from "../components/etatAppli";
+import { valeurNonSpecifie } from "../components/fonctions";
+import ElementAppli from "../components/elementAppli";
 
 export default class ApplicationById extends Component {
   constructor(props) {
@@ -46,104 +48,57 @@ export default class ApplicationById extends Component {
           titre={`Application [${this.state.appli.LibelleCourt}]`}
         />
         <div className="row">
-          <div className="col">
-            <p className="label-gras">Libellé Court</p>
-            <input
-              type="text"
-              readOnly
-              size="40"
-              value={this.state.appli.LibelleCourt}
-            />
-          </div>
-          <div className="col">
-            <p className="label-gras">Nom Court</p>
-            <input
-              type="text"
-              readOnly
-              size="40"
-              value={this.state.appli.NomCourt}
-            />
-          </div>
+          <ElementAppli
+            label="Libellé Court"
+            valeur={this.state.appli.LibelleCourt}
+          />
+          <ElementAppli label="Nom Court" valeur={this.state.appli.NomCourt} />
         </div>
+
         <div className="row">
-          <div className="col">
-            <p className="label-gras">GlobalID></p>
-            <input
-              type="text"
-              readOnly
-              size="38"
-              value={this.state.appli.GlobalID}
-            />
-          </div>
-          <div className="col">
-            <p className="label-gras">TechnicalIdHexa</p>
-            <input
-              type="text"
-              readOnly
-              size="18"
-              value={this.state.appli.TechnicalIdHexa}
-            />
-          </div>
+          <ElementAppli label="GlobalID" valeur={this.state.appli.GlobalID} />
+          <ElementAppli
+            label="TechnicalIdHexa"
+            valeur={this.state.appli.TechnicalIdHexa}
+          />
           <div className="col">
             <p className="label-gras centrer-image">État actuel</p>
-            <div className="centrer-image">
-              <EtatAppli etat={this.state.appli.CurrentState} />
+            <div className="centrer-image cadre">
+              <EtatAppli
+                etat={valeurNonSpecifie(this.state.appli.CurrentState)}
+              />
             </div>
           </div>
         </div>
+
         <div className="row">
-          <div></div>
-          <div className="col column-1-3">
-            <p className="label-gras">Commentaire</p>
-            <textarea
-              type="text"
-              rows="4"
-              readOnly
-              style={{ width: "100%", padding: "5px" }}
-              value={this.state.appli.Commentaire}
-            ></textarea>
-          </div>
+          <ElementAppli
+            label="Commentaire"
+            valeur={this.state.appli.Commentaire}
+          />
         </div>
         <div className="row">
-          <div className="col">
-            <p className="label-gras">Authentification</p>
-            <input
-              type="text"
-              readOnly
-              size="40"
-              value={this.state.appli.Authentification}
-            />
-          </div>
-          <div className="col">
-            <p className="label-gras">Type appli</p>
-            <input
-              type="test"
-              readOnly
-              size="40"
-              value={this.state.appli.TypeAppli}
-            />
-          </div>
+          <ElementAppli
+            label="Authentification"
+            valeur={this.state.appli.Authentification}
+          />
+          <ElementAppli
+            label="Type Appli"
+            valeur={this.state.appli.TypeAppli}
+          />
         </div>
+
         <div className="row">
-          <div className="col">
-            <p className="label-gras">Date Début Prod</p>
-            <input
-              type="text"
-              readOnly
-              size="22"
-              value={this.state.appli.DateDebutProd}
-            />
-          </div>
-          <div className="col">
-            <p className="label-gras">Date Fin Prod</p>
-            <input
-              type="text"
-              readOnly
-              size="22"
-              value={this.state.appli.DateFinProd}
-            />
-          </div>
+          <ElementAppli
+            label="Date Début Prod"
+            valeur={this.state.appli.DateDebutProd}
+          />
+          <ElementAppli
+            label="Date Fin Prod"
+            valeur={this.state.appli.DateFinProd}
+          />
         </div>
+
         <div>
           <table className="table table-striped">
             <thead>
