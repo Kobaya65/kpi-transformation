@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import axios from "axios";
 
 import BandeauTitre from "../components/bandeau-titre";
-import ElementTd from "../components/elementTableau";
+import assignationsList from "../components/fonctions";
 
 export default class ApplicationRespById extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      chemin: this.props.match.url,
+      chemin: this.props.match.path,
       appli: {},
       assignations: [],
       libelleCourt: "",
@@ -28,42 +28,13 @@ export default class ApplicationRespById extends Component {
       });
   }
 
-  assignationsList() {
-    return this.state.assignations.map((assignation, key) => {
-      if (this.decompteInfosManquantes(assignation)) {
-        return (
-          <tr key={key}>
-            <ElementTd elem={assignation.personne} />
-            <ElementTd elem={assignation.id_personne} />
-            <ElementTd elem={assignation.structure} />
-            <ElementTd elem={assignation.id_structure} />
-            <ElementTd elem={assignation.role} />
-            <ElementTd elem={assignation.id_role} />
-          </tr>
-        );
-      } else {
-        return <tr></tr>;
-      }
-    });
-  }
-
-  decompteInfosManquantes(assign) {
-    let nbMissing = 0;
-
-    nbMissing += assign.personne === "" ? 1 : 0;
-    nbMissing += assign.id_personne === "" ? 1 : 0;
-    nbMissing += assign.structure === "" ? 1 : 0;
-    nbMissing += assign.id_structure === "" ? 1 : 0;
-    nbMissing += assign.role === "" ? 1 : 0;
-    nbMissing += assign.id_role === "" ? 1 : 0;
-
-    return nbMissing;
-  }
-
   render() {
     return (
       <div className="container-fluid">
-        <BandeauTitre titre={"Application et ses responsabilités"} />
+        <BandeauTitre
+          titre={"Application et ses responsabilités"}
+          bouton="toutes"
+        />
         <div className="row">
           <div className="col">
             <p className="label-gras">Nom</p>
@@ -100,7 +71,7 @@ export default class ApplicationRespById extends Component {
               <th>ID Role</th>
             </tr>
           </thead>
-          <tbody>{this.assignationsList()}</tbody>
+          <tbody>{assignationsList}</tbody>
         </table>
       </div>
     );
