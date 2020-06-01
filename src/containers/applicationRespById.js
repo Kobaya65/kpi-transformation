@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 
 import BandeauTitre from "../components/bandeau-titre";
-import assignationsList from "../components/fonctions";
+import { assignationsList } from "../components/fonctions";
 
 export default class ApplicationRespById extends Component {
   constructor(props) {
@@ -38,25 +38,15 @@ export default class ApplicationRespById extends Component {
         <div className="row">
           <div className="col">
             <p className="label-gras">Nom</p>
-            <input
-              type="text"
-              readOnly
-              size="12"
-              value={this.state.libelleCourt}
-            />
+            <div>{this.state.libelleCourt}</div>
           </div>
           <div className="col">
             <p className="label-gras">ID</p>
-            <input type="text" readOnly size="12" value={this.state.appli.id} />
+            <div>{this.state.appli.id}</div>
           </div>
           <div className="col">
             <p className="label-gras">Global_id</p>
-            <input
-              type="text"
-              readOnly
-              size="33"
-              value={this.state.appli.global_id}
-            />
+            <div>{this.state.appli.global_id}</div>
           </div>
         </div>
 

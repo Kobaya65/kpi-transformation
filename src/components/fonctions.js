@@ -35,4 +35,8 @@ const decompteInfosManquantes = (assign) => {
   return nbMissing;
 };
 
-export default assignationsList;
+const valeurNonSpecifie = (valeur) => {
+  return valeur === "" ? "non spécifié" : valeur;
+};
+
+export { assignationsList, valeurNonSpecifie };

@@ -11,13 +11,6 @@ code {
     monospace;
 }
 
-/* label des colonnes de données */
-.label-gras {
-  font-weight: bold;
-  margin-bottom: 2px !important;
-  margin-left: 5px;
-}
-
 input {
   border-radius: 5px;
   border-width: 2px;
