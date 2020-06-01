@@ -2,10 +2,6 @@ import React, { Component } from "react";
 import { valeurNonSpecifie } from "./fonctions";
 
 export default class ElementAppli extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className="col">
