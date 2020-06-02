@@ -3,12 +3,13 @@ import axios from "axios";
 
 import BandeauTitre from "../components/bandeau-titre";
 import { assignationsList } from "../components/fonctions";
+import ElementRespAppli from "../components/elementRespAppli";
 
 export default class ApplicationRespById extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      chemin: this.props.match.path,
+      chemin: this.props.match.url,
       appli: {},
       assignations: [],
       libelleCourt: "",
@@ -36,18 +37,12 @@ export default class ApplicationRespById extends Component {
           bouton="toutes"
         />
         <div className="row">
-          <div className="col">
-            <p className="label-gras">Nom</p>
-            <div>{this.state.libelleCourt}</div>
-          </div>
-          <div className="col">
-            <p className="label-gras">ID</p>
-            <div>{this.state.appli.id}</div>
-          </div>
-          <div className="col">
-            <p className="label-gras">Global_id</p>
-            <div>{this.state.appli.global_id}</div>
-          </div>
+          <ElementRespAppli label="Nom" valeur={this.state.libelleCourt} />
+          <ElementRespAppli label="ID" valeur={this.state.appli.id} />
+          <ElementRespAppli
+            label="Global_id"
+            valeur={this.state.appli.global_id}
+          />
         </div>
 
         <table className="table table-striped" style={{ marginTop: 10 }}>
@@ -61,7 +56,7 @@ export default class ApplicationRespById extends Component {
               <th>ID Role</th>
             </tr>
           </thead>
-          <tbody>{assignationsList}</tbody>
+          <tbody>{assignationsList(this.state.assignations, "toutes")}</tbody>
         </table>
       </div>
     );
