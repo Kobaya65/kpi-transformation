@@ -78,15 +78,15 @@ export default class ApplicationsRespManquantes extends Component {
             </tr>
           </thead>
           <tr key={currentApp.id}>
-            <td className="label-gras" colSpan="2">
+            <td className="label-gras-mgl5" colSpan="2">
               #{keyMap + 1}&nbsp;
               {currentApp.app[0].LibelleCourt}
             </td>
-            <td className="centrage-table label-gras">
+            <td className="centrage-table label-gras-mgl5">
               id=
               {currentApp.id}
             </td>
-            <td className="centrage-table label-gras" colSpan="3">
+            <td className="centrage-table label-gras-mgl5" colSpan="3">
               Global_id=
               {currentApp.global_id}
             </td>
