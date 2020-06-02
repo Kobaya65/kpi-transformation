@@ -9,21 +9,19 @@ import ElementTd from "../components/elementTableau";
  * @param {*} filtre       "toutes" ou "manquantes"
  */
 const assignationsList = (assignations, filtre) => {
-  return assignations.map((assignation, key) => {
+  return assignations.map((assignation, keyMap) => {
     if (decompteInfosManquantes(assignation) === 0 && filtre === "manquantes") {
-      return <tr key={key}></tr>;
+      return <tr key={keyMap}></tr>;
     } else {
       return (
-        <>
-          <tr key={key}>
-            <ElementTd elem={assignation.personne} />
-            <ElementTd elem={assignation.id_personne} />
-            <ElementTd elem={assignation.structure} />
-            <ElementTd elem={assignation.id_structure} />
-            <ElementTd elem={assignation.role} />
-            <ElementTd elem={assignation.id_role} />
-          </tr>
-        </>
+        <tr key={keyMap}>
+          <ElementTd elem={assignation.personne} />
+          <ElementTd elem={assignation.id_personne} />
+          <ElementTd elem={assignation.structure} />
+          <ElementTd elem={assignation.id_structure} />
+          <ElementTd elem={assignation.role} />
+          <ElementTd elem={assignation.id_role} />
+        </tr>
       );
     }
   });
