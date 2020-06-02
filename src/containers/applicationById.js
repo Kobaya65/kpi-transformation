@@ -3,7 +3,6 @@ import axios from "axios";
 
 import BandeauTitre from "../components/bandeau-titre";
 import EtatAppli from "../components/etatAppli";
-import { valeurNonSpecifie } from "../components/fonctions";
 import ElementAppli from "../components/elementAppli";
 
 export default class ApplicationById extends Component {
@@ -64,9 +63,7 @@ export default class ApplicationById extends Component {
           <div className="col">
             <p className="label-gras-mgl5 centrer-image">État actuel</p>
             <div className="centrer-image cadre">
-              <EtatAppli
-                etat={valeurNonSpecifie(this.state.appli.CurrentState)}
-              />
+              <EtatAppli etat={this.state.appli.CurrentState} />
             </div>
           </div>
         </div>
