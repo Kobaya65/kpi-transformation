@@ -1,6 +1,11 @@
 import React from "react";
 import ElementTd from "../components/elementTableau";
 
+/**
+ *
+ * @param {*} assignations tableau des assignations d'une application
+ * @param {*} filtre       "toutes" ou "manquantes"
+ */
 const assignationsList = (assignations, filtre) => {
   return assignations.map((assignation, key) => {
     if (decompteInfosManquantes(assignation) === 0 && filtre === "manquantes") {
