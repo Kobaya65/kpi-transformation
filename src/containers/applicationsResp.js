@@ -8,7 +8,7 @@ export default class ApplicationsResp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      chemin: props.match.path,
+      chemin: props.match.url,
       applis: [],
       nbItems: 0,
       titreBandeau: "",
