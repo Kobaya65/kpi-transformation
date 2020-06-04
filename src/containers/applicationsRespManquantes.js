@@ -101,11 +101,7 @@ export default class ApplicationsRespManquantes extends Component {
   render() {
     return (
       <div className="container-fluid">
-        <BandeauTitre
-          titre={this.state.titreBandeau}
-          appelant={this.state.chemin}
-          bouton={this.state.bouton}
-        />
+        <BandeauTitre titre={this.state.titreBandeau} />
         <table className="table table-striped">
           <tbody>{this.applisList(this.state.bouton)}</tbody>
         </table>
