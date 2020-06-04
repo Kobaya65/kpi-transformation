@@ -9,7 +9,6 @@ export default class ApplicationsRespManquantes extends Component {
     super(props);
 
     this.state = {
-      chemin: props.match.path,
       applis: [],
       nbItems: 0,
       titreBandeau: "",
@@ -20,7 +19,7 @@ export default class ApplicationsRespManquantes extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:4000" + this.state.chemin)
+      .get("http://localhost:4000" + this.props.match.path)
       .then((response) => {
         this.setState({ applis: response.data });
         this.setState({ nbItems: response.data.length });
