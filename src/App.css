@@ -78,14 +78,55 @@
   color: var(--accomSg);
 }
 
-/* couleur d'accompgnement SG pour les liens survolés */
-a:hover {
-  color: var(--accomSg) !important;
+a {
+  color: rgb(0, 123, 255);
 }
 
-/* a:visited {
+/* couleur d'accompagnement SG pour les liens survolés */
+a:hover {
+  /* color: var(--accomSg) !important; */
+  color: black;
+}
+
+a:visited {
   color: purple;
-} */
+}
+
+#navbarToggler a {
+  color: white;
+}
+
+#navbarToggler a:hover {
+  color: white;
+}
+
+#navbarToggler a:visited {
+  color: white;
+}
+
+div.dropdown-menu {
+  background-color: black;
+  border-color: var(--rougeSg);
+  border-style: solid;
+}
+
+a.nav-link.dropdown-toggle:focus {
+  background-color: black;
+  border-color: var(--rougeSg);
+  border-style: solid;
+  border-width: thin;
+}
+
+a.nav-link dropdown-toggle {
+  background-color: black;
+  border-color: var(--rougeSg);
+  border-style: solid;
+  border-width: thin;
+}
+
+a.dropdown-item:hover {
+  color: black !important;
+}
 
 td {
   vertical-align: middle !important;
@@ -129,7 +170,7 @@ th {
 .cadre {
   padding: 2px 5px;
   border-style: solid;
-  border-width: 2px;
+  border-width: 2px 1px 1px 2px;
   border-radius: 2px;
   border-top-color: darkgrey;
   border-left-color: darkgrey;
@@ -140,4 +181,23 @@ th {
 .valeur-manquante {
   background-color: var(--rougeSg);
   color: var(--accomSg);
+}
+
+.boutonStyle {
+  border: "2px solid black";
+  line-height: "2.5";
+  padding: "0 5px 5px";
+  font-size: "1rem";
+  text-align: "center";
+  color: "#fff";
+  border-radius: "10px";
+  background-color: var(--rougeSg);
+  background-image: linear-gradient(
+    to top left,
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0.2) 30%,
+    rgba(0, 0, 0, 0)
+  );
+  box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+    inset - 2px - 2px 3px rgba(0, 0, 0, 0.6);
 }
