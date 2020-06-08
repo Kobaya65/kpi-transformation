@@ -109,7 +109,11 @@ export default class ApplicationsRespManquantes extends Component {
       <div className="container-fluid">
         <div className="d-flex">
           <BandeauTitre titre={this.state.titreBandeau} />
-          <Bouton className="flex-lg-shrink-1" etat={this.state.bouton} />
+          <Bouton
+            className="flex-lg-shrink-1"
+            etat={this.state.bouton}
+            changeBouton={this.changeBouton}
+          />
         </div>
         <table className="table table-striped">
           <tbody>{this.applisList(this.state.bouton)}</tbody>

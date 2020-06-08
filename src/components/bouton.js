@@ -37,6 +37,11 @@ export default class Bouton extends Component {
         style={boutonStyle}
         type="button"
         onClick={() => this.handleChange()}
+        title={
+          this.props.etat === "toutes"
+            ? "toutes les ersponsabilités"
+            : "les responsablités manquantes"
+        }
       >
         {this.props.etat}
       </button>
