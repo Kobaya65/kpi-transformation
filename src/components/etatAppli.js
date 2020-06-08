@@ -35,7 +35,9 @@ const EtatAppli = (props) => {
       imageLogo = alert;
   }
 
-  return <img src={imageLogo} alt={props.etat} height={"20px"} />;
+  return (
+    <img src={imageLogo} title={props.etat} alt={props.etat} height={"20px"} />
+  );
 };
 
 export default EtatAppli;
