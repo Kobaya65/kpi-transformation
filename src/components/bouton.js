@@ -7,14 +7,13 @@ import React, { Component } from "react";
 export default class Bouton extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      etat: props.etat,
-    };
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(etat) {
-    this.props.changeBouton(etat === "toutes" ? "manquantes" : "toutes");
+  handleChange() {
+    this.props.changeBouton(
+      this.props.etat === "toutes" ? "manquantes" : "toutes"
+    );
   }
 
   render() {
@@ -37,9 +36,9 @@ export default class Bouton extends Component {
       <button
         style={boutonStyle}
         type="button"
-        onClick={() => this.handleChange(this.state.etat)}
+        onClick={() => this.handleChange()}
       >
-        {this.state.etat}
+        {this.props.etat}
       </button>
     );
   }
