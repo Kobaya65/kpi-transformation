@@ -84,8 +84,7 @@ a {
 
 /* couleur d'accompagnement SG pour les liens survolés */
 a:hover {
-  /* color: var(--accomSg) !important; */
-  color: black;
+  color: var(--rougeSg) !important;
 }
 
 a:visited {
@@ -117,7 +116,13 @@ a.nav-link.dropdown-toggle:focus {
   border-width: thin;
 }
 
-a.nav-link dropdown-toggle {
+a.nav-link.dropdown-toggle:hover {
+  background-color: var(--rougeSg);
+  border-color: var(--rougeSg);
+  color: black;
+}
+
+a.nav-link dropdown-toggle:hover {
   background-color: black;
   border-color: var(--rougeSg);
   border-style: solid;
@@ -181,23 +186,4 @@ th {
 .valeur-manquante {
   background-color: var(--rougeSg);
   color: var(--accomSg);
-}
-
-.boutonStyle {
-  border: "2px solid black";
-  line-height: "2.5";
-  padding: "0 5px 5px";
-  font-size: "1rem";
-  text-align: "center";
-  color: "#fff";
-  border-radius: "10px";
-  background-color: var(--rougeSg);
-  background-image: linear-gradient(
-    to top left,
-    rgba(0, 0, 0, 0.2),
-    rgba(0, 0, 0, 0.2) 30%,
-    rgba(0, 0, 0, 0)
-  );
-  box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
-    inset - 2px - 2px 3px rgba(0, 0, 0, 0.6);
 }

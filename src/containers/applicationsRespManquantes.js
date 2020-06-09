@@ -3,10 +3,12 @@ import axios from "axios";
 
 import BandeauTitre from "../components/bandeau-titre";
 import { assignationsList } from "../components/fonctions";
+import Bouton from "../components/bouton";
 
 export default class ApplicationsRespManquantes extends Component {
   constructor(props) {
     super(props);
+    this.changeBouton = this.changeBouton.bind(this);
 
     this.state = {
       applis: [],
@@ -15,6 +17,10 @@ export default class ApplicationsRespManquantes extends Component {
       nbCellulesVides: 0,
       bouton: "toutes",
     };
+  }
+
+  changeBouton(etat) {
+    this.setState({ bouton: etat });
   }
 
   componentDidMount() {
@@ -101,11 +107,14 @@ export default class ApplicationsRespManquantes extends Component {
   render() {
     return (
       <div className="container-fluid">
-        <BandeauTitre
-          titre={this.state.titreBandeau}
-          appelant={this.state.chemin}
-          bouton={this.state.bouton}
-        />
+        <div className="d-flex">
+          <BandeauTitre titre={this.state.titreBandeau} />
+          <Bouton
+            className="flex-lg-shrink-1"
+            etat={this.state.bouton}
+            changeBouton={this.changeBouton}
+          />
+        </div>
         <table className="table table-striped">
           <tbody>{this.applisList(this.state.bouton)}</tbody>
         </table>

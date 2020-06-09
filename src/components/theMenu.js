@@ -25,7 +25,7 @@ const TheMenu = () => {
       </button>
       <div className="collapse navbar-collapse" id="navbarToggler">
         <div>KPI Transformation</div>
-        <ul className="navbar-nav nav-pills">
+        <ul className="navbar-nav nav-pills" style={{ margin: "0 5px" }}>
           <li className="nav-item dropdown">
             <a
               className="nav-link dropdown-toggle"
