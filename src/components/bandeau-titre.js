@@ -1,4 +1,5 @@
 import React from "react";
+
 /**
  * @param {*} props.titre     texte à afficher dans le bandeau
  */
