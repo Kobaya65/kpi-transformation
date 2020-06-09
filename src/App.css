@@ -119,7 +119,7 @@ a.nav-link.dropdown-toggle:focus {
 a.nav-link.dropdown-toggle:hover {
   background-color: var(--rougeSg);
   border-color: var(--rougeSg);
-  color: black;
+  color: white !important;
 }
 
 a.nav-link dropdown-toggle:hover {
