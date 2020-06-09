@@ -84,7 +84,7 @@ a {
 
 /* couleur d'accompagnement SG pour les liens survolés */
 a:hover {
-  color: black;
+  color: var(--rougeSg) !important;
 }
 
 a:visited {
