@@ -36,7 +36,7 @@ const EtatAppli = (props) => {
   }
 
   return (
-    <img src={imageLogo} title={props.etat} alt={props.etat} height={"20px"} />
+    <img src={imageLogo} title={props.etat} alt={props.etat} height={"30px"} />
   );
 };
 
