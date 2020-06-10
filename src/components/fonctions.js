@@ -45,16 +45,4 @@ const decompteInfosManquantes = (assign) => {
   return nbMissing;
 };
 
-/**
- * Renvoie "non spécifié" si le paramètre valeur est une chaîne vide "",
- * sinon renvoie valeur
- * -> mis en place pour obtenir des "cases" non vides, sinon elles sont très étroites verticalement.
- * -> la classe css associée valeur-manquante permet de mettre en relief une information manquante.
- *
- * @param {*} valeur
- */
-const valeurNonSpecifie = (valeur) => {
-  return valeur === "" ? "non spécifié" : valeur;
-};
-
-export { assignationsList, valeurNonSpecifie };
+export { assignationsList };
