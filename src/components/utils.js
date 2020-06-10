@@ -11,7 +11,7 @@ import ElementTd from "./elementTableau";
 const assignationsList = (nomAppli, assignations, filtre, couleurLigne) => {
   return assignations.map((assignation, keyMap) => {
     if (decompteInfosManquantes(assignation) === 0 && filtre === "manquantes") {
-      return <tr key={keyMap}></tr>;
+      return;
     } else {
       return (
         <tr
