@@ -69,35 +69,12 @@ export default class ApplicationsRespManquantes extends Component {
   }
 
   applisList(monBouton) {
-    let liste = this.state.applis.map(function (currentApp, keyMap) {
-      return (
-        <table className="table table-striped" style={{ marginTop: 10 }}>
-          <thead>
-            <tr>
-              <th>Personne</th>
-              <th>ID Personne</th>
-              <th>Structure</th>
-              <th>ID Structure</th>
-              <th>Role</th>
-              <th>ID Role</th>
-            </tr>
-          </thead>
-          <tr key={currentApp.id}>
-            <td className="label-gras-mgl5" colSpan="2">
-              #{keyMap + 1}&nbsp;
-              {currentApp.app[0].LibelleCourt}
-            </td>
-            <td className="centrage-table label-gras-mgl5">
-              id=
-              {currentApp.id}
-            </td>
-            <td className="centrage-table label-gras-mgl5" colSpan="3">
-              Global_id=
-              {currentApp.global_id}
-            </td>
-          </tr>
-          {assignationsList(currentApp.assignations, monBouton)}
-        </table>
+    let liste = this.state.applis.map(function (currentApp, key) {
+      return assignationsList(
+        currentApp.app[0].LibelleCourt,
+        currentApp.assignations,
+        monBouton,
+        key
       );
     });
 
@@ -115,7 +92,19 @@ export default class ApplicationsRespManquantes extends Component {
             changeBouton={this.changeBouton}
           />
         </div>
-        <table className="table table-striped">
+        {/* <table className="table table-striped"> */}
+        <table className="table">
+          <thead>
+            <tr>
+              <th>Appli</th>
+              <th>Personne</th>
+              <th>ID Personne</th>
+              <th>Structure</th>
+              <th>ID Structure</th>
+              <th>Role</th>
+              <th>ID Role</th>
+            </tr>
+          </thead>
           <tbody>{this.applisList(this.state.bouton)}</tbody>
         </table>
       </div>
