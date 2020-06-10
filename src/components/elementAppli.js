@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { valeurNonSpecifie } from "./fonctions";
 
 export default class ElementAppli extends Component {
   render() {
@@ -11,7 +10,7 @@ export default class ElementAppli extends Component {
             this.props.valeur === "" ? "cadre valeur-manquante" : "cadre"
           }
         >
-          {valeurNonSpecifie(this.props.valeur)}
+          {this.props.valeur === "" ? "non spécifié" : this.props.valeur}
         </div>
       </div>
     );

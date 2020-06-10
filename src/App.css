@@ -187,3 +187,11 @@ th {
   background-color: var(--rougeSg);
   color: var(--accomSg);
 }
+
+.white-line {
+  background-color: white;
+}
+
+.grey-line {
+  background-color: #f2f2f2;
+}

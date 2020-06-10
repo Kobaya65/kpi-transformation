@@ -1,5 +1,5 @@
 import React from "react";
-import ElementTd from "../components/elementTableau";
+import ElementTd from "./elementTableau";
 
 /**
  * Retourne une ligne de tableau composée des six informations unitaires
@@ -8,13 +8,17 @@ import ElementTd from "../components/elementTableau";
  * @param {*} assignations tableau des assignations d'une application
  * @param {*} filtre       "toutes" ou "manquantes"
  */
-const assignationsList = (assignations, filtre) => {
+const assignationsList = (nomAppli, assignations, filtre, couleurLigne) => {
   return assignations.map((assignation, keyMap) => {
     if (decompteInfosManquantes(assignation) === 0 && filtre === "manquantes") {
-      return <tr key={keyMap}></tr>;
+      return;
     } else {
       return (
-        <tr key={keyMap}>
+        <tr
+          className={couleurLigne % 2 === 0 ? "white-line" : "grey-line"}
+          key={keyMap}
+        >
+          <ElementTd elem={nomAppli} />
           <ElementTd elem={assignation.personne} />
           <ElementTd elem={assignation.id_personne} />
           <ElementTd elem={assignation.structure} />
@@ -45,16 +49,4 @@ const decompteInfosManquantes = (assign) => {
   return nbMissing;
 };
 
-/**
- * Renvoie "non spécifié" si le paramètre valeur est une chaîne vide "",
- * sinon renvoie valeur
- * -> mis en place pour obtenir des "cases" non vides, sinon elles sont très étroites verticalement.
- * -> la classe css associée valeur-manquante permet de mettre en relief une information manquante.
- *
- * @param {*} valeur
- */
-const valeurNonSpecifie = (valeur) => {
-  return valeur === "" ? "non spécifié" : valeur;
-};
-
-export { assignationsList, valeurNonSpecifie };
+export { assignationsList };
