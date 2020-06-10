@@ -8,13 +8,17 @@ import ElementTd from "./elementTableau";
  * @param {*} assignations tableau des assignations d'une application
  * @param {*} filtre       "toutes" ou "manquantes"
  */
-const assignationsList = (assignations, filtre) => {
+const assignationsList = (nomAppli, assignations, filtre, couleurLigne) => {
   return assignations.map((assignation, keyMap) => {
     if (decompteInfosManquantes(assignation) === 0 && filtre === "manquantes") {
       return <tr key={keyMap}></tr>;
     } else {
       return (
-        <tr key={keyMap}>
+        <tr
+          className={couleurLigne % 2 === 0 ? "white-line" : "grey-line"}
+          key={keyMap}
+        >
+          <ElementTd elem={nomAppli} />
           <ElementTd elem={assignation.personne} />
           <ElementTd elem={assignation.id_personne} />
           <ElementTd elem={assignation.structure} />
