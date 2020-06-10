@@ -10,7 +10,7 @@ import ApplicationsRespManquantes from "../containers/applicationsRespManquantes
 import StatParStatut from "../containers/statParStatut";
 import StatParType from "../containers/statParType";
 import StatEvolutionAppliValide from "../containers/statEvolutionAppliValide";
-import Desole from "./desole";
+import Sorry from "./sorry";
 
 const MyRoutes = () => {
   return (
@@ -45,8 +45,8 @@ const MyRoutes = () => {
         />
 
         {/* menu Administration */}
-        <Route exact path="/creationUtilisateur" component={Desole} />
-        <Route exact path="/modifMotDePasse" component={Desole} />
+        <Route exact path="/creationUtilisateur" component={Sorry} />
+        <Route exact path="/modifMotDePasse" component={Sorry} />
       </Switch>
     </div>
   );

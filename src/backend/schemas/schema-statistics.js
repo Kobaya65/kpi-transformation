@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-let statistiquesSchema = new Schema(
+let statisticsSchema = new Schema(
   {
     NomMesure: String,
     Périmètre: String,
@@ -13,4 +13,4 @@ let statistiquesSchema = new Schema(
   }
 );
 
-module.exports = mongoose.model("statistiques", statistiquesSchema);
+module.exports = mongoose.model("statistics", statisticsSchema);

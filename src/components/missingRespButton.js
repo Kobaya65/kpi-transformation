@@ -2,22 +2,22 @@ import React, { Component } from "react";
 
 /**
  *
- * @param {*} props etat : statut du bouton ("toutes" ou "manquantes")
+ * @param {*} props state : statut du bouton ("toutes" ou "manquantes")
  */
-export default class Bouton extends Component {
+export default class MissingRespButton extends Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange() {
-    this.props.changeBouton(
-      this.props.etat === "toutes" ? "manquantes" : "toutes"
+    this.props.changeButton(
+      this.props.state === "toutes" ? "manquantes" : "toutes"
     );
   }
 
   render() {
-    const boutonStyle = {
+    const buttonStyle = {
       border: "2px solid black",
       lineHeight: "2.5",
       padding: "0 5px 5px",
@@ -30,16 +30,16 @@ export default class Bouton extends Component {
 
     return (
       <button
-        style={boutonStyle}
+        style={buttonStyle}
         type="button"
         onClick={() => this.handleChange()}
         title={
-          this.props.etat === "toutes"
+          this.props.state === "toutes"
             ? "toutes les responsabilités"
             : "les responsablités manquantes"
         }
       >
-        {this.props.etat}
+        {this.props.state}
       </button>
     );
   }

@@ -1,14 +1,14 @@
 import React from "react";
 
-const Desole = () => {
+const Sorry = () => {
   return (
     <div>
       <br />
-      <h3 className="centrage-table">
+      <h3 className="center-table">
         Désolé, cette page n'est pas encore prête !
       </h3>
       <br />
-      <p className="centrage-table">
+      <p className="center-table">
         Revenez une autre
         fois&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:-)
       </p>
@@ -16,4 +16,4 @@ const Desole = () => {
   );
 };
 
-export default Desole;
+export default Sorry;

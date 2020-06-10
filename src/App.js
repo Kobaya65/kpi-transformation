@@ -14,7 +14,7 @@ class App extends Component {
         <TheMenu />
         <MyRoutes />
 
-        <footer className="footer charte-graphique-sg">
+        <footer className="footer graph-chart-sg">
           <p className="center-v">Pied de page</p>
         </footer>
       </Router>

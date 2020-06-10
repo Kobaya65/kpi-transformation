@@ -9,7 +9,7 @@ import study from "../images/search.svg";
 import install from "../images/grid.svg";
 import alert from "../images/alert-triangle.svg";
 
-const EtatAppli = (props) => {
+const AppliState = (props) => {
   let imageLogo;
 
   switch (props.etat) {
@@ -40,4 +40,4 @@ const EtatAppli = (props) => {
   );
 };
 
-export default EtatAppli;
+export default AppliState;

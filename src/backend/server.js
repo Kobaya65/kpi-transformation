@@ -10,7 +10,7 @@ const PORT_MONGODB = 27017;
 
 const ApplicationsModel = require("./schemas/schema-applications");
 const ApplicationsRespModel = require("./schemas/schema-applicationsResp");
-const StatistiquesModel = require("./schemas/schema-statistiques");
+const StatisticsModel = require("./schemas/schema-statistics");
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -45,7 +45,7 @@ router.route("/applications/:_id").get(function (req, res) {
 });
 
 router.route("/applicationsParFiltre").get(function (req, res) {
-  const filtre = {
+  const filter = {
     // CurrentState: /^((?!(En prod)).)*$/, // ne contient pas En prod
     // CurrentState: /en prod/i, // contient 'en prod', insensible à la casse
     // Authentification: "Par RTFE", // Authentification = "Par RTFE"
@@ -57,7 +57,7 @@ router.route("/applicationsParFiltre").get(function (req, res) {
     },
   };
 
-  ApplicationsModel.find(filtre, function (err, applications) {
+  ApplicationsModel.find(filter, function (err, applications) {
     res.json(applications);
   });
 });
@@ -95,7 +95,7 @@ router.route("/applicationsResp/:_id").get(function (req, res) {
 });
 
 router.route("/respManquantes").get(function (req, res) {
-  const filtre = {
+  const filter = {
     $or: [
       { "assignations.id_personne": "" },
       { "assignations.personne": "" },
@@ -107,7 +107,7 @@ router.route("/respManquantes").get(function (req, res) {
   };
 
   ApplicationsRespModel.aggregate()
-    .match(filtre)
+    .match(filter)
     .lookup({
       from: "applications",
       localField: "global_id",
@@ -122,7 +122,7 @@ router.route("/respManquantes").get(function (req, res) {
 
 /* collection statistiques */
 router.route("/statEvolutionAppliValide").get(function (req, res) {
-  StatistiquesModel.aggregate()
+  StatisticsModel.aggregate()
     .match({ NomMesure: "ApplicationsValidées" })
     .sort("Périmètre DateMesure")
     .exec(function (err, result) {

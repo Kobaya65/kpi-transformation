@@ -2,22 +2,22 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-import BandeauTitre from "../components/bandeau-titre";
+import HeadBand from "../components/headband";
 
 export default class ApplicationsResp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      chemin: props.match.url,
+      url: props.match.url,
       applis: [],
       nbItems: 0,
-      titreBandeau: "",
+      title: "",
     };
   }
 
   componentDidMount() {
     axios
-      .get("http://localhost:4000" + this.state.chemin)
+      .get("http://localhost:4000" + this.state.url)
       .then((response) => {
         this.setState({ applis: response.data });
         this.setState({ nbItems: response.data.length });
@@ -26,7 +26,7 @@ export default class ApplicationsResp extends Component {
           this.state.nbItems > 1 ? "s" : ""
         }`;
         this.setState({
-          titreBandeau: `Applications et leurs responsabilités ( ${applications} )`,
+          title: `Applications et leurs responsabilités ( ${applications} )`,
         });
       })
       .catch(function (error) {
@@ -38,13 +38,13 @@ export default class ApplicationsResp extends Component {
     let liste = this.state.applis.map(function (currentApp, keyMap) {
       return (
         <tr key={currentApp._id}>
-          <td className="centrage-table">{keyMap + 1}</td>
-          <td className="centrage-table">
+          <td className="center-table">{keyMap + 1}</td>
+          <td className="center-table">
             <Link to={`/applicationsResp/${currentApp._id}`}>
               {currentApp.app[0].LibelleCourt}
             </Link>
           </td>
-          <td className="centrage-table">
+          <td className="center-table">
             <Link to={`/applicationsResp/${currentApp._id}`}>
               {currentApp.global_id}
             </Link>
@@ -58,10 +58,7 @@ export default class ApplicationsResp extends Component {
   render() {
     return (
       <div className="container-fluid">
-        <BandeauTitre
-          titre={this.state.titreBandeau}
-          appelant={this.state.chemin}
-        />
+        <HeadBand title={this.state.title} appelant={this.state.url} />
         <table className="table table-striped">
           <thead>
             <tr>

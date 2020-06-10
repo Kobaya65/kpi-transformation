@@ -2,23 +2,23 @@ import React, { Component } from "react";
 // import axios from "axios";
 // import Chart from "chart.js";
 
-import BandeauTitre from "../components/bandeau-titre";
+import HeadBand from "../components/headband";
 
 export default class StatParStatut extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      chemin: this.props.match.url,
+      url: this.props.match.url,
       appli: {},
       assignations: [],
-      libelleCourt: "",
+      shortName: "",
     };
   }
 
   render() {
     return (
       <div className="container-fluid">
-        <BandeauTitre titre={"Répartition des applications par statut"} />
+        <HeadBand title={"Répartition des applications par statut"} />
         <div className="row"></div>
       </div>
     );

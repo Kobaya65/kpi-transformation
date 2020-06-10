@@ -1,24 +1,29 @@
 import React from "react";
-import ElementTd from "./elementTableau";
+import ElementTd from "./elementTd";
 
 /**
  * Retourne une ligne de tableau composée des six informations unitaires
  * des assignations d'une application
  *
  * @param {*} assignations tableau des assignations d'une application
- * @param {*} filtre       "toutes" ou "manquantes"
+ * @param {*} filter       "toutes" ou "manquantes"
  */
-const assignationsList = (nomAppli, assignations, filtre, couleurLigne) => {
+const assignationsList = (appliName, assignations, filter, lineColor) => {
   return assignations.map((assignation, keyMap) => {
-    if (decompteInfosManquantes(assignation) === 0 && filtre === "manquantes") {
+    let classN;
+
+    if (decompteInfosManquantes(assignation) === 0 && filter === "manquantes") {
       return null;
     } else {
+      if (appliName) {
+        classN = lineColor % 2 === 0 ? "white-line" : "grey-line";
+      } else {
+        classN = "table-striped";
+      }
+
       return (
-        <tr
-          className={couleurLigne % 2 === 0 ? "white-line" : "grey-line"}
-          key={keyMap}
-        >
-          <ElementTd elem={nomAppli} />
+        <tr className={classN} key={keyMap}>
+          {appliName ? <ElementTd elem={appliName} /> : null}
           <ElementTd elem={assignation.personne} />
           <ElementTd elem={assignation.id_personne} />
           <ElementTd elem={assignation.structure} />
