@@ -14,7 +14,7 @@
   font-size: 26px;
 }
 
-.charte-graphique-sg {
+.graph-chart-sg {
   background-color: black;
   color: var(--rougeSg); /* rouge SG*/
   border-color: var(--rougeSg); /* rouge SG*/
@@ -47,7 +47,7 @@
   height: 2rem;
 }
 
-.bandeau-titre {
+.headband {
   text-align: center;
   background-color: #888;
   color: #fff;
@@ -63,7 +63,7 @@
   border: 3px solid var(--rougeSg);
 }
 
-.centrer-image {
+.center-image {
   display: flex;
   justify-content: center; /* horizontal*/
 }
@@ -142,11 +142,11 @@ th {
   text-align: center !important;
 }
 
-.centrage-table {
+.center-table {
   text-align: center;
 }
 
-.bord-rouge {
+.border-red {
   border-color: var(--rougeSg) !important;
   border-style: dashed !important;
   border-width: 2px !important;
@@ -161,18 +161,18 @@ th {
 }
 
 /* label des colonnes de données */
-.label-gras {
+.label-bold {
   font-weight: bold;
   margin-bottom: 2px !important;
 }
 
-.label-gras-mgl5 {
+.label-bold-mgl5 {
   font-weight: bold;
   margin-bottom: 2px !important;
   margin-left: 5px;
 }
 
-.cadre {
+.frame {
   padding: 2px 5px;
   border-style: solid;
   border-width: 2px 1px 1px 2px;
@@ -183,7 +183,7 @@ th {
   border-bottom-color: lightgray;
 }
 
-.valeur-manquante {
+.mising-value {
   background-color: var(--rougeSg);
   color: var(--accomSg);
 }

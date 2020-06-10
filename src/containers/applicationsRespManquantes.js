@@ -1,26 +1,26 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-import BandeauTitre from "../components/bandeau-titre";
 import { assignationsList } from "../components/utils";
-import Bouton from "../components/bouton";
+import HeadBand from "../components/headband";
+import MissingRespButton from "../components/missingRespButton";
 
 export default class ApplicationsRespManquantes extends Component {
   constructor(props) {
     super(props);
-    this.changeBouton = this.changeBouton.bind(this);
+    this.changeButton = this.changeButton.bind(this);
 
     this.state = {
       applis: [],
       nbItems: 0,
-      titreBandeau: "",
-      nbCellulesVides: 0,
-      bouton: "toutes",
+      title: "",
+      nbEmptyCells: 0,
+      buttonValue: "toutes",
     };
   }
 
-  changeBouton(etat) {
-    this.setState({ bouton: etat });
+  changeButton(stateButton) {
+    this.setState({ buttonValue: stateButton });
   }
 
   componentDidMount() {
@@ -31,16 +31,16 @@ export default class ApplicationsRespManquantes extends Component {
         this.setState({ nbItems: response.data.length });
         // appel fx pour compter le nombre d'infos manquantes
         const vides = this.compteCellulesVides();
-        this.setState({ nbCellulesVides: vides });
+        this.setState({ nbEmptyCells: vides });
 
         let applications = `${this.state.nbItems} application${
           this.state.nbItems > 1 ? "s" : ""
         }`;
-        let infos = `, ${this.state.nbCellulesVides} info${
-          this.state.nbCellulesVides > 1 ? "s" : ""
-        } manquante${this.state.nbCellulesVides > 1 ? "s" : ""}`;
+        let infos = `, ${this.state.nbEmptyCells} info${
+          this.state.nbEmptyCells > 1 ? "s" : ""
+        } manquante${this.state.nbEmptyCells > 1 ? "s" : ""}`;
         this.setState({
-          titreBandeau: `Applications avec responsabilités manquantes ( ${applications}${infos} )`,
+          title: `Applications avec responsabilités manquantes ( ${applications}${infos} )`,
         });
       })
       .catch(function (error) {
@@ -53,46 +53,45 @@ export default class ApplicationsRespManquantes extends Component {
    * @return  nombre d'infos manquantes pour toutes les applis
    */
   compteCellulesVides() {
-    let nbCells = 0;
+    let nbEmptyCells = 0;
 
     this.state.applis.forEach((appli) => {
       for (let assign = 0; assign < appli.assignations.length; assign++) {
-        if (appli.assignations[assign].personne === "") nbCells++;
-        if (appli.assignations[assign].id_personne === "") nbCells++;
-        if (appli.assignations[assign].structure === "") nbCells++;
-        if (appli.assignations[assign].id_structure === "") nbCells++;
-        if (appli.assignations[assign].role === "") nbCells++;
-        if (appli.assignations[assign].id_role === "") nbCells++;
+        if (appli.assignations[assign].personne === "") nbEmptyCells++;
+        if (appli.assignations[assign].id_personne === "") nbEmptyCells++;
+        if (appli.assignations[assign].structure === "") nbEmptyCells++;
+        if (appli.assignations[assign].id_structure === "") nbEmptyCells++;
+        if (appli.assignations[assign].role === "") nbEmptyCells++;
+        if (appli.assignations[assign].id_role === "") nbEmptyCells++;
       }
     });
-    return nbCells;
+    return nbEmptyCells;
   }
 
-  applisList(monBouton) {
-    let liste = this.state.applis.map(function (currentApp, key) {
+  applisList(myButton) {
+    let theList = this.state.applis.map(function (currentApp, key) {
       return assignationsList(
         currentApp.app[0].LibelleCourt,
         currentApp.assignations,
-        monBouton,
+        myButton,
         key
       );
     });
 
-    return liste;
+    return theList;
   }
 
   render() {
     return (
       <div className="container-fluid">
         <div className="d-flex">
-          <BandeauTitre titre={this.state.titreBandeau} />
-          <Bouton
+          <HeadBand title={this.state.title} />
+          <MissingRespButton
             className="flex-lg-shrink-1"
-            etat={this.state.bouton}
-            changeBouton={this.changeBouton}
+            state={this.state.buttonValue}
+            changeButton={this.changeButton}
           />
         </div>
-        {/* <table className="table table-striped"> */}
         <table className="table">
           <thead>
             <tr>
@@ -105,7 +104,7 @@ export default class ApplicationsRespManquantes extends Component {
               <th>ID Role</th>
             </tr>
           </thead>
-          <tbody>{this.applisList(this.state.bouton)}</tbody>
+          <tbody>{this.applisList(this.state.buttonValue)}</tbody>
         </table>
       </div>
     );

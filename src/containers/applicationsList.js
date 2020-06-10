@@ -3,27 +3,27 @@ import { Route, Link } from "react-router-dom";
 import axios from "axios";
 
 import applicationById from "./applicationById";
-import BandeauTitre from "../components/bandeau-titre";
-import EtatAppli from "../components/etatAppli";
+import AppliState from "../components/appliState";
+import HeadBand from "../components/headband";
 
 export default class ApplicationsList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      chemin: props.match.path,
+      url: props.match.path,
       applis: [],
       nbItems: 0,
-      titreBandeau: "",
+      title: "",
     };
   }
 
   componentDidMount() {
     axios
-      .get("http://localhost:4000" + this.state.chemin)
+      .get("http://localhost:4000" + this.state.url)
       .then((response) => {
         this.setState({ applis: response.data });
         this.setState({ nbItems: response.data.length });
-        this.setState({ titreBandeau: `Applications (${this.state.nbItems})` });
+        this.setState({ title: `Applications (${this.state.nbItems})` });
       })
       .catch(function (error) {
         console.log(error);
@@ -34,7 +34,7 @@ export default class ApplicationsList extends Component {
     return this.state.applis.map(function (currentApp, keyMap) {
       return (
         <tr key={currentApp._id}>
-          <td className="centrage-table">{keyMap + 1}</td>
+          <td className="center-table">{keyMap + 1}</td>
           <td>
             <Link to={`/applications/${currentApp._id}`}>
               {currentApp.LibelleCourt}
@@ -42,8 +42,8 @@ export default class ApplicationsList extends Component {
           </td>
           <td>{currentApp.NomCourt}</td>
           <td>{currentApp.Commentaire}</td>
-          <td className="centrage-table">
-            <EtatAppli etat={currentApp.CurrentState} />
+          <td className="center-table">
+            <AppliState etat={currentApp.CurrentState} />
           </td>
         </tr>
       );
@@ -53,7 +53,7 @@ export default class ApplicationsList extends Component {
   render() {
     return (
       <div className="container-fluid">
-        <BandeauTitre titre={this.state.titreBandeau} />
+        <HeadBand title={this.state.title} />
         <table className="table table-striped">
           <thead>
             <tr>

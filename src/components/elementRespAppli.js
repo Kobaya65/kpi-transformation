@@ -2,9 +2,9 @@ import React from "react";
 
 const ElementRespAppli = (props) => {
   return (
-    <div className="col cadre" style={{ margin: "10px" }}>
-      <p className="label-gras">{props.label}</p>
-      <div>{props.valeur}</div>
+    <div className="col frame" style={{ margin: "10px" }}>
+      <p className="label-bold">{props.label}</p>
+      <div>{props.value}</div>
     </div>
   );
 };

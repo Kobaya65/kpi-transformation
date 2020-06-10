@@ -1,23 +1,23 @@
 import React, { Component } from "react";
 // import axios from "axios";
 
-import BandeauTitre from "../components/bandeau-titre";
+import HeadBand from "../components/headband";
 
 export default class StatEvolutionAppliValide extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      chemin: this.props.match.url,
+      url: this.props.match.url,
       appli: {},
       assignations: [],
-      libelleCourt: "",
+      shortName: "",
     };
   }
 
   render() {
     return (
       <div className="container-fluid">
-        <BandeauTitre titre={"Évolution des applications validées"} />
+        <HeadBand title={"Évolution des applications validées"} />
         <div className="row"></div>
       </div>
     );

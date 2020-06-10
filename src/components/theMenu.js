@@ -3,7 +3,7 @@ import MyLink from "./link";
 
 const TheMenu = () => {
   return (
-    <div className="navbar navbar-expand-sm sticky-top app-header charte-graphique-sg double-border">
+    <div className="navbar navbar-expand-sm sticky-top app-header graph-chart-sg double-border">
       <a className="navbar-brand" href="/">
         <img
           src={`${process.env.PUBLIC_URL}/images/soc102c.png`}

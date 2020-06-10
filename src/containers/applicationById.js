@@ -1,15 +1,14 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-import BandeauTitre from "../components/bandeau-titre";
-import EtatAppli from "../components/etatAppli";
+import AppliState from "../components/appliState";
 import ElementAppli from "../components/elementAppli";
+import HeadBand from "../components/headband";
 
 export default class ApplicationById extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      chemin: this.props.match.url,
       url: this.props.match.url,
       id: this.props.match.params.id,
       appli: {},
@@ -18,7 +17,7 @@ export default class ApplicationById extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:4000" + this.state.chemin)
+      .get("http://localhost:4000" + this.state.url)
       .then((response) => {
         this.setState({ appli: response.data });
       })
@@ -43,27 +42,25 @@ export default class ApplicationById extends Component {
   render() {
     return (
       <div className="container-fluid">
-        <BandeauTitre
-          titre={`Application [${this.state.appli.LibelleCourt}]`}
-        />
+        <HeadBand title={`Application [${this.state.appli.LibelleCourt}]`} />
         <div className="row">
           <ElementAppli
             label="Libellé Court"
-            valeur={this.state.appli.LibelleCourt}
+            value={this.state.appli.LibelleCourt}
           />
-          <ElementAppli label="Nom Court" valeur={this.state.appli.NomCourt} />
+          <ElementAppli label="Nom Court" value={this.state.appli.NomCourt} />
         </div>
 
         <div className="row">
-          <ElementAppli label="GlobalID" valeur={this.state.appli.GlobalID} />
+          <ElementAppli label="GlobalID" value={this.state.appli.GlobalID} />
           <ElementAppli
             label="TechnicalIdHexa"
-            valeur={this.state.appli.TechnicalIdHexa}
+            value={this.state.appli.TechnicalIdHexa}
           />
           <div className="col">
-            <p className="label-gras-mgl5 centrer-image">État actuel</p>
-            <div className="centrer-image cadre">
-              <EtatAppli etat={this.state.appli.CurrentState} />
+            <p className="label-bold-mgl5 center-image">État actuel</p>
+            <div className="center-image frame">
+              <AppliState etat={this.state.appli.CurrentState} />
             </div>
           </div>
         </div>
@@ -71,28 +68,25 @@ export default class ApplicationById extends Component {
         <div className="row">
           <ElementAppli
             label="Commentaire"
-            valeur={this.state.appli.Commentaire}
+            value={this.state.appli.Commentaire}
           />
         </div>
         <div className="row">
           <ElementAppli
             label="Authentification"
-            valeur={this.state.appli.Authentification}
+            value={this.state.appli.Authentification}
           />
-          <ElementAppli
-            label="Type Appli"
-            valeur={this.state.appli.TypeAppli}
-          />
+          <ElementAppli label="Type Appli" value={this.state.appli.TypeAppli} />
         </div>
 
         <div className="row">
           <ElementAppli
             label="Date Début Prod"
-            valeur={this.state.appli.DateDebutProd}
+            value={this.state.appli.DateDebutProd}
           />
           <ElementAppli
             label="Date Fin Prod"
-            valeur={this.state.appli.DateFinProd}
+            value={this.state.appli.DateFinProd}
           />
         </div>
 

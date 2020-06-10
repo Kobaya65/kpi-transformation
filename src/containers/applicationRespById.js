@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-import BandeauTitre from "../components/bandeau-titre";
+import HeadBand from "../components/headband";
 import { assignationsList } from "../components/utils";
 import ElementRespAppli from "../components/elementRespAppli";
 
@@ -9,20 +9,20 @@ export default class ApplicationRespById extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      chemin: this.props.match.url,
+      url: this.props.match.url,
       appli: {},
       assignations: [],
-      libelleCourt: "",
+      shortName: "",
     };
   }
 
   componentDidMount() {
     axios
-      .get("http://localhost:4000" + this.state.chemin)
+      .get("http://localhost:4000" + this.state.url)
       .then((response) => {
         this.setState({ appli: response.data[0] });
         this.setState({ assignations: response.data[0].assignations });
-        this.setState({ libelleCourt: response.data[0].app[0].LibelleCourt });
+        this.setState({ shortName: response.data[0].app[0].LibelleCourt });
       })
       .catch(function (error) {
         console.log(error);
@@ -32,16 +32,13 @@ export default class ApplicationRespById extends Component {
   render() {
     return (
       <div className="container-fluid">
-        <BandeauTitre
-          titre={"Application et ses responsabilités"}
-          bouton="toutes"
-        />
+        <HeadBand title={"Application et ses responsabilités"} />
         <div className="row">
-          <ElementRespAppli label="Nom" valeur={this.state.libelleCourt} />
-          <ElementRespAppli label="ID" valeur={this.state.appli.id} />
+          <ElementRespAppli label="Nom" value={this.state.shortName} />
+          <ElementRespAppli label="ID" value={this.state.appli.id} />
           <ElementRespAppli
             label="Global_id"
-            valeur={this.state.appli.global_id}
+            value={this.state.appli.global_id}
           />
         </div>
 
@@ -56,7 +53,9 @@ export default class ApplicationRespById extends Component {
               <th>ID Role</th>
             </tr>
           </thead>
-          <tbody>{assignationsList(this.state.assignations, "toutes")}</tbody>
+          <tbody>
+            {assignationsList("", this.state.assignations, "toutes", 1)}
+          </tbody>
         </table>
       </div>
     );

@@ -2,7 +2,7 @@ import React from "react";
 
 const ElementTd = (props) => {
   return (
-    <td className={props.elem === "" ? "bord-rouge" : ""}>{props.elem}</td>
+    <td className={props.elem === "" ? "border-red" : ""}>{props.elem}</td>
   );
 };
 
