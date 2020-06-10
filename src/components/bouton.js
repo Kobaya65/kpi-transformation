@@ -23,13 +23,9 @@ export default class Bouton extends Component {
       padding: "0 5px 5px",
       fontSize: "1rem",
       textAlign: "center",
-      color: "#fff",
+      color: "black",
       borderRadius: "10px",
-      backgroundColor: "var(--rougeSg)",
-      backgroundImage:
-        "linear-gradient(to top left, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2) 30%, rgba(0, 0, 0, 0))",
-      boxShadow:
-        "inset 2px 2px 3px rgba(255, 255, 255, .6), inset - 2px - 2px 3px rgba( 0, 0, 0, .6 )",
+      backgroundColor: "var(--accomSg)",
     };
 
     return (
@@ -39,7 +35,7 @@ export default class Bouton extends Component {
         onClick={() => this.handleChange()}
         title={
           this.props.etat === "toutes"
-            ? "toutes les ersponsabilités"
+            ? "toutes les responsabilités"
             : "les responsablités manquantes"
         }
       >
