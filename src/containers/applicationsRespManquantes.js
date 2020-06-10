@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 
 import BandeauTitre from "../components/bandeau-titre";
-import { assignationsList } from "../components/fonctions";
+import { assignationsList } from "../components/utils";
 import Bouton from "../components/bouton";
 
 export default class ApplicationsRespManquantes extends Component {
