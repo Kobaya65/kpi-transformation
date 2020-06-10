@@ -1,5 +1,5 @@
 import React from "react";
-import ElementTd from "../components/elementTableau";
+import ElementTd from "./elementTableau";
 
 /**
  * Retourne une ligne de tableau composée des six informations unitaires
