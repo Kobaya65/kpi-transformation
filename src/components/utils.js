@@ -15,9 +15,14 @@ const assignationsList = (appliName, assignations, filter, lineColor) => {
     if (decompteInfosManquantes(assignation) === 0 && filter === "manquantes") {
       return null;
     } else {
+      // appel depuis respManquantes
+      // appliName est renseigné, on alterne les couleurs
+      // "white-line" et "grey-line par appli
       if (appliName) {
         classN = lineColor % 2 === 0 ? "white-line" : "grey-line";
       } else {
+        // appel depuis applicationsResp
+        // sinon on alterne les couleurs par ligne
         classN = "table-striped";
       }
 
