@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-import { assignationsList } from "../components/utils";
 import HeadBand from "../components/headband";
+import { assignationsList } from "../components/utils";
 import MissingRespButton from "../components/missingRespButton";
 
 export default class ApplicationsRespManquantes extends Component {
