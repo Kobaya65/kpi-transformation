@@ -146,12 +146,6 @@ th {
   text-align: center;
 }
 
-.border-red {
-  border-color: var(--rougeSg) !important;
-  border-style: dashed !important;
-  border-width: 2px !important;
-}
-
 .table thead th {
   border-bottom: none !important;
 }
