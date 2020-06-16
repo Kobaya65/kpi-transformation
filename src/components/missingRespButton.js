@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 
 /**
+ * toggle button to switch between displaying all responsabilities
+ * and only the responsabilities for which there is some missing data
  *
  * @param {*} props state : statut du bouton ("toutes" ou "manquantes")
  */

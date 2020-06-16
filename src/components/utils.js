@@ -2,8 +2,8 @@ import React from "react";
 import ElementTd from "./elementTd";
 
 /**
- * Retourne une ligne de tableau composée des six informations unitaires
- * des assignations d'une application
+ * returns a line of table composed by the six unitary information
+ * of the assignations of one applicatino
  *
  * @param {*} assignations tableau des assignations d'une application
  * @param {*} filter       "toutes" ou "manquantes"

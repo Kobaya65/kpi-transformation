@@ -1,6 +1,6 @@
 import React from "react";
 
-// icônes issues de feathericons.com
+// icons from feathericons.com
 import activity from "../images/activity.svg";
 import decomm from "../images/x.svg";
 import closed from "../images/x-octagon.svg";

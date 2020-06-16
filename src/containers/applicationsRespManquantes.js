@@ -29,7 +29,6 @@ export default class ApplicationsRespManquantes extends Component {
       .then((response) => {
         this.setState({ applis: response.data });
         this.setState({ nbItems: response.data.length });
-        // appel fx pour compter le nombre d'infos manquantes
         const vides = this.compteCellulesVides();
         this.setState({ nbEmptyCells: vides });
 
@@ -49,8 +48,8 @@ export default class ApplicationsRespManquantes extends Component {
   }
 
   /**
-   * travaille sur le tableau state.applis
-   * @return  nombre d'infos manquantes pour toutes les applis
+   * works on state.applis table
+   * @return  return the number of missing information for all applications
    */
   compteCellulesVides() {
     let nbEmptyCells = 0;
