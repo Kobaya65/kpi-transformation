@@ -91,7 +91,7 @@ export default class ApplicationsRespManquantes extends Component {
             changeButton={this.changeButton}
           />
         </div>
-        <table className="table">
+        <table className="table" id="table-resp-manquantes">
           <thead>
             <tr>
               <th>Appli</th>
