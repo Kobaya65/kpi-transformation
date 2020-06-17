@@ -177,7 +177,7 @@ th {
   border-bottom-color: lightgray;
 }
 
-.mising-value {
+.missing-value {
   background-color: var(--rougeSg);
   color: var(--accomSg);
 }
