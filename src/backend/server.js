@@ -7,19 +7,43 @@ const ObjectId = mongoose.Types.ObjectId;
 const router = express.Router();
 const PORT = 4000;
 const PORT_MONGODB = 27017;
+const USER = "kpi-user";
+const PWD = "kpi-user+20200617";
+const APPLI = "kpi-transformation";
 
 const ApplicationsModel = require("./schemas/schema-applications");
 const ApplicationsRespModel = require("./schemas/schema-applicationsResp");
 const StatisticsModel = require("./schemas/schema-statistics");
+// const HandleError = require("../containers/errorHandler");
 
 app.use(cors());
 app.use(bodyParser.json());
 
-mongoose.connect(`mongodb://127.0.0.1:${PORT_MONGODB}/kpi-transformation`, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose
+  // .connect(`mongodb://localhost:${PORT_MONGODB}/${APPLI}`, {
+  // .connect(`mongodb://${USER}:${PWD}@localhost:${PORT_MONGODB}/${APPLI}`, {
+  //   useNewUrlParser: true,
+  //   useUnifiedTopology: true,
+  // })
+  // -->https://stackoverflow.com/questions/45576367/mongoose-connection-authentication-failed
+  .connect(`mongodb://localhost:${PORT_MONGODB}/${APPLI}`, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    auth: { authSource: "admin" },
+    user: USER,
+    pass: PWD,
+  })
+  .then(() => {
+    console.log("MongoDB connected !");
+  })
+  .catch((error) => {
+    console.log("Problème de connection à la base MongoDB !");
+    console.log(error);
+  });
+
 const connection = mongoose.connection;
+
+connection.on("error", (error) => console.log(error));
 
 connection.once("open", function () {
   console.log(
@@ -72,7 +96,8 @@ router.route("/applicationsResp").get(function (req, res) {
       as: "app",
     })
     .exec(function (err, result) {
-      if (err) return handleError(err);
+      // if (err) return HandleError(err);
+      if (err) return err;
       res.json(result);
     });
 });
@@ -115,7 +140,8 @@ router.route("/respManquantes").get(function (req, res) {
       as: "app",
     })
     .exec(function (err, result) {
-      if (err) return handleError(err);
+      // if (err) return HandleError(err);
+      if (err) return err;
       res.json(result);
     });
 });
@@ -126,7 +152,8 @@ router.route("/statEvolutionAppliValide").get(function (req, res) {
     .match({ NomMesure: "ApplicationsValidées" })
     .sort("Périmètre DateMesure")
     .exec(function (err, result) {
-      if (err) return handleError(err);
+      // if (err) return HandleError(err);
+      if (err) return err;
       res.json(result);
     });
 });
