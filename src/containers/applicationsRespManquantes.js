@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import ReactHTMLTableToExcel from "react-html-table-to-excel";
 
 import HeadBand from "../components/headband";
 import { assignationsList } from "../components/utils";
@@ -89,6 +90,14 @@ export default class ApplicationsRespManquantes extends Component {
             className="flex-lg-shrink-1"
             state={this.state.buttonValue}
             changeButton={this.changeButton}
+          />
+          <ReactHTMLTableToExcel
+            id="test-table-xls-button"
+            className="download-table-xls-button"
+            table="table-resp-manquantes"
+            filename="tablexls"
+            sheet="tablexls"
+            buttonText="Download as XLS"
           />
         </div>
         <table className="table" id="table-resp-manquantes">

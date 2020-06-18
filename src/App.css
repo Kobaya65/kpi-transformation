@@ -190,7 +190,17 @@ th {
   background-color: #f2f2f2;
 }
 
+#test-table-xls-button {
+  padding: 0 5px;
+  background-color: yellowgreen;
+  border-color: var(--rougeSg);
+  border-style: double;
+  border-radius: 10px;
+}
+
+/*******************************/
 /* initialement dans index.css */
+/*******************************/
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
