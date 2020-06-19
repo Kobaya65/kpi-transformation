@@ -34,7 +34,9 @@ mongoose
     pass: PWD,
   })
   .then(() => {
-    console.log("MongoDB connected !");
+    console.log(
+      `Connection to 'kpi-transformation' database established successfully on port ${PORT_MONGODB}`
+    );
   })
   .catch((error) => {
     console.log("Problème de connection à la base MongoDB !");
@@ -45,11 +47,11 @@ const connection = mongoose.connection;
 
 connection.on("error", (error) => console.log(error));
 
-connection.once("open", function () {
-  console.log(
-    `Connection to 'kpi-transformation' database established successfully on port ${PORT_MONGODB}`
-  );
-});
+// connection.once("open", function () {
+//   console.log(
+//     `Connection to 'kpi-transformation' database established successfully on port ${PORT_MONGODB}`
+//   );
+// });
 
 /* collection applications */
 router.route("/applications").get(function (req, res) {
