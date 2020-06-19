@@ -192,7 +192,8 @@ th {
 
 #test-table-xls-button {
   padding: 0 5px;
-  background-color: yellowgreen;
+  background-color: #217346;
+  color: white;
   border-color: var(--rougeSg);
   border-style: double;
   border-radius: 10px;
