@@ -97,7 +97,7 @@ export default class ApplicationsRespManquantes extends Component {
             table="table-resp-manquantes"
             filename="tablexls"
             sheet="tablexls"
-            buttonText="Download as XLS"
+            buttonText="Export Excel"
           />
         </div>
         <table className="table" id="table-resp-manquantes">
