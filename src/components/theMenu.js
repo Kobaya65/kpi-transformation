@@ -57,6 +57,10 @@ const TheMenu = () => {
                 nom="Application avec responsabilité manquante"
                 vers="/respManquantes"
               />
+              <MyLink
+                nom="Application avec cycle de vie manquant"
+                vers="/cycleVieManquant"
+              />
             </div>
           </li>
           <li className="nav-item dropdown">

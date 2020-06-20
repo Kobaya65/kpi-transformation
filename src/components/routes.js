@@ -26,7 +26,6 @@ const MyRoutes = () => {
           path="/applicationsParFiltre"
           component={ApplicationsList}
         />
-
         <Route path="/applications/:_id" component={ApplicationById} />
         <Route path="/applicationsResp/:_id" component={ApplicationRespById} />
         {/* menu Anomalies */}
@@ -35,6 +34,7 @@ const MyRoutes = () => {
           path="/respManquantes"
           component={ApplicationsRespManquantes}
         />
+        <Route exact path="/cycleVieManquant" component={ApplicationsList} />
         {/* menu Statistiques */}
         <Route exact path="/statParStatut" component={StatParStatut} />
         <Route exact path="/statParType" component={StatParType} />

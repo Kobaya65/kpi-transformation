@@ -148,6 +148,23 @@ router.route("/respManquantes").get(function (req, res) {
     });
 });
 
+router.route("/cycleVieManquant").get(function (req, res) {
+  // const filter = {
+  //   $or: [
+  //     { "CycleDeVie.name": "" },
+  //     { "CycleDeVie.startDate": "" },
+  //     { "CycleDeVie.endDate": "" },
+  //   ],
+  // };
+  const filter = {
+    "CycleDeVie.startDate": { $lte: new Date("1900-01-01") },
+  };
+
+  ApplicationsModel.find(filter, function (err, applications) {
+    res.json(applications);
+  });
+});
+
 /* collection statistiques */
 router.route("/statEvolutionAppliValide").get(function (req, res) {
   StatisticsModel.aggregate()
