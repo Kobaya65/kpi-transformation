@@ -199,6 +199,10 @@ th {
   border-radius: 10px;
 }
 
+h6 {
+  font-weight: bold !important;
+}
+
 /*******************************/
 /* initialement dans index.css */
 /*******************************/
