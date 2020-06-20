@@ -17,7 +17,7 @@ const assignationsList = (appliName, assignations, filter, lineColor) => {
     } else {
       // appel depuis respManquantes
       // appliName est renseigné, on alterne les couleurs
-      // "white-line" et "grey-line par appli
+      // "white-line" et "grey-line" par appli
       if (appliName) {
         classN = lineColor % 2 === 0 ? "white-line" : "grey-line";
       } else {
@@ -59,4 +59,8 @@ const decompteInfosManquantes = (assign) => {
   return nbMissing;
 };
 
-export { assignationsList };
+const titreConcepts = (nbConcepts) => {
+  return nbConcepts ? <h6>Concepts</h6> : null;
+};
+
+export { assignationsList, titreConcepts };
