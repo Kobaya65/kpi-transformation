@@ -3,24 +3,29 @@ import alert from "../images/alert-triangle.svg";
 
 /**
  * Display content of property or alert-triangle icon
- * if the property is an empty string
+ * if the property is an empty string or is null
  * @param {*} props elem texte de la propriété
  */
 const ElementTd = (props) => {
-  return props.elem === "" ? (
-    <td>
-      {/* <td style={{ textAlign: "center" }}> */}
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <img
-        src={alert}
-        title={"missing data"}
-        alt={"missing data"}
-        height={"30px"}
-      />
-    </td>
-  ) : (
-    <td>{props.elem}</td>
-  );
+  let element = {};
+
+  if (props.elem === "" || props.elem === null) {
+    element = (
+      <td>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <img
+          src={alert}
+          title="missing data"
+          alt="missing data"
+          height={"30px"}
+        />
+      </td>
+    );
+  } else {
+    element = <td>{props.elem}</td>;
+  }
+
+  return element;
 };
 
 export default ElementTd;
