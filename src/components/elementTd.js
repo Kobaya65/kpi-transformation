@@ -13,8 +13,8 @@ const ElementTd = (props) => {
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <img
         src={alert}
-        title={"missing data"}
-        alt={"missing data"}
+        title={"donnée manquante"}
+        alt={"donnée manquante"}
         height={"30px"}
       />
     </td>
