@@ -1,6 +1,8 @@
 import React from "react";
 import ElementTd from "./elementTd";
 
+import alert from "../images/alert-triangle.svg";
+
 /**
  * returns a line of table composed by the six unitary information
  * of the assignations of one applicatino
@@ -63,4 +65,24 @@ const titreConcepts = (nbConcepts) => {
   return nbConcepts ? <h6>Concepts</h6> : null;
 };
 
-export { assignationsList, titreConcepts };
+const nullOrDefaultDate = (date) => {
+  if (date === null)
+    return (
+      <td>
+        <img
+          src={alert}
+          title="mauvaise date"
+          alt="mauvaise date"
+          height={"30px"}
+        />
+      </td>
+    );
+  const sDate = new Date("1900-01-01T00:00:00.000Z");
+  if (date === sDate.toISOString()) {
+    return <td className="wrongDate">{date}</td>;
+  } else {
+    return <td>{date}</td>;
+  }
+};
+
+export { assignationsList, titreConcepts, nullOrDefaultDate };

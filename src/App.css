@@ -203,6 +203,10 @@ h6 {
   font-weight: bold !important;
 }
 
+.wrongDate {
+  color: var(--rougeSg);
+}
+
 /*******************************/
 /* initialement dans index.css */
 /*******************************/
