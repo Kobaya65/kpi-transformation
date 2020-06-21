@@ -4,7 +4,7 @@ import axios from "axios";
 import AppliState from "../components/appliState";
 import ElementAppli from "../components/elementAppli";
 import HeadBand from "../components/headband";
-import { titreConcepts } from "../components/utils";
+import { titreConcepts, nullOrDefaultDate } from "../components/utils";
 
 export default class ApplicationById extends Component {
   constructor(props) {
@@ -48,8 +48,8 @@ export default class ApplicationById extends Component {
         return (
           <tr key={key}>
             <td>{cycle.name}</td>
-            <td>{cycle.startDate}</td>
-            <td>{cycle.endDate}</td>
+            {nullOrDefaultDate(cycle.startDate)}
+            {nullOrDefaultDate(cycle.endDate)}
           </tr>
         );
       });
