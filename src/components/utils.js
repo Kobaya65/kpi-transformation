@@ -2,13 +2,36 @@ import React from "react";
 import ElementTd from "./elementTd";
 
 import alert from "../images/alert-triangle.svg";
+import AppliState from "./appliState";
+
+/**
+ * Returns a table row of lifecycle
+ *
+ * @param {*} libelle       name of the aplication
+ * @param {*} actualState   current state of the application
+ * @param {*} theLifeCycles table of lifecycles
+ * @param {*} key           line number used to display striped table
+ */
+const cyclesList = (libelle, actualState, theLifeCycles, key) => {
+  return theLifeCycles.map((lifeCycle, keyMap) => {
+    return (
+      <tr className={key % 2 === 0 ? "white-line" : "grey-line"} key={keyMap}>
+        <td>{libelle}</td>
+        <AppliState etat={actualState} />
+        <td>{lifeCycle.name}</td>
+        {nullOrDefaultDate(lifeCycle.startDate)}
+        {nullOrDefaultDate(lifeCycle.endDate)}
+      </tr>
+    );
+  });
+};
 
 /**
  * returns a line of table composed by the six unitary information
  * of the assignations of one applicatino
  *
- * @param {*} assignations tableau des assignations d'une application
- * @param {*} filter       "toutes" ou "manquantes"
+ * @param {*} assignations table of assignations for tha application
+ * @param {*} filter       "toutes" or "manquantes"
  */
 const assignationsList = (appliName, assignations, filter, lineColor) => {
   return assignations.map((assignation, keyMap) => {
@@ -17,14 +40,13 @@ const assignationsList = (appliName, assignations, filter, lineColor) => {
     if (decompteInfosManquantes(assignation) === 0 && filter === "manquantes") {
       return null;
     } else {
-      // appel depuis respManquantes
-      // appliName est renseigné, on alterne les couleurs
-      // "white-line" et "grey-line" par appli
+      // if appliName filled, call from respManquantes, we alternate colours
+      // "white-line" et "grey-line" by application
       if (appliName) {
         classN = lineColor % 2 === 0 ? "white-line" : "grey-line";
       } else {
-        // appel depuis applicationsResp
-        // sinon on alterne les couleurs par ligne
+        // call from applicationsResp
+        // we alternate  culours by line
         classN = "table-striped";
       }
 
@@ -44,8 +66,8 @@ const assignationsList = (appliName, assignations, filter, lineColor) => {
 };
 
 /**
- * Retourne le nombre d'informations unitaires manquantes
- * dans l'objet assignation qui en contient six
+ * Returns number of missing unitary informations
+ * in the object assignation which contains six
  * @param {*} assign assignation
  */
 const decompteInfosManquantes = (assign) => {
@@ -95,4 +117,4 @@ const nullOrDefaultDate = (date) => {
   }
 };
 
-export { assignationsList, titreConcepts, nullOrDefaultDate };
+export { assignationsList, titreConcepts, nullOrDefaultDate, cyclesList };
