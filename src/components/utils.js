@@ -66,7 +66,7 @@ const titreConcepts = (nbConcepts) => {
 };
 
 const nullOrDefaultDate = (date) => {
-  if (date === null)
+  if (date === null) {
     return (
       <td>
         <img
@@ -77,8 +77,18 @@ const nullOrDefaultDate = (date) => {
         />
       </td>
     );
-  const sDate = new Date("1900-01-01T00:00:00.000Z");
-  if (date === sDate.toISOString()) {
+  }
+
+  const sdate = date.split("T");
+  date =
+    sdate[0].substr(8, 2) +
+    "/" +
+    sdate[0].substr(5, 2) +
+    "/" +
+    sdate[0].substr(0, 4);
+
+  const sDate = "01/01/1900";
+  if (date === sDate) {
     return <td className="wrongDate">{date}</td>;
   } else {
     return <td>{date}</td>;
