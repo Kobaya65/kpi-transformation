@@ -149,15 +149,16 @@ router.route("/respManquantes").get(function (req, res) {
 });
 
 router.route("/cycleVieManquant").get(function (req, res) {
-  // const filter = {
-  //   $or: [
-  //     { "CycleDeVie.name": "" },
-  //     { "CycleDeVie.startDate": "" },
-  //     { "CycleDeVie.endDate": "" },
-  //   ],
-  // };
   const filter = {
-    "CycleDeVie.startDate": { $lte: new Date("1900-01-01") },
+    $or: [
+      { "CycleDeVie.name": "" },
+      { "CycleDeVie.name": null },
+      // { "CycleDeVie.startDate": { $lt: new Date("1901-01-01") } },
+      // { "CycleDeVie.startDate": null },
+      // { "CycleDeVie.endDate": { $lt: new Date("1901-01-01") } },
+      // { "CycleDeVie.endDate": null },
+      { "CycleDeVie.endDate": { $lte: "CycleDeVie.startDate" } },
+    ],
   };
 
   ApplicationsModel.find(filter, function (err, applications) {
