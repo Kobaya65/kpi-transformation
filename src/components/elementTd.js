@@ -15,8 +15,8 @@ const ElementTd = (props) => {
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <img
           src={alert}
-          title="missing data"
-          alt="missing data"
+          title="donnée absente"
+          alt="donnée absente"
           height={"30px"}
         />
       </td>
