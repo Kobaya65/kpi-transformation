@@ -4,6 +4,8 @@ import ElementTd from "./elementTd";
 import alert from "../images/alert-triangle.svg";
 import AppliState from "./appliState";
 
+// const UsersModel = require("../backend/schemas/schema-users");
+
 /**
  * Returns a table row of lifecycle
  *
@@ -17,8 +19,16 @@ const cyclesList = (libelle, actualState, theLifeCycles, key) => {
     return (
       <tr className={key % 2 === 0 ? "white-line" : "grey-line"} key={keyMap}>
         <td>{libelle}</td>
-        <AppliState etat={actualState} />
-        <td>{lifeCycle.name}</td>
+        <td
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <AppliState etat={actualState} />
+        </td>
+        <ElementTd elem={lifeCycle.name}></ElementTd>
         {nullOrDefaultDate(lifeCycle.startDate)}
         {nullOrDefaultDate(lifeCycle.endDate)}
       </tr>
@@ -117,4 +127,29 @@ const nullOrDefaultDate = (date) => {
   }
 };
 
-export { assignationsList, titreConcepts, nullOrDefaultDate, cyclesList };
+// const findUser = (filter, callback) => {
+//   const userFound = {};
+
+//   UsersModel.find(filter, function (err, res) {
+//     if (err || !UsersModel.length) {
+//       console.log("Erreur dans usersModel.find() : " + err);
+//       callback(err, null);
+//     } else {
+//       userFound = {
+//         matricule: res.matricule,
+//         role: res.role,
+//         pwd: res.pwd,
+//       };
+//     }
+
+//     return userFound;
+//   });
+// };
+
+export {
+  assignationsList,
+  titreConcepts,
+  nullOrDefaultDate,
+  cyclesList,
+  // findUser,
+};
