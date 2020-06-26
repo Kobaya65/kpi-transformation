@@ -9,7 +9,7 @@ const PORT = 4000;
 const PORT_MONGODB = 27017;
 const USER = "kpi-user";
 const PWD = "kpi-user+20200617";
-const APPLI = "kpi-transformation";
+const BASE = "kpi-transformation";
 
 const ApplicationsModel = require("./schemas/schema-applications");
 const ApplicationsRespModel = require("./schemas/schema-applicationsResp");
@@ -20,13 +20,13 @@ app.use(cors());
 app.use(bodyParser.json());
 
 mongoose
-  // .connect(`mongodb://localhost:${PORT_MONGODB}/${APPLI}`, {
-  // .connect(`mongodb://${USER}:${PWD}@localhost:${PORT_MONGODB}/${APPLI}`, {
+  // .connect(`mongodb://localhost:${PORT_MONGODB}/${BASE}`, {
+  // .connect(`mongodb://${USER}:${PWD}@localhost:${PORT_MONGODB}/${BASE}`, {
   //   useNewUrlParser: true,
   //   useUnifiedTopology: true,
   // })
   // -->https://stackoverflow.com/questions/45576367/mongoose-connection-authentication-failed
-  .connect(`mongodb://localhost:${PORT_MONGODB}/${APPLI}`, {
+  .connect(`mongodb://localhost:${PORT_MONGODB}/${BASE}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     auth: { authSource: "admin" },
@@ -35,11 +35,11 @@ mongoose
   })
   .then(() => {
     console.log(
-      `Connection to 'kpi-transformation' database established successfully on port ${PORT_MONGODB}`
+      `Connexion à la base ${BASE} établie avec succès sur le port ${PORT_MONGODB}`
     );
   })
   .catch((error) => {
-    console.log("Problème de connection à la base MongoDB !");
+    console.log("Problème de connexion à la base MongoDB !");
     console.log(error);
   });
 
@@ -149,15 +149,16 @@ router.route("/respManquantes").get(function (req, res) {
 });
 
 router.route("/cycleVieManquant").get(function (req, res) {
-  // const filter = {
-  //   $or: [
-  //     { "CycleDeVie.name": "" },
-  //     { "CycleDeVie.startDate": "" },
-  //     { "CycleDeVie.endDate": "" },
-  //   ],
-  // };
   const filter = {
-    "CycleDeVie.startDate": { $lte: new Date("1900-01-01") },
+    $or: [
+      { "CycleDeVie.name": "" },
+      { "CycleDeVie.name": null },
+      // { "CycleDeVie.startDate": { $lt: new Date("1901-01-01") } },
+      // { "CycleDeVie.startDate": null },
+      // { "CycleDeVie.endDate": { $lt: new Date("1901-01-01") } },
+      // { "CycleDeVie.endDate": null },
+      { "CycleDeVie.endDate": { $lte: "CycleDeVie.startDate" } },
+    ],
   };
 
   ApplicationsModel.find(filter, function (err, applications) {

@@ -7,6 +7,7 @@ import ApplicationById from "../containers/applicationById";
 import ApplicationsResp from "../containers/applicationsResp";
 import ApplicationRespById from "../containers/applicationRespById";
 import ApplicationsRespManquantes from "../containers/applicationsRespManquantes";
+import ApplicationsCyclesManquants from "../containers/applicationsCyclesManquants";
 import StatParStatut from "../containers/statParStatut";
 import StatParType from "../containers/statParType";
 import StatEvolutionAppliValide from "../containers/statEvolutionAppliValide";
@@ -34,7 +35,11 @@ const MyRoutes = () => {
           path="/respManquantes"
           component={ApplicationsRespManquantes}
         />
-        <Route exact path="/cycleVieManquant" component={ApplicationsList} />
+        <Route
+          exact
+          path="/cycleVieManquant"
+          component={ApplicationsCyclesManquants}
+        />
         {/* menu Statistiques */}
         <Route exact path="/statParStatut" component={StatParStatut} />
         <Route exact path="/statParType" component={StatParType} />
