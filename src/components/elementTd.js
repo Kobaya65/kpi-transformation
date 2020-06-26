@@ -2,8 +2,8 @@ import React from "react";
 import alert from "../images/alert-triangle.svg";
 
 /**
- * Display content of property or alert-triangle icon
- * if the property is an empty string or is null
+ * Display alert-triangle icon
+ * if elem is an empty string or is null
  * @param {*} props elem texte de la propriété
  */
 const ElementTd = (props) => {
