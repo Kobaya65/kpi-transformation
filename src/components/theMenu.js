@@ -10,6 +10,7 @@ const TheMenu = () => {
           height="30em"
           className="d-inline-block align-top"
           alt="logo Société Générale"
+          title="page d'accueil"
         />
       </a>
       <button
