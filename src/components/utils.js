@@ -4,8 +4,6 @@ import ElementTd from "./elementTd";
 import alert from "../images/alert-triangle.svg";
 import AppliState from "./appliState";
 
-// const UsersModel = require("../backend/schemas/schema-users");
-
 /**
  * Returns a table row of lifecycle
  *
@@ -37,7 +35,7 @@ const cyclesList = (libelle, actualState, theLifeCycles, key) => {
 };
 
 /**
- * returns a line of table composed by the six unitary information
+ * returns a table row composed by the six unitary information
  * of the assignations of one applicatino
  *
  * @param {*} assignations table of assignations for tha application
@@ -127,29 +125,4 @@ const nullOrDefaultDate = (date) => {
   }
 };
 
-// const findUser = (filter, callback) => {
-//   const userFound = {};
-
-//   UsersModel.find(filter, function (err, res) {
-//     if (err || !UsersModel.length) {
-//       console.log("Erreur dans usersModel.find() : " + err);
-//       callback(err, null);
-//     } else {
-//       userFound = {
-//         matricule: res.matricule,
-//         role: res.role,
-//         pwd: res.pwd,
-//       };
-//     }
-
-//     return userFound;
-//   });
-// };
-
-export {
-  assignationsList,
-  titreConcepts,
-  nullOrDefaultDate,
-  cyclesList,
-  // findUser,
-};
+export { assignationsList, titreConcepts, nullOrDefaultDate, cyclesList };
