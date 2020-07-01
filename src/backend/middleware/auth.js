@@ -39,13 +39,15 @@ connection.on("error", (error) => console.log(error));
 app.post("/login", (req, res) => {
   // Read username, role & password from request body
   const { matricule, role, pwd } = req.body;
+  console.log("req ===> " + matricule, role, pwd);
 
   let filter = {
     matricule: matricule,
     role: role,
     pwd: pwd,
   };
-  let userFound = findUser(filter);
+
+  const userFound = findUser(filter);
   console.log(
     "userFound = " + userFound.matricule,
     userFound.role,
@@ -64,67 +66,16 @@ app.post("/login", (req, res) => {
     });
   } else {
     res.send("Username or password incorrect");
+    console.log("Username or password incorrect !!!!");
   }
 });
 
-// app.get("/api", (req, res) => {
-//   res.json({
-//     message: "Welcome to the API !",
-//   });
-// });
-
-// app.post("/api/posts", verifyToken, (req, res) => {
-//   jwt.verify(req.token, "secretkey", (err, authData) => {
-//     if (err) {
-//       res.sendStatus(403);
-//     } else {
-//       res.json({
-//         message: "Post created...",
-//         authData,
-//       });
-//     }
-//   });
-// });
-
-// format of token
-// Authorization: Bearer <access_tokan
-
 async function findUser(filter) {
-  let found = {
-    matricule: "",
-    role: "",
-    pwd: "",
-  };
+  const userFound = await UsersModel.find(filter, { _id: false });
 
-  await UsersModel.find(filter, function (err, res) {
-    console.log(
-      "filter dans UsersModel() = " + filter.matricule,
-      filter.role,
-      filter.pwd
-    );
-    console.log("res = " + res.matricule, res.role, res.pwd);
-    if (err || !UsersModel.length) {
-      console.log("Erreur dans usersModel.find() : " + err);
-      return err;
-    } else {
-      console.log("Requête réussie");
-      console.log(
-        "juste après 'Requête réussie' = " + res.matricule,
-        res.role,
-        res.pwd
-      );
+  console.log("userFound dans findUser() = " + userFound);
 
-      found = {
-        matricule: res.matricule,
-        role: res.role,
-        pwd: res.pwd,
-      };
-      console.log("res = " + res.matricule, res.role, res.pwd);
-      console.log("found = " + found.matricule, found.role, found.pwd);
-    }
-
-    return found;
-  });
+  return userFound;
 }
 
 // Verify token
