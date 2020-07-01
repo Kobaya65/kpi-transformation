@@ -119,7 +119,7 @@ const nullOrDefaultDate = (date) => {
 
   const sDate = "01/01/1900";
   if (date === sDate) {
-    return <td className="wrongDate">{date}</td>;
+    return <td className="wrongDate center-table">{date}</td>;
   } else {
     return <td className="center-table">{date}</td>;
   }
