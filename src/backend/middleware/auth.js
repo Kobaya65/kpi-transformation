@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const UsersModel = require("../schemas/schema-users");
+const bcrypt = require("b-crypt");
 const app = express();
 
 const PORT_AUTH = 5000;
