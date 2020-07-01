@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 
 import Home from "../components/home";
+import Sorry from "../components/sorry";
 import ApplicationsList from "../containers/applicationsList";
 import ApplicationById from "../containers/applicationById";
 import ApplicationsResp from "../containers/applicationsResp";
@@ -11,7 +12,6 @@ import ApplicationsCyclesManquants from "../containers/applicationsCyclesManquan
 import StatParStatut from "../containers/statParStatut";
 import StatParType from "../containers/statParType";
 import StatEvolutionAppliValide from "../containers/statEvolutionAppliValide";
-import Sorry from "../components/sorry";
 
 const MyRoutes = () => {
   return (
