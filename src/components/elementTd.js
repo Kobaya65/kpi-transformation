@@ -12,8 +12,9 @@ const ElementTd = (props) => {
   if (props.elem === "" || props.elem === null) {
     element = (
       <td>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        {/* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; */}
         <img
+          className="center-image"
           src={alert}
           title="donnée absente"
           alt="donnée absente"
