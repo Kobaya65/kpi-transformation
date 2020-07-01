@@ -3,7 +3,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import MyRoutes from "./components/routes";
+import MyRoutes from "./routes/routes";
 import TheMenu from "./components/theMenu";
 
 class App extends Component {
