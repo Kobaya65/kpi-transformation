@@ -196,7 +196,8 @@ th {
   background-color: #f2f2f2;
 }
 
-#test-table-xls-button {
+#button-xls-resp-manquantes,
+#button-xls-cycles-manquants {
   padding: 0 5px;
   background-color: #217346;
   color: white;
