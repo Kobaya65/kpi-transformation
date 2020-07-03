@@ -92,11 +92,10 @@ export default class ApplicationsRespManquantes extends Component {
             changeButton={this.changeButton}
           />
           <ReactHTMLTableToExcel
-            id="test-table-xls-button"
-            className="download-table-xls-button"
+            id="button-xls-resp-manquantes"
             table="table-resp-manquantes"
-            filename="tablexls"
-            sheet="tablexls"
+            filename="table_resp_manquantes"
+            sheet="Sheet1"
             buttonText="Export Excel"
           />
         </div>

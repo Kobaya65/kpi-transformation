@@ -3,6 +3,7 @@ import axios from "axios";
 
 import HeadBand from "../components/headband";
 import { cyclesList } from "../components/utils";
+import ReactHTMLTableToExcel from "react-html-table-to-excel";
 
 export default class ApplicationsCyclesManquants extends Component {
   constructor(props) {
@@ -50,8 +51,16 @@ export default class ApplicationsCyclesManquants extends Component {
       <div className="container-fluid">
         <div className="d-flex">
           <HeadBand title={this.state.title} />
+
+          <ReactHTMLTableToExcel
+            id="button-xls-cycles-manquants"
+            table="table-cycles-manquants"
+            filename="table_cycles_manquants"
+            sheet="Sheet1"
+            buttonText="Export Excel"
+          />
         </div>
-        <table className="table" id="table-resp-manquantes">
+        <table className="table" id="table-cycles-manquants">
           <thead>
             <tr>
               <th>Libellé court</th>
