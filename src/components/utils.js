@@ -75,7 +75,7 @@ const assignationsList = (appliName, assignations, filter, lineColor) => {
 
 /**
  * Returns number of missing unitary informations
- * in the object assignation which contains six
+ * in the object assignation which include six
  * @param {*} assign assignation
  */
 const decompteInfosManquantes = (assign) => {
@@ -98,7 +98,7 @@ const titreConcepts = (nbConcepts) => {
 const nullOrDefaultDate = (date) => {
   if (date === null) {
     return (
-      <td>
+      <td className="center-table">
         <img
           src={alert}
           title="mauvaise date"
