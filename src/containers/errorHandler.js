@@ -5,7 +5,7 @@ import React, { Component } from "react";
  *
  * @param {*} props error the error that was encountered
  */
-class HandleError extends Component {
+export default class HandleError extends Component {
   render() {
     return (
       <div>
@@ -16,4 +16,4 @@ class HandleError extends Component {
   }
 }
 
-export { HandleError };
+// export { HandleError };
