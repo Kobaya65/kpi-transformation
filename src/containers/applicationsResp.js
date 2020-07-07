@@ -63,7 +63,7 @@ export default class ApplicationsResp extends Component {
           <thead>
             <tr>
               <th>#</th>
-              <th>Nom</th>
+              <th>Libellé Court</th>
               <th>Global_id</th>
             </tr>
           </thead>
