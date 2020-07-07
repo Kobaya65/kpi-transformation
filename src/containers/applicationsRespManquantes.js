@@ -102,7 +102,7 @@ export default class ApplicationsRespManquantes extends Component {
         <table className="table" id="table-resp-manquantes">
           <thead>
             <tr>
-              <th>Appli</th>
+              <th>Libellé court</th>
               <th>Personne</th>
               <th>ID Personne</th>
               <th>Structure</th>
