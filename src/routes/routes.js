@@ -9,8 +9,8 @@ import ApplicationsResp from "../containers/applicationsResp";
 import ApplicationRespById from "../containers/applicationRespById";
 import ApplicationsRespManquantes from "../containers/applicationsRespManquantes";
 import ApplicationsCyclesManquants from "../containers/applicationsCyclesManquants";
-import StatParStatut from "../containers/statParStatut";
-import StatParType from "../containers/statParType";
+import StatByStatus from "../containers/statByStatus";
+import StatByType from "../containers/statByType";
 import StatEvolutionAppliValide from "../containers/statEvolutionAppliValide";
 
 const MyRoutes = () => {
@@ -41,8 +41,8 @@ const MyRoutes = () => {
           component={ApplicationsCyclesManquants}
         />
         {/* menu Statistiques */}
-        <Route exact path="/statParStatut" component={StatParStatut} />
-        <Route exact path="/statParType" component={StatParType} />
+        <Route exact path="/statByStatus" component={StatByStatus} />
+        <Route exact path="/statByType" component={StatByType} />
         <Route
           exact
           path="/statEvolutionAppliValide"
