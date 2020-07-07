@@ -4,7 +4,7 @@ import alert from "../images/alert-triangle.svg";
 /**
  * Display alert-triangle icon
  * if elem is an empty string or is null
- * @param {*} props elem texte de la propriété
+ * @param {*} props.elem texte de la propriété
  */
 const ElementTd = (props) => {
   let element = {};
@@ -12,7 +12,6 @@ const ElementTd = (props) => {
   if (props.elem === "" || props.elem === null) {
     element = (
       <td>
-        {/* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; */}
         <img
           className="center-image"
           src={alert}
