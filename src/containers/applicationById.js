@@ -74,8 +74,8 @@ export default class ApplicationById extends Component {
             value={this.state.appli.TechnicalIdHexa}
           />
           <div className="col">
-            <p className="label-bold-mgl5 center-image">État actuel</p>
-            <div className="center-image frame">
+            <p className="label-bold-mgl5 center-table">État actuel</p>
+            <div className="center-table frame">
               <AppliState etat={this.state.appli.CurrentState} />
             </div>
           </div>
