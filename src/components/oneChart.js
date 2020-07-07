@@ -1,18 +1,23 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Chart from 'chart.js';
-import '../App.css';
+import React from "react";
+import PropTypes from "prop-types";
+import Chart from "chart.js";
+import "../App.css";
 
+/**
+ *
+ *
+ * @param {*} props.data object containing data to construct a grpah
+ */
 class OneChart extends React.Component {
-  constructor( props ) {
-    super( props );
+  constructor(props) {
+    super(props);
     this.canvasRef = React.createRef();
     this.hauteur = 0;
   }
 
   componentDidUpdate() {
-    this.myChart.data.labels = this.props.data.map( d => d.time );
-    this.myChart.data.datasets[0].data = this.props.data.map( d => d.value );
+    this.myChart.data.labels = this.props.data.map((d) => d.time);
+    this.myChart.data.datasets[0].data = this.props.data.map((d) => d.value);
     this.myChart.update();
 
     // if ( this.props.type = "bar" ) {
@@ -23,7 +28,7 @@ class OneChart extends React.Component {
   }
 
   componentDidMount() {
-    this.myChart = new Chart( this.canvasRef.current, this.props.data );
+    this.myChart = new Chart(this.canvasRef.current, this.props.data);
   }
 
   render() {
@@ -32,7 +37,7 @@ class OneChart extends React.Component {
 }
 
 OneChart.propTypes = {
-  data: PropTypes.array
-}
+  data: PropTypes.array,
+};
 
 export default OneChart;
