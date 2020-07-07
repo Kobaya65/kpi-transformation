@@ -4,7 +4,7 @@ import React, { Component } from "react";
  * toggle button to switch between displaying all responsabilities
  * and only the responsabilities for which there is some missing data
  *
- * @param {*} props state : state of button ("toutes" or "manquantes")
+ * @param {*} props.state state of button ("toutes" or "manquantes")
  */
 export default class MissingRespButton extends Component {
   constructor(props) {
