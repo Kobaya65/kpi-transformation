@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 
 /**
+ * Display a single information for an application.
+ * Apply the css class frame to simulate a 3D textbox.
+ * If the value is a empty string, display "non spécifié" and apply the css class missing-value.
  *
- * @param {*} props value the value of the element
+ * @param {*} props.label label of the field
+ * @param {*} props.value value of the element
  */
 export default class ElementAppli extends Component {
   render() {
