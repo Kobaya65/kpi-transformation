@@ -34,7 +34,10 @@ export default class ApplicationRespById extends Component {
       <div className="container-fluid">
         <HeadBand title={"Application et ses responsabilités"} />
         <div className="row">
-          <ElementRespAppli label="Nom" value={this.state.shortName} />
+          <ElementRespAppli
+            label="Libellé court"
+            value={this.state.shortName}
+          />
           <ElementRespAppli label="ID" value={this.state.appli.id} />
           <ElementRespAppli
             label="Global_id"
