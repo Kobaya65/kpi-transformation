@@ -36,9 +36,9 @@ const cyclesList = (libelle, actualState, theLifeCycles, key) => {
 
 /**
  * returns a table row composed by the six unitary information
- * of the assignations of one applicatino
+ * of the assignations of one application
  *
- * @param {*} assignations table of assignations for tha application
+ * @param {*} assignations table of assignations for the application
  * @param {*} filter       "toutes" or "manquantes"
  */
 const assignationsList = (appliName, assignations, filter, lineColor) => {
