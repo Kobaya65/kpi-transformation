@@ -36,7 +36,15 @@ const connection = mongoose.connection;
 
 connection.on("error", (error) => console.log(error));
 
-app.post("/login", (req, res) => {
+async function findUser(filter) {
+  const userFound = await UsersModel.find(filter, { _id: false });
+
+  console.log(`userFound dans findUser() = ${userFound}`);
+
+  return userFound;
+}
+
+app.post("/login", async function (req, res) {
   // Read username, role & password from request body
   const { matricule, role, pwd } = req.body;
   console.log("req ===> " + matricule, role, pwd);
@@ -47,17 +55,13 @@ app.post("/login", (req, res) => {
     pwd: pwd,
   };
 
-  const userFound = findUser(filter);
-  console.log(
-    "userFound = " + userFound.matricule,
-    userFound.role,
-    userFound.pwd
-  );
+  const userF = await findUser(filter);
+  console.log("userF = " + userF.matricule, userF.role, userF.pwd);
 
-  if (userFound.matricule && userFound.role && userFound.pwd) {
+  if (userF.matricule && userF.role && userF.pwd) {
     // Generate an access token
     const accessToken = jwt.sign(
-      { matricule: userFound.matricule, role: userFound.role },
+      { matricule: userF.matricule, role: userF.role },
       accessTokenSecret
     );
 
@@ -67,16 +71,9 @@ app.post("/login", (req, res) => {
   } else {
     res.send("Username or password incorrect");
     console.log("Username or password incorrect !!!!");
+    console.log("res = " + res);
   }
 });
-
-async function findUser(filter) {
-  const userFound = await UsersModel.find(filter, { _id: false });
-
-  console.log("userFound dans findUser() = " + userFound);
-
-  return userFound;
-}
 
 // Verify token
 function verifyToken(req, res, next) {
