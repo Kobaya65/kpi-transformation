@@ -7,16 +7,16 @@ import AppliState from "./appliState";
 /**
  * Returns a table row of lifecycle
  *
- * @param {*} libelle       name of the aplication
+ * @param {*} label         name of the application
  * @param {*} actualState   current state of the application
  * @param {*} theLifeCycles table of lifecycles
  * @param {*} key           line number used to display striped table
  */
-const cyclesList = (libelle, actualState, theLifeCycles, key) => {
+const cyclesList = (label, actualState, theLifeCycles, key) => {
   return theLifeCycles.map((lifeCycle, keyMap) => {
     return (
       <tr className={key % 2 === 0 ? "white-line" : "grey-line"} key={keyMap}>
-        <td>{libelle}</td>
+        <td>{label}</td>
         <td
           style={{
             display: "flex",
