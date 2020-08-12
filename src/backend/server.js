@@ -181,7 +181,7 @@ router.route("/statEvolutionAppliValide").get(function (req, res) {
 });
 
 router.route("/statByType").get(function (req, res) {
-  StatisticsModel.aggregate()
+  ApplicationsModel.aggregate()
     .group({ _id: "$TypeAppli", "Nombre d'applications par type": { $sum: 1 } })
     .exec(function (err, result) {
       // if (err) return HandleError(err);
