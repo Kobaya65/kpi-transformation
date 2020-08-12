@@ -16,6 +16,8 @@ const ApplicationsRespModel = require("./schemas/schema-applicationsResp");
 const StatisticsModel = require("./schemas/schema-statistics");
 // const HandleError = require("../containers/errorHandler");
 
+const corsOptions = { origin: `http://localhost:${PORT}` };
+// corsOptions pas utilisé car ça plante si on le passe en argument à cors()...
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -178,6 +180,18 @@ router.route("/statEvolutionAppliValide").get(function (req, res) {
     });
 });
 
+router.route("/statByType").get(function (req, res) {
+  StatisticsModel.aggregate()
+    .group({ _id: "$TypeAppli", "Nombre d'applications par type": { $sum: 1 } })
+    .exec(function (err, result) {
+      // if (err) return HandleError(err);
+      if (err) return err;
+      res.json(result);
+    });
+});
+
 app.use("/", router);
 
-app.listen(PORT);
+app.listen(PORT, () => {
+  console.log(`Serveur Front-end démarré avec succès sur le port ${PORT}`);
+});
