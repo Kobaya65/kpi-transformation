@@ -1,6 +1,5 @@
 import React from "react";
 import ElementTd from "./elementTd";
-import Chart from "chart.js";
 
 import alert from "../images/alert-triangle.svg";
 import AppliState from "./appliState";
@@ -135,4 +134,37 @@ const nullOrDefaultDate = (date) => {
   }
 };
 
-export { assignationsList, titreConcepts, nullOrDefaultDate, cyclesList };
+/**
+ * populate the dataset of the graph
+ *
+ * @param {*} title     graph's label
+ * @param {*} graphData data for plotting the graph
+ */
+const createDataset = (graphData) => {
+  let data = {
+    datasets: [
+      {
+        data: [],
+        backgroundColor: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        borderColor: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        borderWidth: 1,
+      },
+    ],
+    labels: [],
+  };
+
+  graphData.forEach((element) => {
+    data.datasets[0].data.push(element.nbApp);
+    data.labels.push(element._id);
+  });
+
+  return data;
+};
+
+export {
+  assignationsList,
+  titreConcepts,
+  nullOrDefaultDate,
+  cyclesList,
+  createDataset,
+};
