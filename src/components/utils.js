@@ -1,5 +1,6 @@
 import React from "react";
 import ElementTd from "./elementTd";
+import Chart from "chart.js";
 
 import alert from "../images/alert-triangle.svg";
 import AppliState from "./appliState";
@@ -95,6 +96,15 @@ const titreConcepts = (nbConcepts) => {
   return nbConcepts ? <h6>Concepts</h6> : null;
 };
 
+/**
+ * function used to transform ISODate format to french date (dd/mm/yyyy)
+ *
+ * @param {*} date date to format
+ *
+ * @return a table cell containing
+ *         - date as a string with dd/mm/yyyy format if @param date is valid
+ *         - allert icon if date is null
+ */
 const nullOrDefaultDate = (date) => {
   if (date === null) {
     return (
