@@ -27,6 +27,7 @@ export default class ApplicationsCyclesManquants extends Component {
 
     return theList;
   }
+
   componentDidMount() {
     axios
       .get("http://localhost:4000" + this.props.match.path)
