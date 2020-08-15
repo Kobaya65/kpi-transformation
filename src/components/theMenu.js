@@ -73,7 +73,7 @@ const TheMenu = () => {
               Statistiques
             </a>
             <div className="dropdown-menu">
-              <MyLink nom="Répartition par statut" vers="/statByStatut" />
+              <MyLink nom="Répartition par statut" vers="/statByStatus" />
               <MyLink nom="Répartition par type" vers="/statByType" />
               <MyLink
                 nom="Évolution du nombre d'applications validées"
