@@ -8,6 +8,7 @@ import React, { useEffect } from "react";
  *
  * props.chartType  type of chart (line, bar, pie, etc.)
  * props.data       data with the right structure (see https://www.chartjs.org/docs/latest/)
+ * props.title      title of the graph
  */
 export default function MyChart(props) {
   useEffect(() => {
