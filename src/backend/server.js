@@ -169,17 +169,6 @@ router.route("/cycleVieManquant").get(function (req, res) {
 });
 
 /* collection statistiques */
-router.route("/statEvolutionAppliValide").get(function (req, res) {
-  StatisticsModel.aggregate()
-    .match({ NomMesure: "ApplicationsValidées" })
-    .sort("Périmètre DateMesure")
-    .exec(function (err, result) {
-      // if (err) return HandleError(err);
-      if (err) return err;
-      res.json(result);
-    });
-});
-
 router.route("/statByType").get(function (req, res) {
   ApplicationsModel.aggregate()
     .group({ _id: "$TypeAppli", nbApp: { $sum: 1 } })
@@ -187,6 +176,28 @@ router.route("/statByType").get(function (req, res) {
       // if (err) return HandleError(err);
       if (err) return err;
       console.log(result);
+      res.json(result);
+    });
+});
+
+router.route("/statByStatus").get(function (req, res) {
+  ApplicationsModel.aggregate()
+    .group({ _id: "$CurrentState", nbApp: { $sum: 1 } })
+    .exec(function (err, result) {
+      // if (err) return HandleError(err);
+      if (err) return err;
+      res.json(result);
+    });
+});
+
+router.route("/statEvolutionAppliValide").get(function (req, res) {
+  StatisticsModel.aggregate()
+    .match({ NomMesure: "ApplicationsValidées" })
+    .project({ DateMesure: 1, ValeurDeLaMesure: 1, Perimetre: 1 })
+    .sort("Perimetre: 1, DateMesure: 1")
+    .exec(function (err, result) {
+      // if (err) return HandleError(err);
+      if (err) return err;
       res.json(result);
     });
 });
