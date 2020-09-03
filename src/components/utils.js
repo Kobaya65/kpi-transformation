@@ -161,10 +161,37 @@ const createDataset = (graphData) => {
   return data;
 };
 
+/**
+ * create a list of all perimeter names
+ *
+ * @param {*} data array of which to create a list of unique name of perimeters
+ */
+const perimeterList = (data) => {
+  let temp = [];
+  let flag = false;
+
+  data.forEach((element) => {
+    flag = false;
+    for (let elem = 0; elem < temp.length; elem++) {
+      if (temp[elem] === element.Perimetre) {
+        flag = true;
+        break;
+      }
+    }
+
+    if (!flag) {
+      temp.push(element.Perimetre);
+    }
+  });
+
+  return temp;
+};
+
 export {
   assignationsList,
   titreConcepts,
   nullOrDefaultDate,
   cyclesList,
   createDataset,
+  perimeterList,
 };

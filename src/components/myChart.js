@@ -16,6 +16,12 @@ export default function MyChart(props) {
     new Chart(ctx, {
       type: props.chartType,
       data: props.data,
+      options: {
+        title: {
+          display: props.title ? true : false,
+          text: props.title,
+        },
+      },
     });
   });
 
