@@ -175,7 +175,6 @@ router.route("/statByType").get(function (req, res) {
     .exec(function (err, result) {
       // if (err) return HandleError(err);
       if (err) return err;
-      console.log(result);
       res.json(result);
     });
 });
@@ -192,7 +191,7 @@ router.route("/statByStatus").get(function (req, res) {
 
 router.route("/statEvolutionAppliValide").get(function (req, res) {
   StatisticsModel.aggregate()
-    .match({ NomMesure: "ApplicationsValidées" })
+    .match({ NomMesure: "ApplicationsValidées", Perimetre: "RESG" })
     .project({ DateMesure: 1, ValeurDeLaMesure: 1, Perimetre: 1 })
     .sort("Perimetre: 1, DateMesure: 1")
     .exec(function (err, result) {
@@ -202,6 +201,16 @@ router.route("/statEvolutionAppliValide").get(function (req, res) {
     });
 });
 
+/**
+ * cette fonction inscrit dans la console chaque endpoint appelé
+ * avant de passer la main au endpoint lui-même (next())
+ */
+app.use(function (req, res, next) {
+  const d = new Date();
+
+  console.log(req.url, d);
+  next();
+});
 app.use("/", router);
 
 app.listen(PORT, () => {
