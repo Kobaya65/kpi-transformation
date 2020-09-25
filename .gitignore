@@ -2,6 +2,7 @@
 
 # les miens
 .cmd
+debug.log
 
 # dependencies
 /node_modules
