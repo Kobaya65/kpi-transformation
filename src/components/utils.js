@@ -54,7 +54,7 @@ const assignationsList = (appliName, assignations, filter, lineColor) => {
         classN = lineColor % 2 === 0 ? "white-line" : "grey-line";
       } else {
         // call from applicationsResp
-        // we alternate  culours by line
+        // we alternate colours by line
         classN = "table-striped";
       }
 
