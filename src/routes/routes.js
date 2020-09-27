@@ -48,10 +48,6 @@ const MyRoutes = () => {
           path="/statEvolutionAppliValide"
           component={StatEvolutionAppliValide}
         />
-
-        {/* menu Administration */}
-        <Route exact path="/creationUtilisateur" component={Sorry} />
-        <Route exact path="/modifMotDePasse" component={Sorry} />
       </Switch>
     </div>
   );

@@ -38,10 +38,10 @@ const TheMenu = () => {
             <div className="dropdown-menu">
               <MyLink nom="Applications" vers="/applications" />
               <MyLink nom="Applications Resp." vers="/applicationsResp" />
-              <MyLink
+              {/* <MyLink
                 nom="Applications filtrées"
                 vers="/applicationsParFiltre"
-              />
+              /> */}
             </div>
           </li>
 
@@ -78,25 +78,6 @@ const TheMenu = () => {
               <MyLink
                 nom="Évolution du nombre d'applications validées"
                 vers="/statEvolutionAppliValide"
-              />
-            </div>
-          </li>
-          <li className="nav-item dropdown">
-            <a
-              className="nav-link dropdown-toggle"
-              href="#4"
-              data-toggle="dropdown"
-            >
-              Administration
-            </a>
-            <div className="dropdown-menu">
-              <MyLink
-                nom="Création d'un utilisateur"
-                vers="/creationUtilisateur"
-              />
-              <MyLink
-                nom="Modification du mot de passe"
-                vers="/modifMotDePasse"
               />
             </div>
           </li>
