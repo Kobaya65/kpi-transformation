@@ -102,7 +102,7 @@ const titreConcepts = (nbConcepts) => {
  *
  * @return a table cell containing
  *         - date as a string with dd/mm/yyyy format if @param date is valid
- *         - allert icon if date is null
+ *         - alert icon if date is null
  */
 const nullOrDefaultDate = (date) => {
   if (date === null) {
@@ -135,18 +135,40 @@ const nullOrDefaultDate = (date) => {
 };
 
 /**
- * populate the dataset of the graph
+ * populate the dataset of a pie graph
  *
  * @param {*} title     graph's label
  * @param {*} graphData data for plotting the graph
  */
-const createDataset = (graphData) => {
+const createDatasetPie = (graphData) => {
   let data = {
     datasets: [
       {
         data: [],
-        backgroundColor: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-        borderColor: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        backgroundColor: [
+          "aqua",
+          "brown",
+          "darkmagenta",
+          "Red",
+          "Blue",
+          "Yellow",
+          "Green",
+          "Purple",
+          "Orange",
+          "lightblue",
+        ],
+        borderColor: [
+          "aqua",
+          "brown",
+          "darkmagenta",
+          "Red",
+          "Blue",
+          "Yellow",
+          "Green",
+          "Purple",
+          "Orange",
+          "lightblue",
+        ],
         borderWidth: 1,
       },
     ],
@@ -156,6 +178,72 @@ const createDataset = (graphData) => {
   graphData.forEach((element) => {
     data.datasets[0].data.push(element.nbApp);
     data.labels.push(element._id);
+  });
+
+  return data;
+};
+
+/**
+ * populate the dataset of a line graph
+ *
+ * @param {*} title     graph's label
+ * @param {*} graphData data for plotting the graph
+ */
+const createDatasetLine = (graphData) => {
+  let data = {
+    datasets: [
+      {
+        data: [],
+        backgroundColor: [
+          "aqua",
+          "brown",
+          "darkmagenta",
+          "Red",
+          "Blue",
+          "Yellow",
+          "Green",
+          "Purple",
+          "Orange",
+          "lightblue",
+        ],
+        borderColor: [
+          "aqua",
+          "brown",
+          "darkmagenta",
+          "Red",
+          "Blue",
+          "Yellow",
+          "Green",
+          "Purple",
+          "Orange",
+          "lightblue",
+        ],
+        borderWidth: 1,
+      },
+    ],
+    labels: [],
+  };
+
+  // let elemPrec = "";
+  // let idxDataset = -1;
+  // graphData.forEach((element) => {
+  //   if (element.Perimetre != elemPrec) {
+  //     elemPrec = element.Perimetre;
+  //   }
+  //   if (element.Perimetre == elemPrec) {
+  //     data.labels.push(element.DateMesure);
+  //   } else {
+  //     break;
+  //   }
+  // });
+
+  graphData.forEach((element) => {
+    // if (element.Perimetre != elemPrec) {
+    //   elemPrec = element.Perimetre;
+    //   idxDataset++;
+    // }
+    data.datasets[0].data.push(element.ValeurMesure);
+    data.labels.push(element.DateMesure);
   });
 
   return data;
@@ -192,6 +280,7 @@ export {
   titreConcepts,
   nullOrDefaultDate,
   cyclesList,
-  createDataset,
+  createDatasetPie,
+  createDatasetLine,
   perimeterList,
 };

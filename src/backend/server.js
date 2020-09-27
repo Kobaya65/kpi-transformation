@@ -192,8 +192,9 @@ router.route("/statByStatus").get(function (req, res) {
 router.route("/statEvolutionAppliValide").get(function (req, res) {
   StatisticsModel.aggregate()
     .match({ NomMesure: "ApplicationsValidées", Perimetre: "RESG" })
-    .project({ DateMesure: 1, ValeurDeLaMesure: 1, Perimetre: 1 })
-    .sort("Perimetre: 1, DateMesure: 1")
+    // .match({ NomMesure: "ApplicationsValidées" })
+    .project({ DateMesure: 1, Perimetre: 1, ValeurMesure: 1 })
+    .sort({ Perimetre: 1, DateMesure: 1 })
     .exec(function (err, result) {
       // if (err) return HandleError(err);
       if (err) return err;

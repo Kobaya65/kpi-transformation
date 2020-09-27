@@ -21,6 +21,13 @@ export default function MyChart(props) {
           display: props.title ? true : false,
           text: props.title,
         },
+        scales: {
+          xAxes: [
+            {
+              type: "time",
+            },
+          ],
+        },
       },
     });
   });

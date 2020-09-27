@@ -3,7 +3,7 @@ import axios from "axios";
 
 import HeadBand from "../components/headband";
 import MyChart from "../components/myChart";
-import { createDataset } from "../components/utils";
+import { createDatasetPie } from "../components/utils";
 
 export default class StatByType extends Component {
   constructor(props) {
@@ -31,9 +31,9 @@ export default class StatByType extends Component {
         <HeadBand title={"Répartition des applications par type"} />
         <MyChart
           chartType="pie"
-          data={createDataset(this.state.data)}
-          width="200"
-          heigth="200"
+          data={createDatasetPie(this.state.data)}
+          // width="200"
+          // heigth="200"
         />
       </div>
     );
