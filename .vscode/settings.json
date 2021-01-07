@@ -1,3 +1,6 @@
 {
-  "debug.javascript.warnOnLongPrediction": false
+  "debug.javascript.warnOnLongPrediction": false,
+  "search.exclude": {
+    "**/node_modules": false
+  }
 }
