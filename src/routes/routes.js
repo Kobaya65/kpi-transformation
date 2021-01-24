@@ -48,6 +48,8 @@ const MyRoutes = () => {
           path="/statEvolutionAppliValide"
           component={StatEvolutionAppliValide}
         />
+        {/* error page */}
+        <Route component={Sorry} />
       </Switch>
     </div>
   );
