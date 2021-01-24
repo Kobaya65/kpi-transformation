@@ -59,7 +59,7 @@ const TheMenu = () => {
                 vers="/respManquantes"
               />
               <MyLink
-                nom="Application avec cycle de vie manquant"
+                nom="Applications avec cycle de vie manquant"
                 vers="/cycleVieManquant"
               />
             </div>
