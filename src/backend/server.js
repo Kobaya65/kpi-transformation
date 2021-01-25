@@ -8,7 +8,7 @@ const router = express.Router();
 const PORT = 4000;
 const PORT_MONGODB = 27017;
 const USER = "kpi-user";
-const PWD = "kpi-user+20200617";
+const PWD = "kpi-user+20210125";
 const BASE = "kpi-transformation";
 
 const ApplicationsModel = require("./schemas/schema-applications");
@@ -22,26 +22,29 @@ app.use(cors());
 app.use(bodyParser.json());
 
 mongoose
-  // .connect(`mongodb://localhost:${PORT_MONGODB}/${BASE}`, {
-  // .connect(`mongodb://${USER}:${PWD}@localhost:${PORT_MONGODB}/${BASE}`, {
-  //   useNewUrlParser: true,
-  //   useUnifiedTopology: true,
-  // })
-  // -->https://stackoverflow.com/questions/45576367/mongoose-connection-authentication-failed
+// connexion sans "access control" 
   .connect(`mongodb://localhost:${PORT_MONGODB}/${BASE}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    auth: { authSource: "admin" },
-    user: USER,
-    pass: PWD,
   })
+  // connexion sécurisée
+  // -->https://stackoverflow.com/questions/45576367/mongoose-connection-authentication-failed
+  // .connect(`mongodb://localhost:${PORT_MONGODB}/${BASE}`, {
+  //   useNewUrlParser: true,
+  //   useUnifiedTopology: true,
+  //   auth: { authSource: "admin" },
+  //   user: "admin",
+  //   pass: "password",
+  //   user: USER,
+  //   pass: PWD,
+  // })
   .then(() => {
     console.log(
       `Connexion à la base ${BASE} établie avec succès sur le port ${PORT_MONGODB}`
     );
   })
   .catch((error) => {
-    console.log("Problème de connexion à la base MongoDB !");
+    console.log("Problème de connexion à MongoDB !");
     console.log(error);
   });
 
